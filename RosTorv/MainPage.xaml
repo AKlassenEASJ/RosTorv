@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="RosTorv.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RosTorv"
+    xmlns:VM="using:RosTorv.ViewModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <VM:MainViewModel />
+    </Page.DataContext>
+
+    <Grid>
+        <NavigationView MenuItemsSource="{Binding NavigationItems}" SelectionChanged="NavigationView_SelectionChanged"
+                        IsBackEnabled="{Binding ElementName=navFarme, Path=CanGoBack}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <NavigationView.Content>
+                <Frame x:Name="navFarme"/>
+            </NavigationView.Content>
+
+        </NavigationView>
+    </Grid>
+</Page>
