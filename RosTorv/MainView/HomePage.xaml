@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock Text="Home" FontSize="50"/>
+        <WebView x:Name="webView" Source="https://rostorv.dk/"/>
     </Grid>
 </Page>
