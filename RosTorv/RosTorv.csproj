@@ -173,7 +173,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Anders\" />
+    <Folder Include="Anders\Model\" />
+    <Folder Include="Anders\ViewModel\" />
+    <Folder Include="Anders\View\" />
     <Folder Include="Line\" />
     <Folder Include="Nikolai\" />
     <Folder Include="Sofus\" />
