@@ -3,16 +3,18 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
 using RosTorv.Annotations;
+using RosTorv.MainView;
+using System.Linq;
 
 namespace RosTorv.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MenuViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<NavigationViewItemBase> NavigationItems { get; set; }
 
-        private NavigationViewItem _selectedItem;
+        private NavigationViewItemBase _selectedItem;
 
-        public NavigationViewItem SelectedItem
+        public NavigationViewItemBase SelectedItem
         {
             get { return _selectedItem; }
             set
@@ -23,25 +25,23 @@ namespace RosTorv.ViewModel
         }
 
 
-        public MainViewModel()
+        public MenuViewModel()
         {
             NavigationItems = new ObservableCollection<NavigationViewItemBase>();
 
             NavigationItems.Add(new NavigationViewItemHeader() {Content = "Header"});
 
             NavigationViewItem n1 = new NavigationViewItem();
+
+            // Title i menuen
             n1.Content = "Home Page";
+            // Ikonet
             n1.Icon = new SymbolIcon(Symbol.Home);
+            // Den page der skal navigates til
             n1.Tag = typeof(HomePage);
             
             NavigationItems.Add(n1);
-
-            NavigationViewItem n2 = new NavigationViewItem();
-            n2.Content = "Color Page";
-            n2.Icon = new SymbolIcon(Symbol.Home);
-            n2.Tag = typeof(ColorPage);
-
-            NavigationItems.Add(n2);
+            SelectedItem = n1;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
