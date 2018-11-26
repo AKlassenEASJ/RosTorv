@@ -22,6 +22,7 @@ namespace RosTorv.Sofus.Model
         private ButikKatalogSingleton()
         {
             ButikKatalog = new ObservableCollection<Butik>();
+
         }
     }
 }

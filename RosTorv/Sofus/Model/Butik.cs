@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace RosTorv.Sofus.Model
 {
-    class Butik
+    public class Butik
     {
+        public string Navn { get; set; }
+        public string Beskrivelse { get; set; }
+        public string Website { get; set; }
+        public List<string> Kategorier { get; set; }
+
+        public Butik()
+        {
+            
+        }
     }
 }
