@@ -119,6 +119,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Line\Model\Bæger.cs" />
+    <Compile Include="Line\Model\Terning.cs" />
+    <Compile Include="Line\ViewModel\GamePageViewModel.cs" />
+    <Compile Include="Line\View\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainView\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -142,6 +148,12 @@
     <None Include="RosTorv_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Line\Assets\die_1.png" />
+    <Content Include="Line\Assets\die_2.png" />
+    <Content Include="Line\Assets\die_3.png" />
+    <Content Include="Line\Assets\die_4.png" />
+    <Content Include="Line\Assets\die_5.png" />
+    <Content Include="Line\Assets\die_6.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -156,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Line\View\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainView\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,7 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Anders\" />
-    <Folder Include="Line\" />
     <Folder Include="Nikolai\" />
     <Folder Include="Thomas\" />
   </ItemGroup>
