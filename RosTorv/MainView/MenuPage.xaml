@@ -21,9 +21,9 @@
             </NavigationView.Content>
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox QueryIcon="Find" PlaceholderText="Søg">
-                    <!--<AutoSuggestBox.DataContext>
+                    <AutoSuggestBox.DataContext>
                         <SearchVM:SearchViewModel/>
-                    </AutoSuggestBox.DataContext>-->
+                    </AutoSuggestBox.DataContext>
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
         </NavigationView>
