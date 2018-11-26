@@ -10,11 +10,11 @@ namespace RosTorv.Line.Model
     class Bæger
     {
         private List<Terning> _terninger = new List<Terning>();
-        private Terning _terning1 = new Terning();
-        private Terning _terning2 = new Terning();
-        private Terning _terning3 = new Terning();
-        private Terning _terning4 = new Terning();
-        private Terning _terning5 = new Terning();
+        private Terning _terning1 = new Terning(1);
+        private Terning _terning2 = new Terning(2);
+        private Terning _terning3 = new Terning(3);
+        private Terning _terning4 = new Terning(4);
+        private Terning _terning5 = new Terning(5);
 
         public List<Terning> Terninger
         {
