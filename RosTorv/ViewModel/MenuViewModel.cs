@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
@@ -30,18 +31,26 @@ namespace RosTorv.ViewModel
             NavigationItems = new ObservableCollection<NavigationViewItemBase>();
 
             NavigationItems.Add(new NavigationViewItemHeader() {Content = "Header"});
+            PopulateNavigationItems();
 
-            NavigationViewItem n1 = new NavigationViewItem();
+            SelectedItem = NavigationItems.First(x => x.GetType() == typeof(NavigationViewItem));
+        }
 
-            // Title i menuen
-            n1.Content = "Home Page";
-            // Ikonet
-            n1.Icon = new SymbolIcon(Symbol.Home);
-            // Den page der skal navigates til
-            n1.Tag = typeof(HomePage);
-            
-            NavigationItems.Add(n1);
-            SelectedItem = n1;
+        private void PopulateNavigationItems()
+        {
+            AddPage("Home Page", Symbol.Home, typeof(HomePage));
+            // Add pages under this comment
+        }
+
+        /// <summary>
+        /// Adds a page to the list of pages in the NavigationView (HamburgerMenu)
+        /// </summary>
+        /// <param name="name">The name shown in the menu</param>
+        /// <param name="icon">The icon shown in the menu</param>
+        /// <param name="pageType">The page the item navigates to (Your view page)</param>
+        private void AddPage(string name, Symbol icon, Type pageType)
+        {
+            NavigationItems.Add(new NavigationViewItem { Content = name, Icon = new SymbolIcon(icon), Tag = pageType });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
