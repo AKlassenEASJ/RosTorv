@@ -13,8 +13,17 @@ namespace RosTorv.Sofus.ViewModel
     public class ButikInformationViewModel: INotifyPropertyChanged
     {
         private Butik _currentButik;
+        private IEnumerable<Butik> _butikker;
 
-        public IEnumerable<Butik> Butikker { get; set; }
+        public IEnumerable<Butik> Butikker
+        {
+            get => _butikker;
+            set
+            {
+                _butikker = value;
+                OnPropertyChanged();
+            }
+        }
         public Butik CurrentButik
         {
             get { return _currentButik; }
@@ -30,7 +39,6 @@ namespace RosTorv.Sofus.ViewModel
         {
             Butikker = ButikKatalogSingleton.Instance.ButikKatalog;
             CurrentButik = Butikker.First();
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

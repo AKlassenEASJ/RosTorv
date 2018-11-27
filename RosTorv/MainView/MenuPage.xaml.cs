@@ -42,5 +42,10 @@ namespace RosTorv.MainView
                 NavigationService.Navigate(navItem.Tag as Type);
             }
         }
+
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

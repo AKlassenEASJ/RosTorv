@@ -155,6 +155,7 @@
     <None Include="RosTorv_TemporaryKey.pfx" />
     <Content Include="Sofus\Data\butikker.json" />
     <Content Include="Sofus\Data\kategorier.json" />
+    <Content Include="Sofus\Data\butikNavne.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Line\Assets\die_1.png" />
