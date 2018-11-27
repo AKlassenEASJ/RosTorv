@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="RosTorv.Sofus.View.ButikInformationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RosTorv.Sofus.ViewModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <local:ButikInformationViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ListView SelectedItem="{Binding CurrentButik, Mode=TwoWay}" ItemsSource="{Binding Butikker}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Navn}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ScrollViewer Grid.Column="1" Margin="10,0">
+            <StackPanel Spacing="5" >
+                <TextBlock Text="{Binding CurrentButik.Navn}" FontSize="24"/>
+                <TextBlock Text="{Binding CurrentButik.Beskrivelse}" TextWrapping="WrapWholeWords"/>
+                <TextBlock Text="{Binding CurrentButik.Website}" />
+                <Image Source="{Binding CurrentButik.LocationPictureSource}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
