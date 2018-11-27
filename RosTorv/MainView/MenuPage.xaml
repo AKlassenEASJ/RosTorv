@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:VM="using:RosTorv.ViewModel"
     xmlns:SearchVM="using:RosTorv.Sofus.ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Interations="using:Microsoft.Xaml.Interactions.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -20,10 +22,21 @@
                 <Frame x:Name="navFarme"/>
             </NavigationView.Content>
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" PlaceholderText="Søg">
+                <AutoSuggestBox QueryIcon="Find" PlaceholderText="Søg" >
                     <AutoSuggestBox.DataContext>
                         <SearchVM:SearchViewModel/>
                     </AutoSuggestBox.DataContext>
+                    <Interactivity:Interaction.Behaviors>
+                        <Interations:EventTriggerBehavior EventName="TextChanged">
+                            <Interations:InvokeCommandAction Command="{Binding TextChangedCommand}"/>
+                        </Interations:EventTriggerBehavior>
+                        <Interations:EventTriggerBehavior EventName="SuggestionChosen">
+                            <Interations:InvokeCommandAction Command="{Binding SuggestionChosenCommand}"/>
+                        </Interations:EventTriggerBehavior>
+                        <Interations:EventTriggerBehavior EventName="QuerySubmitted" >
+                            <Interations:InvokeCommandAction Command="{Binding QuerySubmittedCommand}"/>
+                        </Interations:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
         </NavigationView>
