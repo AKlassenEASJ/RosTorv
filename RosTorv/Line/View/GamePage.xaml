@@ -21,7 +21,7 @@
         <Grid Column="1">
     <StackPanel>
                 <controls:DropShadowPanel x:Name="Shadow1" Color="White">
-                    <Button x:Name="Terning1Button" Background="White"  Click="Terning1" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                    <Button x:Name="Terning1Button" Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
                         <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image>
                     </Button>
                 </controls:DropShadowPanel>

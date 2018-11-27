@@ -27,41 +27,11 @@ namespace RosTorv.Line.View
     /// </summary>
     public sealed partial class GamePage : Page
     {
-        int isPressed = 0;
-        public GamePageViewModel GamePageViewModel { get; set; }
 
         public GamePage()
         {
             this.InitializeComponent();
         }
 
-    private void Terning1(object sender, RoutedEventArgs e)
-        {
-             GamePageViewModel.Bæger.Terning1.ChangeCanRoll();
-
-            if (isPressed == 0)
-            {
-                Shadow1.Color = Colors.Gold;
-                Shadow1.BlurRadius = 4.0;
-                Shadow1.OffsetY = 0;
-                Shadow1.OffsetX = 0;
-                Shadow1.OffsetZ = 0;
-                Shadow1.Opacity = 70.0;
-
-                isPressed = 1;
-            }
-            else if (isPressed == 1)
-            {
-                Shadow1.Color = Colors.White;
-                Shadow1.BlurRadius = 4.0;
-                Shadow1.OffsetY = 4;
-                Shadow1.OffsetX = 4;
-                Shadow1.OffsetZ = 4;
-                Shadow1.Opacity = 70.0;
-                isPressed = 0;
-            }
-        }
-
-        
     }
 }

@@ -20,7 +20,7 @@ namespace RosTorv.Line.ViewModel
         private Terning _terning4;
         private Terning _terning5;
         private ICommand _roll;
-        public Bæger Bæger { get; set; }
+        public BægerSingelton Bæger { get; set; }
 
         public Terning ViewTerning1
         {
@@ -78,7 +78,7 @@ namespace RosTorv.Line.ViewModel
         }
         public GamePageViewModel()
         {
-          Bæger = new Bæger();
+            Bæger = BægerSingelton.InstanBægerSingelton;
             _terning1 = Bæger.Terning1;
             _terning2 = Bæger.Terning2;
             _terning3 = Bæger.Terning3;

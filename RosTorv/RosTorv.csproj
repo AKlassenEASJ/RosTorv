@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Line\Model\Bæger.cs" />
+    <Compile Include="Line\Model\BægerSingelton.cs" />
     <Compile Include="Line\Model\Terning.cs" />
     <Compile Include="Line\Model\Turn.cs" />
     <Compile Include="Line\ViewModel\GamePageViewModel.cs" />
