@@ -11,24 +11,30 @@
     <Page.DataContext>
         <viewModel:GamePageViewModel/>
     </Page.DataContext>
-    <!--<Grid>
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Column="1">-->
+        <Grid Column="1">
     <StackPanel>
-        <Button Content="{Binding ViewTerning1.Image}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"></Button>
-        <Button Content="{Binding ViewTerning2.Image}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"></Button>
-        <Button Content="{Binding ViewTerning3.Image}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"></Button>
-        <Button Content="{Binding ViewTerning4.Image}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"></Button>
-        <Button Content="{Binding ViewTerning5.Image}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"></Button>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+            <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image></Button>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"><Image Source="{Binding ViewTerning2.Image, Mode=TwoWay}"></Image></Button>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+            <Image Source="{Binding ViewTerning3.Image, Mode=TwoWay}"/></Button>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+            <Image Source="{Binding ViewTerning4.Image, Mode=TwoWay}"/>
+        </Button>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+            <Image Source="{Binding ViewTerning5.Image, Mode=TwoWay}"/>
+        </Button>
 
 
         <Button x:Name="button" Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
     </StackPanel>
-    <!--</Grid>
-    </Grid>-->
+    </Grid>
+    </Grid>
 
 </Page>

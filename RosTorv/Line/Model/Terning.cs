@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
 {
-    class Terning
+    class Terning : INotifyPropertyChanged
     {
         private int _eyes;
         private string _image;
@@ -16,58 +19,75 @@ namespace RosTorv.Line.Model
         public int Eyes
         {
             get { return _eyes;}
-            set { value = _eyes; }
+            set
+            {
+                _eyes = value; 
+                OnPropertyChanged();
+            }
         }
 
         public string Image
         {
             get { return _image; }
-            set { _image = value; }
+            set
+            {
+                _image = value; 
+                OnPropertyChanged();
+            }
         }
 
         public bool CanRoll
         {
             get { return _canRoll; }
-            set { _canRoll = value; }
+            set
+            {
+                _canRoll = value; 
+                OnPropertyChanged();
+            }
         }
 
-        public Terning()
+        public Terning( int tal)
         {
-          _random = new Random(DateTime.Now.Millisecond);  
+          _random = new Random(DateTime.Now.Millisecond * tal);  
         }
 
         public void Roll()
         {
-            _eyes = _random.Next(1, 6);
+            Eyes = _random.Next(1, 6);
             UpdateImage();
         }
 
         public void UpdateImage()
         {
-            if (_eyes == 1)
+            switch (Eyes)
             {
-                _image = "Line/Assets/die_1.png";
+                case 1:
+                    Image = "/Line/Assets/die_1.png";
+                    break;
+                case 2:
+                    Image = "/Line/Assets/die_2.png";
+                    break;
+                case 3:
+                    Image = "/Line/Assets/die_3.png";
+                    break;
+                case 4:
+                    Image = "/Line/Assets/die_4.png";
+                    break;
+                case 5:
+                    Image = "/Line/Assets/die_5.png";
+                    break;
+                case 6:
+                    Image = "/Line/Assets/die_6.png";
+                    break;
             }
-            else if (_eyes == 2)
-            {
-                _image = "Line/Assets/die_2.png";
-            }
-            else if (_eyes == 3)
-            {
-                _image = "Line/Assets/die_3.png";
-            }
-            else if (_eyes == 4)
-            {
-                _image = "Line/Assets/die_4.png";
-            }
-            else if (_eyes == 5)
-            {
-                _image = "Line/Assets/die_5.png";
-            }
-            else if (_eyes == 6)
-            {
-                _image = "Line/Assets/die_6.png";
-            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
