@@ -193,7 +193,7 @@ namespace RosTorv.Line.ViewModel
             _holdTerning4 = new RelayCommand(TerningButtonHandler.HoldTerning4);
             _holdTerning5 = new RelayCommand(TerningButtonHandler.HoldTerning5);
             _roll = new RelayCommand(Bæger.RollAll);
-            SlagTilbage = 3;
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
