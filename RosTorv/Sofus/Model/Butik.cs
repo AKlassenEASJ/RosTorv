@@ -12,6 +12,7 @@ namespace RosTorv.Sofus.Model
         public string Beskrivelse { get; set; }
         public string Website { get; set; }
         public List<string> Kategorier { get; set; }
+        public string LocationPictureSource { get; set; }
 
         public Butik()
         {

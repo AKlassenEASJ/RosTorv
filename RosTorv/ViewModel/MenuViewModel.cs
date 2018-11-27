@@ -40,6 +40,7 @@ namespace RosTorv.ViewModel
         {
             AddPage("Home Page", Symbol.Home, typeof(HomePage));
             // Add pages under this comment
+            AddPage("Butik information", Symbol.Admin, typeof(Sofus.View.ButikInformationPage));
         }
 
         /// <summary>
