@@ -17,12 +17,11 @@ namespace RosTorv.Sofus.Model
             set { _instance = value; }
         }
 
-        ObservableCollection<Butik> ButikKatalog { get; }
+        public IEnumerable<Butik> ButikKatalog { get; }
 
         private ButikKatalogSingleton()
         {
-            ButikKatalog = new ObservableCollection<Butik>();
-
+            ButikKatalog = Persistency.ReadAndDeserializeButikker();
         }
     }
 }

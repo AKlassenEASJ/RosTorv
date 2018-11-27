@@ -28,7 +28,7 @@ namespace RosTorv.Sofus.ViewModel
 
         public ButikInformationViewModel()
         {
-            Butikker = Persistency.ReadAndDeserializeButikker();
+            Butikker = ButikKatalogSingleton.Instance.ButikKatalog;
             CurrentButik = Butikker.First();
 
         }
