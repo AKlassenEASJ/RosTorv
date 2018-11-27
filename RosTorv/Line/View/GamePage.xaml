@@ -19,26 +19,27 @@
         </Grid.ColumnDefinitions>
 
         <Grid Column="1">
-    <StackPanel>
-                <controls:DropShadowPanel x:Name="Shadow1" Color="White">
-                    <Button x:Name="Terning1Button" Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-                        <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image>
-                    </Button>
-                </controls:DropShadowPanel>
-                <Button Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"><Image Source="{Binding ViewTerning2.Image, Mode=TwoWay}"></Image></Button>
-                <Button Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-            <Image Source="{Binding ViewTerning3.Image, Mode=TwoWay}"/></Button>
-        <Button Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-            <Image  Source="{Binding ViewTerning4.Image, Mode=TwoWay}"/>
-        </Button>
-        <Button Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-            <Image Source="{Binding ViewTerning5.Image, Mode=TwoWay}"/>
-        </Button>
+            <StackPanel>
+                <Button Command="{Binding HoldTerning1Command, Mode=TwoWay}" Background="{Binding BackgroundColor1}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                    <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image>
+                </Button>
+                <Button Command="{Binding HoldTerning2Command, Mode=TwoWay}" Background="{Binding BackgroundColor2}" HorizontalAlignment="Left" Height="69" Margin="4,0,0,0" VerticalAlignment="Center" Width="65">
+                    <Image Source="{Binding ViewTerning2.Image, Mode=TwoWay}"></Image>
+                </Button>
+                <Button Command="{Binding HoldTerning3Command, Mode=TwoWay}" Background="{Binding BackgroundColor3}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                    <Image Source="{Binding ViewTerning3.Image, Mode=TwoWay}"/>
+                </Button>
+                <Button Command="{Binding HoldTerning4Command, Mode=TwoWay}" Background="{Binding BackgroundColor4}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                    <Image  Source="{Binding ViewTerning4.Image, Mode=TwoWay}"/>
+                </Button>
+                <Button Command="{Binding HoldTerning5Command, Mode=TwoWay}" Background="{Binding BackgroundColor5}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                    <Image Source="{Binding ViewTerning5.Image, Mode=TwoWay}"/>
+                </Button>
 
 
-        <Button x:Name="button" Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-    </StackPanel>
-    </Grid>
+                <Button x:Name="button" Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 
 </Page>
