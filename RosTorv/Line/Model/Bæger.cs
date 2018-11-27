@@ -70,6 +70,8 @@ namespace RosTorv.Line.Model
                     Terning.Roll();
                 }
             }
+
+
         }
 
         public int GetPoint()

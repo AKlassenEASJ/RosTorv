@@ -9,24 +9,10 @@ using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
 {
-    class Turn : INotifyPropertyChanged
+    class Spil : INotifyPropertyChanged
     {
-        private int _slagTilbage = 3;
 
-        public int SlagTilbage
-        {
-            get { return _slagTilbage; }
-            set
-            {
-                _slagTilbage = value; 
-                OnPropertyChanged();
-            }
-        }
 
-        public void resetSlag()
-        {
-            _slagTilbage = 3;
-        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

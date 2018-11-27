@@ -36,6 +36,16 @@ namespace RosTorv.Line.ViewModel
         private string _backgroundColor3;
         private string _backgroundColor4;
         private string _backgroundColor5;
+        //private int _slagTilbage;
+        //public int SlagTilbage
+        //{
+        //    get { return _slagTilbage; }
+        //    set
+        //    {
+        //        _slagTilbage = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
         
 
         
@@ -48,7 +58,6 @@ namespace RosTorv.Line.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public Terning ViewTerning2
         {
             get { return _terning2; }
@@ -58,7 +67,6 @@ namespace RosTorv.Line.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public Terning ViewTerning3
         {
             get { return _terning3; }
@@ -68,7 +76,6 @@ namespace RosTorv.Line.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public Terning ViewTerning4
         {
             get { return _terning4; }
@@ -133,6 +140,7 @@ namespace RosTorv.Line.ViewModel
                 OnPropertyChanged();
             }
         }
+
         public ICommand RollCommand
         {
             get { return _roll;}
@@ -144,7 +152,6 @@ namespace RosTorv.Line.ViewModel
             get { return _holdTerning1; }
             set { _holdTerning1 = value; }
         }
-
         public ICommand HoldTerning2Command
         {
             get { return _holdTerning2; }
@@ -160,12 +167,12 @@ namespace RosTorv.Line.ViewModel
             get { return _holdTerning4; }
             set { _holdTerning4 = value; }
         }
-
         public ICommand HoldTerning5Command
         {
             get { return _holdTerning5; }
             set { _holdTerning5 = value; }
         }
+
         public GamePageViewModel()
         {
             BackgroundColor1 = "White";
@@ -186,6 +193,7 @@ namespace RosTorv.Line.ViewModel
             _holdTerning4 = new RelayCommand(TerningButtonHandler.HoldTerning4);
             _holdTerning5 = new RelayCommand(TerningButtonHandler.HoldTerning5);
             _roll = new RelayCommand(Bæger.RollAll);
+            SlagTilbage = 3;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

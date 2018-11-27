@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
 {
-    public class BægerSingelton
+    public class BægerSingelton :INotifyPropertyChanged
     {
         public List<Terning> Terninger { get; set; }
+        private int _slagTilbage = 3;
 
         private static BægerSingelton instansBægerSingelton = new BægerSingelton();
 
@@ -53,6 +57,16 @@ namespace RosTorv.Line.Model
             set { _terning5 = value; }
         }
 
+        public int SlagTilbage
+        {
+            get { return _slagTilbage; }
+            set
+            {
+                _slagTilbage = value;
+                OnPropertyChanged();
+            }
+        }
+
         private BægerSingelton()
         {
             Terninger = new List<Terning>();
@@ -63,7 +77,6 @@ namespace RosTorv.Line.Model
             Terninger.Add(Terning5);
         }
 
-
         public void RollAll()
         {
             foreach (Terning Terning in Terninger)
@@ -73,11 +86,44 @@ namespace RosTorv.Line.Model
                     Terning.Roll();
                 }
             }
+
+            if (SlagTilbage == 1)
+            {
+                foreach (Terning terning in Terninger)
+                {
+                    terning.CanRoll = true;
+                }
+
+                resetSlag();
+            }
+            else
+            {
+                SlagTilbage = SlagTilbage - 1;
+            }
+            
+        }
+
+        
+
+
+
+        public void resetSlag()
+        {
+            SlagTilbage = 3;
         }
 
         public int GetPoint()
         {
             return _terning1.Eyes + _terning2.Eyes + _terning3.Eyes + _terning4.Eyes + _terning5.Eyes;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
         }
     }
 }
