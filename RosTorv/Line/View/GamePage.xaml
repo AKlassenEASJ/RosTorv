@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RosTorv.Line.View"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:RosTorv.Line.ViewModel"
@@ -19,15 +20,18 @@
 
         <Grid Column="1">
     <StackPanel>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-            <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image></Button>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"><Image Source="{Binding ViewTerning2.Image, Mode=TwoWay}"></Image></Button>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                <controls:DropShadowPanel x:Name="Shadow1" Color="White">
+                    <Button x:Name="Terning1Button" Background="White"  Click="Terning1" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                        <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image>
+                    </Button>
+                </controls:DropShadowPanel>
+                <Button Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"><Image Source="{Binding ViewTerning2.Image, Mode=TwoWay}"></Image></Button>
+                <Button Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
             <Image Source="{Binding ViewTerning3.Image, Mode=TwoWay}"/></Button>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-            <Image Source="{Binding ViewTerning4.Image, Mode=TwoWay}"/>
+        <Button Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+            <Image  Source="{Binding ViewTerning4.Image, Mode=TwoWay}"/>
         </Button>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+        <Button Background="White" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
             <Image Source="{Binding ViewTerning5.Image, Mode=TwoWay}"/>
         </Button>
 

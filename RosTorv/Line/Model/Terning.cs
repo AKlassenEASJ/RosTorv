@@ -9,7 +9,7 @@ using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
 {
-    class Terning : INotifyPropertyChanged
+    public class Terning : INotifyPropertyChanged
     {
         private int _eyes;
         private string _image;
@@ -57,7 +57,7 @@ namespace RosTorv.Line.Model
             UpdateImage();
         }
 
-        public void UpdateImage()
+        private void UpdateImage()
         {
             switch (Eyes)
             {
@@ -79,6 +79,18 @@ namespace RosTorv.Line.Model
                 case 6:
                     Image = "/Line/Assets/die_6.png";
                     break;
+            }
+        }
+
+        public void ChangeCanRoll()
+        {
+            if (CanRoll == true)
+            {
+                CanRoll = false;
+            }
+            else if (CanRoll == false)
+            {
+                CanRoll = true;
             }
         }
 

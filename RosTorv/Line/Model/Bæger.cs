@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RosTorv.Line.Model
 {
-    class Bæger
+    public class Bæger
     {
         private List<Terning> _terninger = new List<Terning>();
         private Terning _terning1 = new Terning(1);
@@ -63,11 +63,13 @@ namespace RosTorv.Line.Model
 
         public void RollAll()
         {
-            _terning1.Roll();
-            _terning2.Roll();
-            _terning3.Roll();
-            _terning4.Roll();
-            _terning5.Roll();
+            foreach (Terning Terning in Terninger)
+            {
+                if (Terning.CanRoll == true)
+                {
+                    Terning.Roll();
+                }
+            }
         }
 
         public int GetPoint()

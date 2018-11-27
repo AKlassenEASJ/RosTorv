@@ -12,7 +12,7 @@ using RosTorv.Line.Model;
 
 namespace RosTorv.Line.ViewModel
 {
-    class GamePageViewModel : INotifyPropertyChanged
+    public class GamePageViewModel : INotifyPropertyChanged
     {
         private Terning _terning1;
         private Terning _terning2;
