@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:RosTorv.Line.ViewModel"
+    xmlns:model="using:RosTorv.Line.Model"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.DataContext>
@@ -21,30 +22,20 @@
         <Grid Column="1">
             <StackPanel>
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="69">
-                        <Button Command="{Binding HoldTerning1Command, Mode=TwoWay}" Background="{Binding BackgroundColor1}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-                            <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image>
-                        </Button>
-                        <Button Command="{Binding HoldTerning2Command, Mode=TwoWay}" Background="{Binding BackgroundColor2}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-                            <Image Source="{Binding ViewTerning2.Image, Mode=TwoWay}"></Image>
-                        </Button>
-                        <Button Command="{Binding HoldTerning3Command, Mode=TwoWay}" Background="{Binding BackgroundColor3}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-                            <Image Source="{Binding ViewTerning3.Image, Mode=TwoWay}"/>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="69">
-                        <Button Command="{Binding HoldTerning4Command, Mode=TwoWay}" Background="{Binding BackgroundColor4}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-                            <Image  Source="{Binding ViewTerning4.Image, Mode=TwoWay}"/>
-                        </Button>
-                        <Button Command="{Binding HoldTerning5Command, Mode=TwoWay}" Background="{Binding BackgroundColor5}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-                            <Image Source="{Binding ViewTerning5.Image, Mode=TwoWay}"/>
-                        </Button>
-                    </StackPanel>
+                    <ListView ItemsSource="{Binding Bæger.Terninger, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedTerning, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Terning">
+                                <controls:DropShadowPanel BlurRadius="4.0" ShadowOpacity="0.70"
+                                                          OffsetX="5.0" OffsetY="5.0" Color="{Binding BackgroundColor}">
+                                <Image Width="65" Height="65"  Source="{Binding Image, Mode=TwoWay}"></Image>
+                                </controls:DropShadowPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Antal slag tilbage"/>
-                        <!--<TextBlock Text="{Binding SlagTilbage, Mode=TwoWay}"/>-->
-                        <TextBlock Text="{Binding Bæger.SlagTilbage, Mode=TwoWay}"/>
+                    <TextBlock Text="Antal slag tilbage"/>
+                    <TextBlock Text="{Binding Bæger.SlagTilbage, Mode=TwoWay}"/>
                 </StackPanel>
                 <Button x:Name="button" Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
             </StackPanel>

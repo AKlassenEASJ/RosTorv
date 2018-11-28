@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Automation;
 using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
@@ -14,6 +15,8 @@ namespace RosTorv.Line.Model
         private int _eyes;
         private string _image;
         private bool _canRoll = true;
+        private string _backgroundColor = "White";
+
         private Random _random;
 
         public int Eyes
@@ -42,6 +45,16 @@ namespace RosTorv.Line.Model
             set
             {
                 _canRoll = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public string BackgroundColor
+        {
+            get { return _backgroundColor;}
+            set
+            {
+                _backgroundColor = value;
                 OnPropertyChanged();
             }
         }
@@ -82,17 +95,19 @@ namespace RosTorv.Line.Model
             }
         }
 
-        public void ChangeCanRoll()
-        {
-            if (CanRoll == true)
-            {
-                CanRoll = false;
-            }
-            else if (CanRoll == false)
-            {
-                CanRoll = true;
-            }
-        }
+        //public void ChangeCanRoll()
+        //{
+        //    if (CanRoll == true)
+        //    {
+        //        CanRoll = false;
+        //        BackgroundColor = "Black";
+        //    }
+        //    else if (CanRoll == false)
+        //    {
+        //        CanRoll = true;
+        //        BackgroundColor = "White";
+        //    }
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
 

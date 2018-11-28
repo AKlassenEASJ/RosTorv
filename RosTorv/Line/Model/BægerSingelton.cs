@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,7 +12,7 @@ namespace RosTorv.Line.Model
 {
     public class BægerSingelton :INotifyPropertyChanged
     {
-        public List<Terning> Terninger { get; set; }
+        public ObservableCollection<Terning> Terninger { get; set; }
         private int _slagTilbage = 3;
 
         private static BægerSingelton instansBægerSingelton = new BægerSingelton();
@@ -69,7 +70,7 @@ namespace RosTorv.Line.Model
 
         private BægerSingelton()
         {
-            Terninger = new List<Terning>();
+            Terninger = new ObservableCollection<Terning>();
             Terninger.Add(Terning1);
             Terninger.Add(Terning2);
             Terninger.Add(Terning3);
@@ -92,6 +93,7 @@ namespace RosTorv.Line.Model
                 foreach (Terning terning in Terninger)
                 {
                     terning.CanRoll = true;
+                    terning.BackgroundColor = "White";
                 }
 
                 resetSlag();
@@ -103,9 +105,19 @@ namespace RosTorv.Line.Model
             
         }
 
-        
-
-
+        public void ChangeCanRoll(int index)
+        {
+            if (Terninger[index].CanRoll == true)
+            {
+                Terninger[index].CanRoll = false;
+                Terninger[index].BackgroundColor = "Gold";
+            }
+            else if (Terninger[index].CanRoll == false)
+            {
+                Terninger[index].CanRoll = true;
+                Terninger[index].BackgroundColor = "White";
+            }
+        }
 
         public void resetSlag()
         {
