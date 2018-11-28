@@ -26,5 +26,15 @@ namespace RosTorv.Sofus.View
         {
             this.InitializeComponent();
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            listView.ScrollIntoView(e.AddedItems.First(), ScrollIntoViewAlignment.Default);
+        }
+
+        private void ListView_Loaded(object sender, RoutedEventArgs e)
+        {
+            listView.ScrollIntoView(listView.SelectedItem, ScrollIntoViewAlignment.Default);
+        }
     }
 }

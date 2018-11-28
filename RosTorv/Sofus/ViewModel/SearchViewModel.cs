@@ -12,6 +12,7 @@ using RosTorv.Annotations;
 using RosTorv.Common;
 using RosTorv.MainView;
 using RosTorv.Sofus.View;
+using RosTorv.ViewModel;
 
 namespace RosTorv.Sofus.ViewModel
 {
@@ -19,6 +20,7 @@ namespace RosTorv.Sofus.ViewModel
     {
         private string _searchText;
         private IEnumerable<string> _navneKeywords;
+        private IEnumerable<string> _kategoriKeyword;
 
         public string SearchText
         {
@@ -39,10 +41,9 @@ namespace RosTorv.Sofus.ViewModel
         public SearchViewModel()
         {
             SuggestedItems = new ObservableCollection<string>();
-
-            // Test keywords
-            // SofusTODO 
+ 
             _navneKeywords = Persistency.ReadAndDeserializeButikNavne();
+            _kategoriKeyword = Persistency.ReadAndDeserializeKategorier();
 
             TextChangedCommand = new RelayCommand<AutoSuggestBoxTextChangedEventArgs>(TextChanged);
             SuggestionChosenCommand = new RelayCommand<AutoSuggestBoxSuggestionChosenEventArgs>(SuggestionChosen);
@@ -54,7 +55,11 @@ namespace RosTorv.Sofus.ViewModel
         {
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
+                // Clear the previous suggestions
                 SuggestedItems.Clear();
+
+                // Finds all keywords that starts whith what the user has typed
+                // And then suggests them
                 foreach (string s in _navneKeywords)
                 {
                     if (s.ToLower().StartsWith(SearchText))
@@ -67,19 +72,30 @@ namespace RosTorv.Sofus.ViewModel
 
         private void SuggestionChosen(AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            SearchText = args.SelectedItem.ToString();
+            //SearchText = args.SelectedItem.ToString();
         }
 
         private void QuerySubmitted(AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            if(NavigationService.NavigationFrame.Content.GetType() != typeof(ButikInformationPage))
+            // Checks if already on the page
+            if (NavigationService.NavigationFrame.Content.GetType() != typeof(ButikInformationPage))
+            {
+                // If not navigates to ButikInformationPage
                 NavigationService.Navigate(typeof(ButikInformationPage));
 
-            ButikInformationPage bip = NavigationService.NavigationFrame.Content as ButikInformationPage;
-            ButikInformationViewModel bipVM = bip.DataContext as ButikInformationViewModel;
-            bipVM.CurrentButik = bipVM.Butikker.First(x => x.Navn == args.QueryText);
+                // Gets the ViewModel of the MenuPage and then changes the selected item
+                MenuViewModel mvm = ((Windows.UI.Xaml.Window.Current.Content as Frame).Content as MenuPage).DataContext as MenuViewModel;
+                mvm.SelectedItem = mvm.NavigationItems.First(x => (x.Tag as Type) == typeof(ButikInformationPage));
+            }
 
-            SearchText = null;
+            // SofusTODO: Change so i dosnt matter what query the user submits
+            if (SuggestedItems.Contains(args.QueryText))
+            {
+                // Gets the ViewModel for the ButikInformationPage
+                ButikInformationViewModel bipVM = (NavigationService.NavigationFrame.Content as ButikInformationPage).DataContext as ButikInformationViewModel;
+                // Changes the current butik to what the user searched for
+                bipVM.CurrentButik = bipVM.Butikker.First(x => x.Navn == args.QueryText);
+            }
         }
 
 

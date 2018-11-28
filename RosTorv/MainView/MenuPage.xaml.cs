@@ -30,22 +30,25 @@ namespace RosTorv.MainView
             NavigationService.Navigate(typeof(HomePage));
         }
 
-        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
-            if (args.IsSettingsSelected)
+            NavigationService.GoBack();
+            Type t = NavigationService.NavigationFrame.Content.GetType();
+            sender.SelectedItem = (sender.MenuItemsSource as IEnumerable<NavigationViewItemBase>).First(x => (x.Tag as Type) == t);
+        }
+
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            if (args.IsSettingsInvoked)
             {
 
             }
             else
             {
-                NavigationViewItem navItem = args.SelectedItem as NavigationViewItem;
+                string itemtitle = args.InvokedItem as string;
+                NavigationViewItemBase navItem = (sender.MenuItemsSource as IEnumerable<NavigationViewItemBase>).First(x => x.Content as string == itemtitle);
                 NavigationService.Navigate(navItem.Tag as Type);
             }
-        }
-
-        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
-        {
-            NavigationService.GoBack();
         }
     }
 }

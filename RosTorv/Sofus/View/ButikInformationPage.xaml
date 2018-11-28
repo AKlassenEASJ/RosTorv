@@ -19,7 +19,11 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ListView SelectedItem="{Binding CurrentButik, Mode=TwoWay}" ItemsSource="{Binding Butikker}">
+        <ListView x:Name="listView" 
+                  SelectedItem="{Binding CurrentButik, Mode=TwoWay}"
+                  ItemsSource="{Binding Butikker}" 
+                  SelectionChanged="ListView_SelectionChanged"
+                  Loaded="ListView_Loaded">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Navn}"/>

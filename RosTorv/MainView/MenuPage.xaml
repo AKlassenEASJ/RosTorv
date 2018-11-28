@@ -19,7 +19,7 @@
         <NavigationView 
             x:Name="NavView" 
             MenuItemsSource="{Binding NavigationItems}" 
-            SelectionChanged="NavigationView_SelectionChanged"
+            ItemInvoked="NavView_ItemInvoked"
             BackRequested="NavView_BackRequested"
             IsBackEnabled="{Binding ElementName=navFarme, Path=CanGoBack}" 
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}">

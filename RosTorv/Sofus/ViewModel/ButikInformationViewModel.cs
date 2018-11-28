@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -13,17 +14,9 @@ namespace RosTorv.Sofus.ViewModel
     public class ButikInformationViewModel: INotifyPropertyChanged
     {
         private Butik _currentButik;
-        private IEnumerable<Butik> _butikker;
 
-        public IEnumerable<Butik> Butikker
-        {
-            get => _butikker;
-            set
-            {
-                _butikker = value;
-                OnPropertyChanged();
-            }
-        }
+        public ObservableCollection<Butik> Butikker { get; set; }
+
         public Butik CurrentButik
         {
             get { return _currentButik; }
@@ -34,10 +27,9 @@ namespace RosTorv.Sofus.ViewModel
             }
         }
 
-
         public ButikInformationViewModel()
         {
-            Butikker = ButikKatalogSingleton.Instance.ButikKatalog;
+            Butikker = new ObservableCollection<Butik>(ButikKatalogSingleton.Instance.ButikKatalog);
             CurrentButik = Butikker.First();
         }
 
