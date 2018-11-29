@@ -116,6 +116,17 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Anders\Handlers\CardListRandomizier.cs" />
+    <Compile Include="Anders\Model\Card.cs" />
+    <Compile Include="Anders\Model\CardCatalog.cs" />
+    <Compile Include="Anders\Model\Skabelon.cs" />
+    <Compile Include="Anders\ViewModel\CardCatalogViewModel.cs" />
+    <Compile Include="Anders\View\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Anders\View\StartingPage.xaml.cs">
+      <DependentUpon>StartingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -155,8 +166,17 @@
     <None Include="RosTorv_TemporaryKey.pfx" />
     <Content Include="Sofus\Data\butikker.json" />
     <Content Include="Sofus\Data\kategorier.json" />
+    <Content Include="Sofus\Data\butikNavne.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Anders\Assets\an-asian-funny-cat-meme.jpg" />
+    <Content Include="Anders\Assets\BlamingTheDogCat.jpg" />
+    <Content Include="Anders\Assets\FatCat.jpg" />
+    <Content Include="Anders\Assets\FlowerCat.jpg" />
+    <Content Include="Anders\Assets\GrumpyCat.png" />
+    <Content Include="Anders\Assets\Heavy-Breathing-Cat.jpg" />
+    <Content Include="Anders\Assets\LaserCat.jpg" />
+    <Content Include="Anders\Assets\SnailCat.jpg" />
     <Content Include="Line\Assets\die_1.png" />
     <Content Include="Line\Assets\die_2.png" />
     <Content Include="Line\Assets\die_3.png" />
@@ -177,6 +197,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Anders\View\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Anders\View\StartingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Line\View\GamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,7 +237,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Anders\" />
     <Folder Include="Nikolai\" />
     <Folder Include="Thomas\" />
   </ItemGroup>

@@ -15,26 +15,21 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace RosTorv.Sofus.View
+namespace RosTorv.Anders.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ButikInformationPage : Page
+    public sealed partial class StartingPage : Page
     {
-        public ButikInformationPage()
+        public StartingPage()
         {
             this.InitializeComponent();
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void StartSpil_Click(object sender, RoutedEventArgs e)
         {
-            listView.ScrollIntoView(e.AddedItems.First(), ScrollIntoViewAlignment.Default);
-        }
-
-        private void ListView_Loaded(object sender, RoutedEventArgs e)
-        {
-            listView.ScrollIntoView(listView.SelectedItem, ScrollIntoViewAlignment.Default);
+            this.Frame.Navigate(typeof(GamePage));
         }
     }
 }
