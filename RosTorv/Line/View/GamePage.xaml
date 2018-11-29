@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RosTorv.Line.View"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:RosTorv.Line.ViewModel"
@@ -18,23 +19,36 @@
         </Grid.ColumnDefinitions>
 
         <Grid Column="1">
-    <StackPanel>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-            <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image></Button>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"><Image Source="{Binding ViewTerning2.Image, Mode=TwoWay}"></Image></Button>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-            <Image Source="{Binding ViewTerning3.Image, Mode=TwoWay}"/></Button>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-            <Image Source="{Binding ViewTerning4.Image, Mode=TwoWay}"/>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
-            <Image Source="{Binding ViewTerning5.Image, Mode=TwoWay}"/>
-        </Button>
-
-
-        <Button x:Name="button" Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-    </StackPanel>
-    </Grid>
+            <StackPanel>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="69">
+                        <Button Command="{Binding HoldTerning1Command, Mode=TwoWay}" Background="{Binding BackgroundColor1}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                            <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image>
+                        </Button>
+                        <Button Command="{Binding HoldTerning2Command, Mode=TwoWay}" Background="{Binding BackgroundColor2}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                            <Image Source="{Binding ViewTerning2.Image, Mode=TwoWay}"></Image>
+                        </Button>
+                        <Button Command="{Binding HoldTerning3Command, Mode=TwoWay}" Background="{Binding BackgroundColor3}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                            <Image Source="{Binding ViewTerning3.Image, Mode=TwoWay}"/>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="69">
+                        <Button Command="{Binding HoldTerning4Command, Mode=TwoWay}" Background="{Binding BackgroundColor4}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                            <Image  Source="{Binding ViewTerning4.Image, Mode=TwoWay}"/>
+                        </Button>
+                        <Button Command="{Binding HoldTerning5Command, Mode=TwoWay}" Background="{Binding BackgroundColor5}" HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+                            <Image Source="{Binding ViewTerning5.Image, Mode=TwoWay}"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Antal slag tilbage"/>
+                        <!--<TextBlock Text="{Binding SlagTilbage, Mode=TwoWay}"/>-->
+                        <TextBlock Text="{Binding Bæger.SlagTilbage, Mode=TwoWay}"/>
+                </StackPanel>
+                <Button x:Name="button" Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+            </StackPanel>
+        </Grid> 
     </Grid>
 
 </Page>
