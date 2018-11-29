@@ -8,6 +8,8 @@ using RosTorv.MainView;
 using System.Linq;
 using RosTorv.Line.View;
 
+
+
 namespace RosTorv.ViewModel
 {
     public class MenuViewModel : INotifyPropertyChanged
@@ -42,6 +44,8 @@ namespace RosTorv.ViewModel
             AddPage("Home Page", Symbol.Home, typeof(HomePage));
             // Add pages under this comment
             AddPage("Lines Yatzy", Symbol.Bullets, typeof(GamePage));
+            AddPage("Turn Over", Symbol.Bullets, typeof(RosTorv.Anders.View.StartingPage));
+
         }
 
         /// <summary>
