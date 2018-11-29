@@ -21,10 +21,9 @@ namespace RosTorv.Line.ViewModel
         private ICommand _roll;
         private ICommand _holdTerning;
         private Terning _selectedTerning;
-        public BægerSingelton Bæger { get; set; }
         public TerningButtonHandler TerningButtonHandler { get; set; }
-
-        //private int _score;
+        public Spil Spil { get; set; }
+        public PointTekster Pointtekst { get; set; }
 
         public ICommand RollCommand
         {
@@ -51,22 +50,12 @@ namespace RosTorv.Line.ViewModel
             }
         }
 
-        //public int Score
-        //{
-        //    get { return _score;}
-        //    set
-        //    {
-        //        _score = value; 
-        //        OnPropertyChanged();
-        //    }
-        //}
-
         public GamePageViewModel()
         {
+            Spil = new Spil();
+            Pointtekst = new PointTekster();
             TerningButtonHandler = new TerningButtonHandler(this);
-            Bæger = BægerSingelton.InstanBægerSingelton;
-            _roll = new RelayCommand(Bæger.RollAll);
-            //_score = Bæger.Score;
+            _roll = new RelayCommand(Spil.RollInTurn);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

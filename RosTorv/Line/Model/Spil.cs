@@ -9,10 +9,50 @@ using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
 {
-    class Spil : INotifyPropertyChanged
+    public class Spil : INotifyPropertyChanged
     {
+        private int _slagTilbage = 3;
+        public Spiller Spiller1 { get; set; }
+        public BægerSingelton Bæger { get; set; }
 
+        public int SlagTilbage
+        {
+            get { return _slagTilbage; }
+            set
+            {
+                _slagTilbage = value;
+                OnPropertyChanged();
+            }
+        }
+        public Spil()
+        {
+            Spiller1 = new Spiller("Line");
+            Bæger = BægerSingelton.InstanBægerSingelton;
+        }
 
+        public void RollInTurn()
+        {
+            Bæger.RollAll();
+
+            if (SlagTilbage == 1)
+            {
+                foreach (Terning terning in Bæger.Terninger)
+                {
+                    terning.CanRoll = true;
+                    terning.ShadowOpacity = 0;
+                }
+                resetSlag();
+            }
+            else
+            {
+                SlagTilbage = SlagTilbage - 1;
+            }
+        }
+
+        public void resetSlag()
+        {
+            SlagTilbage = 3;
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

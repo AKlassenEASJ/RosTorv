@@ -13,23 +13,12 @@ namespace RosTorv.Line.Model
     public class BægerSingelton :INotifyPropertyChanged
     {
         public ObservableCollection<Terning> Terninger { get; set; }
-        private int _slagTilbage = 3;
         private int _score;
         private static BægerSingelton instansBægerSingelton = new BægerSingelton();
 
         public static BægerSingelton InstanBægerSingelton
         {
             get { return instansBægerSingelton; }
-        }
-
-        public int SlagTilbage
-        {
-            get { return _slagTilbage; }
-            set
-            {
-                _slagTilbage = value;
-                OnPropertyChanged();
-            }
         }
 
         public int Score
@@ -60,20 +49,6 @@ namespace RosTorv.Line.Model
                     terning.Roll();
                 }
             }
-
-            if (SlagTilbage == 1)
-            {
-                foreach (Terning terning in Terninger)
-                {
-                    terning.CanRoll = true;
-                    terning.ShadowOpacity = 0;
-                }
-                resetSlag();
-            }
-            else
-            {
-                SlagTilbage = SlagTilbage - 1;
-            }
             GetPoint();
         }
 
@@ -89,11 +64,6 @@ namespace RosTorv.Line.Model
                 Terninger[index].CanRoll = true;
                 Terninger[index].ShadowOpacity = 0;
             }
-        }
-
-        public void resetSlag()
-        {
-            SlagTilbage = 3;
         }
 
         public void GetPoint()

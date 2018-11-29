@@ -20,7 +20,7 @@ namespace RosTorv.Line.Handler
 
         public void HoldTerning()
         {
-            GamePageViewModel.Bæger.ChangeCanRoll(GamePageViewModel.SelectedIndex);
+            GamePageViewModel.Spil.Bæger.ChangeCanRoll(GamePageViewModel.SelectedIndex);
         }
 
         
