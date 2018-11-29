@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="RosTorv.Line.View.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RosTorv.Line.View"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RosTorv.Line.ViewModel"
+    xmlns:model="using:RosTorv.Line.Model"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <viewModel:GamePageViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Column="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <GridView ItemsSource="{Binding Bæger.Terninger, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedTerning, Mode=TwoWay}">
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Terning">
+                                <controls:DropShadowPanel BlurRadius="5.0" ShadowOpacity="{Binding ShadowOpacity}"
+                                                          OffsetX="5.0" OffsetY="5.0" Color="Gold">
+                                <Image Margin=" 10, 10, 10, 10"  Width="65" Height="65"  Source="{Binding Image, Mode=TwoWay}"></Image>
+                                </controls:DropShadowPanel>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Antal slag tilbage"/>
+                    <TextBlock Text="{Binding Bæger.SlagTilbage, Mode=TwoWay}"/>
+                    <TextBlock Text="Score"/>
+                    <TextBlock Text="{Binding Bæger.Score, Mode=TwoWay}"/>
+                </StackPanel>
+                <Button x:Name="button" Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+            </StackPanel>
+        </Grid> 
+
+        <Grid Column="0">
+            <StackPanel>
+                <TextBlock Text="Navn:"/>
+                <TextBlock Text="Enere 5"/>
+                <TextBlock Text="Toere 10"/>
+                <TextBlock Text="Treere 15"/>
+                <TextBlock Text="Firere 20"/>
+                <TextBlock Text="Femmere 25"/>
+                <TextBlock Text="Femmere 30"/>
+                <TextBlock Text="Sum"/>
+                <TextBlock Text="Bonus 50"/>
+
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+
+</Page>

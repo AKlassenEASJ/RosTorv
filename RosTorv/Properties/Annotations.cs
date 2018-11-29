@@ -508,7 +508,7 @@ namespace RosTorv.Annotations
   /// </summary>
   /// <remarks>
   /// Template method body can contain valid source code and/or special comments starting with '$'.
-  /// Text inside these comments is added as source code when the template is applied. Template parameters
+  /// SearchText inside these comments is added as source code when the template is applied. Template parameters
   /// can be used either as additional method parameters or as identifiers wrapped in two '$' signs.
   /// Use the <see cref="MacroAttribute"/> attribute to specify macros for parameters.
   /// </remarks>

@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="RosTorv.Sofus.View.ButikInformationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RosTorv.Sofus.ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Interations="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <local:ButikInformationViewModel x:Name="PageDataContex"/>
+    </Page.DataContext>
+
+    <Grid>
+        <SplitView DisplayMode="CompactInline" CompactPaneLength="10" OpenPaneLength="230" IsPaneOpen="{Binding IsPaneOpen}">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button VerticalAlignment="Stretch" Width="10" Command="{Binding IsPaneOpenCommand}" Grid.Column="0" BorderThickness="0"/>
+                    <ListView ItemsSource="{Binding Kategorier}" SelectedItem="{Binding SelectedKategori, Mode=TwoWay}" Grid.Column="1"/>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="listView" 
+                              SelectedItem="{Binding CurrentButik, Mode=TwoWay}"
+                              ItemsSource="{Binding Butikker}" 
+                              SelectionChanged="ListView_SelectionChanged"
+                              Width="230"
+                              Background="{StaticResource SystemControlPageBackgroundChromeLowBrush}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Navn}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ScrollViewer Grid.Column="1" Margin="10,0">
+                        <StackPanel Spacing="5" >
+                            <TextBlock Text="{Binding CurrentButik.Navn}" FontSize="24"/>
+                            <TextBlock Text="{Binding CurrentButik.Beskrivelse}" TextWrapping="WrapWholeWords"/>
+                            <TextBlock Text="{Binding CurrentButik.Website}" />
+                            <Image Source="{Binding CurrentButik.LocationPictureSource}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+        
+    </Grid>
+</Page>
