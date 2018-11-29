@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls;
 using RosTorv.Annotations;
 using RosTorv.Common;
 using RosTorv.MainView;
+using RosTorv.Sofus.Model;
 using RosTorv.Sofus.View;
 using RosTorv.ViewModel;
 
@@ -62,10 +63,18 @@ namespace RosTorv.Sofus.ViewModel
                 // And then suggests them
                 foreach (string s in _navneKeywords)
                 {
-                    if (s.ToLower().StartsWith(SearchText))
-                    {
+                    if (s.ToLower().StartsWith(SearchText.ToLower()))
                         SuggestedItems.Add(s);
-                    }
+                }
+                foreach (string s in _kategoriKeyword)
+                {
+                    if (s.ToLower().StartsWith(SearchText.ToLower()))
+                        SuggestedItems.Add(s);
+                }
+
+                if (SuggestedItems.Count == 0)
+                {
+                    //SuggestedItems.Add("No Results");
                 }
             }
         }
@@ -88,14 +97,23 @@ namespace RosTorv.Sofus.ViewModel
                 mvm.SelectedItem = mvm.NavigationItems.First(x => (x.Tag as Type) == typeof(ButikInformationPage));
             }
 
-            // SofusTODO: Change so i dosnt matter what query the user submits
-            if (SuggestedItems.Contains(args.QueryText))
+            // Gets the ViewModel for the ButikInformationPage
+            ButikInformationViewModel bipVM = (NavigationService.NavigationFrame.Content as ButikInformationPage).DataContext as ButikInformationViewModel;
+            
+            // Checks if a store name matches what user submitted
+            if (_navneKeywords.Contains(args.QueryText))
             {
-                // Gets the ViewModel for the ButikInformationPage
-                ButikInformationViewModel bipVM = (NavigationService.NavigationFrame.Content as ButikInformationPage).DataContext as ButikInformationViewModel;
                 // Changes the current butik to what the user searched for
                 bipVM.CurrentButik = bipVM.Butikker.First(x => x.Navn == args.QueryText);
             }
+            // Checks if a category matches what user submitted
+            else if (_kategoriKeyword.Contains(args.QueryText))
+            {
+                // Changes the selected category to match what user searched
+                bipVM.SelectedKategori = bipVM.Kategorier.First(x => x == args.QueryText);
+            }
+            // SofusTODO : shows a list of stores that starts with what user submitted
+            else { }
         }
 
 

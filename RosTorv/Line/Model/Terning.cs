@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Automation;
 using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
@@ -14,6 +15,8 @@ namespace RosTorv.Line.Model
         private int _eyes;
         private string _image;
         private bool _canRoll = true;
+        private double _ShadowOpacity = 0;
+
         private Random _random;
 
         public int Eyes
@@ -42,6 +45,16 @@ namespace RosTorv.Line.Model
             set
             {
                 _canRoll = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public double ShadowOpacity
+        {
+            get { return _ShadowOpacity;}
+            set
+            {
+                _ShadowOpacity = value;
                 OnPropertyChanged();
             }
         }
@@ -79,18 +92,6 @@ namespace RosTorv.Line.Model
                 case 6:
                     Image = "/Line/Assets/die_6.png";
                     break;
-            }
-        }
-
-        public void ChangeCanRoll()
-        {
-            if (CanRoll == true)
-            {
-                CanRoll = false;
-            }
-            else if (CanRoll == false)
-            {
-                CanRoll = true;
             }
         }
 

@@ -44,8 +44,9 @@ namespace RosTorv.ViewModel
             AddPage("Home Page", Symbol.Home, typeof(HomePage));
             // Add pages under this comment
             AddPage("Butik information", Symbol.Admin, typeof(Sofus.View.ButikInformationPage));
-            AddPage("Lines Yatzy", Symbol.Bullets, typeof(GamePage));
-            AddPage("Turn Over", Symbol.Bullets, typeof(RosTorv.Anders.View.StartingPage));
+            AddPage("Lines Yatzy", Symbol.Bullets, typeof(RosTorv.Line.View.GamePage));
+            AddPage("Turn Over", Symbol.ClearSelection, typeof(RosTorv.Anders.View.StartingPage));
+            AddPage("DetBedsteSpil", Symbol.Bold, typeof (RosTorv.Nikolai.View.BlankPage1));
 
         }
 

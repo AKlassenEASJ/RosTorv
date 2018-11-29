@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RosTorv.Line.Model;
 using RosTorv.Line.ViewModel;
 
 namespace RosTorv.Line.Handler
@@ -11,54 +12,15 @@ namespace RosTorv.Line.Handler
     public class TerningButtonHandler
     {
         public GamePageViewModel GamePageViewModel { get; set; }
-        private string _newColor;
 
         public TerningButtonHandler(GamePageViewModel GamePageViewModel)
         {
             this.GamePageViewModel = GamePageViewModel;
         }
 
-        public void HoldTerning1()
+        public void HoldTerning()
         {
-            GamePageViewModel.ViewTerning1.ChangeCanRoll();
-            ChangeColor(GamePageViewModel.BackgroundColor1);
-            GamePageViewModel.BackgroundColor1 = _newColor;
-        }
-        public void HoldTerning2()
-        {
-            GamePageViewModel.ViewTerning2.ChangeCanRoll();
-            ChangeColor(GamePageViewModel.BackgroundColor2);
-            GamePageViewModel.BackgroundColor2 = _newColor;
-        }
-        public void HoldTerning3()
-        {
-            GamePageViewModel.ViewTerning3.ChangeCanRoll();
-            ChangeColor(GamePageViewModel.BackgroundColor3);
-            GamePageViewModel.BackgroundColor3 = _newColor;
-        }
-        public void HoldTerning4()
-        {
-            GamePageViewModel.ViewTerning4.ChangeCanRoll();
-            ChangeColor(GamePageViewModel.BackgroundColor4);
-            GamePageViewModel.BackgroundColor4 = _newColor;
-        }
-        public void HoldTerning5()
-        {
-            GamePageViewModel.ViewTerning5.ChangeCanRoll();
-            ChangeColor(GamePageViewModel.BackgroundColor5);
-            GamePageViewModel.BackgroundColor5 = _newColor;
-        }
-
-        public void ChangeColor(string color)
-        {
-            if (color == "White")
-            {
-                _newColor = "Black";
-            }
-            else
-            {
-                _newColor = "White";
-            }
+            GamePageViewModel.Spil.Bæger.ChangeCanRoll(GamePageViewModel.SelectedIndex);
         }
 
         

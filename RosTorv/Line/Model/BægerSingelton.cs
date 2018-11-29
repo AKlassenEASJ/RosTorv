@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,9 +12,8 @@ namespace RosTorv.Line.Model
 {
     public class BægerSingelton :INotifyPropertyChanged
     {
-        public List<Terning> Terninger { get; set; }
-        private int _slagTilbage = 3;
-
+        public ObservableCollection<Terning> Terninger { get; set; }
+        private int _score;
         private static BægerSingelton instansBægerSingelton = new BægerSingelton();
 
         public static BægerSingelton InstanBægerSingelton
@@ -21,100 +21,54 @@ namespace RosTorv.Line.Model
             get { return instansBægerSingelton; }
         }
 
-        private Terning _terning1 = new Terning(1);
-        private Terning _terning2 = new Terning(2);
-        private Terning _terning3 = new Terning(3);
-        private Terning _terning4 = new Terning(4);
-        private Terning _terning5 = new Terning(5);
-
-        public Terning Terning1
+        public int Score
         {
-            get { return _terning1; }
-            set { _terning1 = value; }
-        }
-
-        public Terning Terning2
-        {
-            get { return _terning2; }
-            set { _terning2 = value; }
-        }
-
-        public Terning Terning3
-        {
-            get { return _terning3; }
-            set { _terning3 = value; }
-        }
-
-        public Terning Terning4
-        {
-            get { return _terning4; }
-            set { _terning4 = value; }
-        }
-
-        public Terning Terning5
-        {
-            get { return _terning5; }
-            set { _terning5 = value; }
-        }
-
-        public int SlagTilbage
-        {
-            get { return _slagTilbage; }
+            get { return _score;}
             set
             {
-                _slagTilbage = value;
+                _score = value;
                 OnPropertyChanged();
             }
         }
-
         private BægerSingelton()
         {
-            Terninger = new List<Terning>();
-            Terninger.Add(Terning1);
-            Terninger.Add(Terning2);
-            Terninger.Add(Terning3);
-            Terninger.Add(Terning4);
-            Terninger.Add(Terning5);
+            Terninger = new ObservableCollection<Terning>();
+            Terninger.Add(new Terning(1));
+            Terninger.Add(new Terning(2));
+            Terninger.Add(new Terning(3));
+            Terninger.Add(new Terning(4));
+            Terninger.Add(new Terning(5));
         }
 
         public void RollAll()
         {
-            foreach (Terning Terning in Terninger)
+            foreach (Terning terning in Terninger)
             {
-                if (Terning.CanRoll == true)
+                if (terning.CanRoll == true)
                 {
-                    Terning.Roll();
+                    terning.Roll();
                 }
             }
-
-            if (SlagTilbage == 1)
-            {
-                foreach (Terning terning in Terninger)
-                {
-                    terning.CanRoll = true;
-                }
-
-                resetSlag();
-            }
-            else
-            {
-                SlagTilbage = SlagTilbage - 1;
-            }
-            
+            GetPoint();
         }
 
-        
-
-
-
-        public void resetSlag()
+        public void ChangeCanRoll(int index)
         {
-            SlagTilbage = 3;
+            if (Terninger[index].CanRoll == true)
+            {
+                Terninger[index].CanRoll = false;
+                Terninger[index].ShadowOpacity = 0.70;
+            }
+            else if (Terninger[index].CanRoll == false)
+            {
+                Terninger[index].CanRoll = true;
+                Terninger[index].ShadowOpacity = 0;
+            }
         }
 
-        public int GetPoint()
+        public void GetPoint()
         {
-            return _terning1.Eyes + _terning2.Eyes + _terning3.Eyes + _terning4.Eyes + _terning5.Eyes;
+             Score = Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
