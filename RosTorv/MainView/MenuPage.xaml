@@ -1,25 +1,31 @@
 ﻿<Page
-    x:Class="RosTorv.MainPage"
+    x:Class="RosTorv.MainView.MenuPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:RosTorv"
     xmlns:VM="using:RosTorv.ViewModel"
+    xmlns:SearchVM="using:RosTorv.Sofus.ViewModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <VM:MainViewModel />
+        <VM:MenuViewModel />
     </Page.DataContext>
 
     <Grid>
-        <NavigationView MenuItemsSource="{Binding NavigationItems}" SelectionChanged="NavigationView_SelectionChanged"
+        <NavigationView x:Name="NavView" MenuItemsSource="{Binding NavigationItems}" SelectionChanged="NavigationView_SelectionChanged"
                         IsBackEnabled="{Binding ElementName=navFarme, Path=CanGoBack}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <NavigationView.Content>
                 <Frame x:Name="navFarme"/>
             </NavigationView.Content>
-
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox QueryIcon="Find" PlaceholderText="Søg">
+                    <AutoSuggestBox.DataContext>
+                        <SearchVM:SearchViewModel/>
+                    </AutoSuggestBox.DataContext>
+                </AutoSuggestBox>
+            </NavigationView.AutoSuggestBox>
         </NavigationView>
     </Grid>
 </Page>

@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Controls;
 
-namespace RosTorv
+namespace RosTorv.Common
 {
     public static class NavigationService
     {

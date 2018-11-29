@@ -119,19 +119,24 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ColorPage.xaml.cs">
-      <DependentUpon>ColorPage.xaml</DependentUpon>
+    <Compile Include="Line\Model\Bæger.cs" />
+    <Compile Include="Line\Model\Terning.cs" />
+    <Compile Include="Line\ViewModel\GamePageViewModel.cs" />
+    <Compile Include="Line\View\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HomePage.xaml.cs">
+    <Compile Include="MainView\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Common\NavigationService.cs" />
+    <Compile Include="MainView\MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NavigationService.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Sofus\ViewModel\SearchViewModel.cs" />
+    <Compile Include="ViewModel\MenuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -140,6 +145,12 @@
     <None Include="RosTorv_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Line\Assets\die_1.png" />
+    <Content Include="Line\Assets\die_2.png" />
+    <Content Include="Line\Assets\die_3.png" />
+    <Content Include="Line\Assets\die_4.png" />
+    <Content Include="Line\Assets\die_5.png" />
+    <Content Include="Line\Assets\die_6.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -154,17 +165,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ColorPage.xaml">
+    <Page Include="Line\View\GamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HomePage.xaml">
+    <Page Include="MainView\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="MainView\MenuPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -178,7 +189,7 @@
     <Folder Include="Anders\View\" />
     <Folder Include="Line\" />
     <Folder Include="Nikolai\" />
-    <Folder Include="Sofus\" />
+    <Folder Include="Sofus\View\" />
     <Folder Include="Thomas\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

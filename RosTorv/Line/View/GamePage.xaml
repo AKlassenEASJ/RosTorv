@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="RosTorv.Line.View.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RosTorv.Line.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RosTorv.Line.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <viewModel:GamePageViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Column="1">
+    <StackPanel>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+            <Image Source="{Binding ViewTerning1.Image, Mode=TwoWay}"></Image></Button>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65"><Image Source="{Binding ViewTerning2.Image, Mode=TwoWay}"></Image></Button>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+            <Image Source="{Binding ViewTerning3.Image, Mode=TwoWay}"/></Button>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+            <Image Source="{Binding ViewTerning4.Image, Mode=TwoWay}"/>
+        </Button>
+        <Button HorizontalAlignment="Left" Height="69" Margin="0,0,0,0" VerticalAlignment="Center" Width="65">
+            <Image Source="{Binding ViewTerning5.Image, Mode=TwoWay}"/>
+        </Button>
+
+
+        <Button x:Name="button" Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+    </StackPanel>
+    </Grid>
+    </Grid>
+
+</Page>
