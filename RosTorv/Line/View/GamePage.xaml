@@ -21,13 +21,13 @@
 
         <Grid Column="1">
             <StackPanel>
-                <StackPanel>
+                <StackPanel Orientation="Horizontal">
                     <ListView ItemsSource="{Binding Bæger.Terninger, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedTerning, Mode=TwoWay}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="model:Terning">
-                                <controls:DropShadowPanel BlurRadius="4.0" ShadowOpacity="0.70"
-                                                          OffsetX="5.0" OffsetY="5.0" Color="{Binding BackgroundColor}">
-                                <Image Width="65" Height="65"  Source="{Binding Image, Mode=TwoWay}"></Image>
+                                <controls:DropShadowPanel BlurRadius="5.0" ShadowOpacity="{Binding ShadowOpacity}"
+                                                          OffsetX="5.0" OffsetY="5.0" Color="Gold">
+                                <Image Margin=" 10, 10, 10, 10"  Width="65" Height="65"  Source="{Binding Image, Mode=TwoWay}"></Image>
                                 </controls:DropShadowPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

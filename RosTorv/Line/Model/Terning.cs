@@ -15,7 +15,7 @@ namespace RosTorv.Line.Model
         private int _eyes;
         private string _image;
         private bool _canRoll = true;
-        private string _backgroundColor = "White";
+        private double _ShadowOpacity = 0;
 
         private Random _random;
 
@@ -49,12 +49,12 @@ namespace RosTorv.Line.Model
             }
         }
 
-        public string BackgroundColor
+        public double ShadowOpacity
         {
-            get { return _backgroundColor;}
+            get { return _ShadowOpacity;}
             set
             {
-                _backgroundColor = value;
+                _ShadowOpacity = value;
                 OnPropertyChanged();
             }
         }
@@ -94,20 +94,6 @@ namespace RosTorv.Line.Model
                     break;
             }
         }
-
-        //public void ChangeCanRoll()
-        //{
-        //    if (CanRoll == true)
-        //    {
-        //        CanRoll = false;
-        //        BackgroundColor = "Black";
-        //    }
-        //    else if (CanRoll == false)
-        //    {
-        //        CanRoll = true;
-        //        BackgroundColor = "White";
-        //    }
-        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
 

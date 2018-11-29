@@ -22,42 +22,6 @@ namespace RosTorv.Line.Model
             get { return instansBægerSingelton; }
         }
 
-        private Terning _terning1 = new Terning(1);
-        private Terning _terning2 = new Terning(2);
-        private Terning _terning3 = new Terning(3);
-        private Terning _terning4 = new Terning(4);
-        private Terning _terning5 = new Terning(5);
-
-        public Terning Terning1
-        {
-            get { return _terning1; }
-            set { _terning1 = value; }
-        }
-
-        public Terning Terning2
-        {
-            get { return _terning2; }
-            set { _terning2 = value; }
-        }
-
-        public Terning Terning3
-        {
-            get { return _terning3; }
-            set { _terning3 = value; }
-        }
-
-        public Terning Terning4
-        {
-            get { return _terning4; }
-            set { _terning4 = value; }
-        }
-
-        public Terning Terning5
-        {
-            get { return _terning5; }
-            set { _terning5 = value; }
-        }
-
         public int SlagTilbage
         {
             get { return _slagTilbage; }
@@ -71,20 +35,20 @@ namespace RosTorv.Line.Model
         private BægerSingelton()
         {
             Terninger = new ObservableCollection<Terning>();
-            Terninger.Add(Terning1);
-            Terninger.Add(Terning2);
-            Terninger.Add(Terning3);
-            Terninger.Add(Terning4);
-            Terninger.Add(Terning5);
+            Terninger.Add(new Terning(1));
+            Terninger.Add(new Terning(2));
+            Terninger.Add(new Terning(3));
+            Terninger.Add(new Terning(4));
+            Terninger.Add(new Terning(5));
         }
 
         public void RollAll()
         {
-            foreach (Terning Terning in Terninger)
+            foreach (Terning terning in Terninger)
             {
-                if (Terning.CanRoll == true)
+                if (terning.CanRoll == true)
                 {
-                    Terning.Roll();
+                    terning.Roll();
                 }
             }
 
@@ -93,7 +57,7 @@ namespace RosTorv.Line.Model
                 foreach (Terning terning in Terninger)
                 {
                     terning.CanRoll = true;
-                    terning.BackgroundColor = "White";
+                    terning.ShadowOpacity = 0;
                 }
 
                 resetSlag();
@@ -110,12 +74,12 @@ namespace RosTorv.Line.Model
             if (Terninger[index].CanRoll == true)
             {
                 Terninger[index].CanRoll = false;
-                Terninger[index].BackgroundColor = "Gold";
+                Terninger[index].ShadowOpacity = 0.70;
             }
             else if (Terninger[index].CanRoll == false)
             {
                 Terninger[index].CanRoll = true;
-                Terninger[index].BackgroundColor = "White";
+                Terninger[index].ShadowOpacity = 0;
             }
         }
 
@@ -126,7 +90,7 @@ namespace RosTorv.Line.Model
 
         public int GetPoint()
         {
-            return _terning1.Eyes + _terning2.Eyes + _terning3.Eyes + _terning4.Eyes + _terning5.Eyes;
+            return Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

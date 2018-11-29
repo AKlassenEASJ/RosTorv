@@ -20,7 +20,6 @@ namespace RosTorv.Line.ViewModel
     {
         private ICommand _roll;
         private ICommand _holdTerning;
-        private int _selectedIndex;
         private Terning _selectedTerning;
         public BægerSingelton Bæger { get; set; }
         public TerningButtonHandler TerningButtonHandler { get; set; }
@@ -39,11 +38,7 @@ namespace RosTorv.Line.ViewModel
             set { _holdTerning = value; }
         }
 
-        public int SelectedIndex
-        {
-            get { return _selectedIndex;}
-            set { _selectedIndex = value;}
-        }
+        public int SelectedIndex { get; set; }
 
         public Terning SelectedTerning
         {
@@ -58,18 +53,8 @@ namespace RosTorv.Line.ViewModel
 
         public GamePageViewModel()
         {
-            //BackgroundColor1 = "White";
-            //BackgroundColor2 = "White";
-            //BackgroundColor3 = "White";
-            //BackgroundColor4 = "White";
-            //BackgroundColor5 = "White";
             TerningButtonHandler = new TerningButtonHandler(this);
             Bæger = BægerSingelton.InstanBægerSingelton;
-            //_holdTerning = new RelayCommand(TerningButtonHandler.HoldTerning);
-            //_holdTerning2 = new RelayCommand(TerningButtonHandler.HoldTerning2);
-            //_holdTerning3 = new RelayCommand(TerningButtonHandler.HoldTerning3);
-            //_holdTerning4 = new RelayCommand(TerningButtonHandler.HoldTerning4);
-            //_holdTerning5 = new RelayCommand(TerningButtonHandler.HoldTerning5);
             _roll = new RelayCommand(Bæger.RollAll);
             
         }
