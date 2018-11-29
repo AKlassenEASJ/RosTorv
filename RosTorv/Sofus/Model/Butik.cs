@@ -16,7 +16,7 @@ namespace RosTorv.Sofus.Model
 
         public Butik()
         {
-            
+            Kategorier = new List<string>();
         }
     }
 }

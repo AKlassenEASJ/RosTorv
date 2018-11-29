@@ -1,5 +1,7 @@
-﻿using System;
+﻿using RosTorv.Sofus.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -29,12 +31,8 @@ namespace RosTorv.Sofus.View
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            listView.ScrollIntoView(e.AddedItems.First(), ScrollIntoViewAlignment.Default);
-        }
-
-        private void ListView_Loaded(object sender, RoutedEventArgs e)
-        {
-            listView.ScrollIntoView(listView.SelectedItem, ScrollIntoViewAlignment.Default);
+            if ((listView.ItemsSource as ObservableCollection<Butik>).Count > 0)
+                listView.ScrollIntoView(listView.SelectedItem, ScrollIntoViewAlignment.Default);
         }
     }
 }

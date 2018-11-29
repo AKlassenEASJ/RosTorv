@@ -23,5 +23,10 @@ namespace RosTorv.Sofus.Model
         {
             ButikKatalog = Persistency.ReadAndDeserializeButikker();
         }
+
+        public IEnumerable<Butik> GetButikkerByKategori(string kategori)
+        {
+            return ButikKatalog.Where(x => x.Kategorier.Contains(kategori));
+        }
     }
 }
