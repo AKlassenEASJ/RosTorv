@@ -14,7 +14,7 @@ namespace RosTorv.Line.Model
     {
         public ObservableCollection<Terning> Terninger { get; set; }
         private int _slagTilbage = 3;
-
+        private int _score;
         private static BægerSingelton instansBægerSingelton = new BægerSingelton();
 
         public static BægerSingelton InstanBægerSingelton
@@ -32,6 +32,15 @@ namespace RosTorv.Line.Model
             }
         }
 
+        public int Score
+        {
+            get { return _score;}
+            set
+            {
+                _score = value;
+                OnPropertyChanged();
+            }
+        }
         private BægerSingelton()
         {
             Terninger = new ObservableCollection<Terning>();
@@ -59,14 +68,13 @@ namespace RosTorv.Line.Model
                     terning.CanRoll = true;
                     terning.ShadowOpacity = 0;
                 }
-
                 resetSlag();
             }
             else
             {
                 SlagTilbage = SlagTilbage - 1;
             }
-            
+            GetPoint();
         }
 
         public void ChangeCanRoll(int index)
@@ -88,9 +96,9 @@ namespace RosTorv.Line.Model
             SlagTilbage = 3;
         }
 
-        public int GetPoint()
+        public void GetPoint()
         {
-            return Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
+             Score = Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

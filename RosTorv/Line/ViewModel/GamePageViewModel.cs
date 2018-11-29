@@ -24,7 +24,7 @@ namespace RosTorv.Line.ViewModel
         public BægerSingelton Bæger { get; set; }
         public TerningButtonHandler TerningButtonHandler { get; set; }
 
-
+        //private int _score;
 
         public ICommand RollCommand
         {
@@ -51,12 +51,22 @@ namespace RosTorv.Line.ViewModel
             }
         }
 
+        //public int Score
+        //{
+        //    get { return _score;}
+        //    set
+        //    {
+        //        _score = value; 
+        //        OnPropertyChanged();
+        //    }
+        //}
+
         public GamePageViewModel()
         {
             TerningButtonHandler = new TerningButtonHandler(this);
             Bæger = BægerSingelton.InstanBægerSingelton;
             _roll = new RelayCommand(Bæger.RollAll);
-            
+            //_score = Bæger.Score;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
