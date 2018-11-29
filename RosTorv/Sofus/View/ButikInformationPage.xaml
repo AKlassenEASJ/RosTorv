@@ -14,29 +14,46 @@
     </Page.DataContext>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <ListView x:Name="listView" 
-                  SelectedItem="{Binding CurrentButik, Mode=TwoWay}"
-                  ItemsSource="{Binding Butikker}" 
-                  SelectionChanged="ListView_SelectionChanged"
-                  Loaded="ListView_Loaded">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Navn}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <ScrollViewer Grid.Column="1" Margin="10,0">
-            <StackPanel Spacing="5" >
-                <TextBlock Text="{Binding CurrentButik.Navn}" FontSize="24"/>
-                <TextBlock Text="{Binding CurrentButik.Beskrivelse}" TextWrapping="WrapWholeWords"/>
-                <TextBlock Text="{Binding CurrentButik.Website}" />
-                <Image Source="{Binding CurrentButik.LocationPictureSource}"/>
-            </StackPanel>
-        </ScrollViewer>
+        <SplitView DisplayMode="CompactInline" CompactPaneLength="10" OpenPaneLength="230" IsPaneOpen="{Binding IsPaneOpen}">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button VerticalAlignment="Stretch" Width="10" Command="{Binding IsPaneOpenCommand}" Grid.Column="0" BorderThickness="0"/>
+                    <ListView ItemsSource="{Binding Kategorier}" SelectedItem="{Binding SelectedKategori, Mode=TwoWay}" Grid.Column="1"/>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="listView" 
+                              SelectedItem="{Binding CurrentButik, Mode=TwoWay}"
+                              ItemsSource="{Binding Butikker}" 
+                              SelectionChanged="ListView_SelectionChanged"
+                              Width="230"
+                              Background="{StaticResource SystemControlPageBackgroundChromeLowBrush}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Navn}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ScrollViewer Grid.Column="1" Margin="10,0">
+                        <StackPanel Spacing="5" >
+                            <TextBlock Text="{Binding CurrentButik.Navn}" FontSize="24"/>
+                            <TextBlock Text="{Binding CurrentButik.Beskrivelse}" TextWrapping="WrapWholeWords"/>
+                            <TextBlock Text="{Binding CurrentButik.Website}" />
+                            <Image Source="{Binding CurrentButik.LocationPictureSource}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+        
     </Grid>
 </Page>

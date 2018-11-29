@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="RosTorv.Nikolai.View.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RosTorv.Nikolai.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ViewModel="using:RosTorv.Nikolai.ViewModel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <ViewModel:STBVM/>
+    </Page.DataContext>
+
+    <Grid>
+<StackPanel>
+    <TextBlock Text="{Binding Game.Dice1.DiceValue}" ></TextBlock>
+</StackPanel>
+    </Grid>
+</Page>

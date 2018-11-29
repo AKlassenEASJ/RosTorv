@@ -1,7 +1,5 @@
-﻿using RosTorv.Sofus.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -17,22 +15,16 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace RosTorv.Sofus.View
+namespace RosTorv.Nikolai.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ButikInformationPage : Page
+    public sealed partial class BlankPage1 : Page
     {
-        public ButikInformationPage()
+        public BlankPage1()
         {
             this.InitializeComponent();
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if ((listView.ItemsSource as ObservableCollection<Butik>).Count > 0)
-                listView.ScrollIntoView(listView.SelectedItem, ScrollIntoViewAlignment.Default);
         }
     }
 }

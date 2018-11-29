@@ -17,7 +17,8 @@
 
     <Grid>
         <NavigationView 
-            x:Name="NavView" 
+            x:Name="NavView"
+            AlwaysShowHeader="False"
             MenuItemsSource="{Binding NavigationItems}" 
             ItemInvoked="NavView_ItemInvoked"
             BackRequested="NavView_BackRequested"
