@@ -62,7 +62,7 @@ namespace RosTorv.Anders.Model
             foreach (Card theCard in _arrayOfCards)
             {
                 _collectionOfCards.Add(theCard);
-                _collectionOfCards.Add(theCard);
+                _collectionOfCards.Add(new Card(theCard.ID, theCard.FrontSide));
             }
 
             

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using RosTorv.Anders.Model;
 using RosTorv.Anders.ViewModel;
 
 namespace RosTorv.Anders.Handlers
@@ -33,41 +34,48 @@ namespace RosTorv.Anders.Handlers
         
 
 
-        public static ObservableCollection<T> Shuffle<T>(ObservableCollection<T> collectionOfCard)
+        public static ObservableCollection<Card> Shuffle (ObservableCollection<Card> collectionOfCard)
         {
-            ObservableCollection<T> ShuffledCollection = new ObservableCollection<T>();
+            ObservableCollection<Card> ShuffledCollection = new ObservableCollection<Card>();
+            List<Card> TempListOfCards = new List<Card>(collectionOfCard);
             Random random = new Random(DateTime.Now.Millisecond);
 
-            foreach (T VARIABLE in collectionOfCard)
+            //foreach (T VARIABLE in collectionOfCard)
+            //{
+            //    int randomNumber = random.Next(0, collectionOfCard.Count);
+            //    if (ShuffledCollection[randomNumber] == null)
+            //    {
+            //     ShuffledCollection.Insert(randomNumber, VARIABLE);   
+            //    }
+            //    else if (randomNumber == collectionOfCard.Count - 1 || ShuffledCollection[randomNumber] != null)
+            //    {
+            //        randomNumber--;
+            //        if (ShuffledCollection[randomNumber] == null)
+            //        {
+            //            ShuffledCollection.Insert(randomNumber, VARIABLE);
+            //        }
+            //    }
+            //    else if (randomNumber == 0 || ShuffledCollection[randomNumber] != null)
+            //    {
+            //        randomNumber--;
+            //        if (ShuffledCollection[randomNumber] == null)
+            //        {
+            //            ShuffledCollection.Insert(randomNumber, VARIABLE);
+            //        }
+            //    }
+            //}
+
+            while (TempListOfCards.Count > 0)
             {
-                int randomNumber = random.Next(0, collectionOfCard.Count);
-                if (ShuffledCollection[randomNumber] == null)
-                {
-                 ShuffledCollection.Insert(randomNumber, VARIABLE);   
-                }
-                else if (randomNumber == collectionOfCard.Count - 1 || ShuffledCollection[randomNumber] != null)
-                {
-                    randomNumber--;
-                    if (ShuffledCollection[randomNumber] == null)
-                    {
-                        ShuffledCollection.Insert(randomNumber, VARIABLE);
-                    }
-                }
-                else if (randomNumber == 0 || ShuffledCollection[randomNumber] != null)
-                {
-                    randomNumber--;
-                    if (ShuffledCollection[randomNumber] == null)
-                    {
-                        ShuffledCollection.Insert(randomNumber, VARIABLE);
-                    }
-                }
+                int number = random.Next(TempListOfCards.Count);
 
-
+                ShuffledCollection.Add(TempListOfCards[number]);
+                TempListOfCards.RemoveAt(number);
             }
-            
-            
 
             return ShuffledCollection;
+
+
         }
 
 

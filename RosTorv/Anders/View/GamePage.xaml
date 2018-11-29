@@ -19,11 +19,16 @@
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
-        <GridView Grid.Row="0" ItemsSource="{Binding ObservableCollectionOfCards, Mode=TwoWay}">
+        <GridView Name="CardGridView" Grid.Row="0" ItemsSource="{Binding ObservableCollectionOfCards, Mode=TwoWay}" 
+                  SelectedItem="{Binding SelectedCard, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                  SelectionMode="Single" IsItemClickEnabled="False">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Width="200" Height="200">
-                        <Image Source="{Binding Imagesource}" HorizontalAlignment="Stretch" Height="134" Margin="0,0,0,0" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5"/>
+                        <Button Width="200" Command="{Binding DataContext.FlipCommand, ElementName=CardGridView}" Background="#33FFFFFF" HorizontalAlignment="Center" Height="200" Margin="0,0,0,0" VerticalAlignment="Center">
+                            <Image Source="{Binding ShownSide}" HorizontalAlignment="Stretch" Height="134" Margin="0,0,0,0" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5"/>
+                        </Button>
+                           
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>

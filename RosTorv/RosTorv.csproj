@@ -116,9 +116,12 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Anders\Handlers\CardHandler.cs" />
     <Compile Include="Anders\Handlers\CardListRandomizier.cs" />
+    <Compile Include="Anders\Handlers\MatchHandler.cs" />
     <Compile Include="Anders\Model\Card.cs" />
     <Compile Include="Anders\Model\CardCatalog.cs" />
+    <Compile Include="Anders\Model\Game.cs" />
     <Compile Include="Anders\Model\Skabelon.cs" />
     <Compile Include="Anders\ViewModel\CardCatalogViewModel.cs" />
     <Compile Include="Anders\View\GamePage.xaml.cs">
@@ -164,6 +167,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="RosTorv_TemporaryKey.pfx" />
+    <Content Include="Anders\Assets\cardback_65.png" />
     <Content Include="Sofus\Data\butikker.json" />
     <Content Include="Sofus\Data\kategorier.json" />
     <Content Include="Sofus\Data\butikNavne.json" />
