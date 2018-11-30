@@ -33,10 +33,13 @@ namespace RosTorv.Anders.Handlers
 
         public void TurnOver()
         {
-            if (CardCatalogViewModel.SelectedCard.ShownSide == CardCatalogViewModel.SelectedCard.BackSide)
+
+            if (CardCatalogViewModel.SelectedCard != null && CardCatalogViewModel.SelectedCard.ShownSide == CardCatalogViewModel.SelectedCard.BackSide)
             {
                 CardCatalogViewModel.SelectedCard.ShownSide = CardCatalogViewModel.SelectedCard.FrontSide;
                 MatchHandler.CheckMatch();
+                CardCatalogViewModel.SelectedIndex = -1;
+                CardCatalogViewModel.SelectedCard = null;
             }
             //else if (CardCatalogViewModel.SelectedCard.ShownSide == CardCatalogViewModel.SelectedCard.FrontSide)
             //{

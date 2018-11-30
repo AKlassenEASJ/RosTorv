@@ -89,6 +89,7 @@ namespace RosTorv.Anders.Handlers
             card2.ShownSide = null;
             Game.Instance.IncreaseTurns();
             Game.Instance.AddPointsToScore(500);
+            
 
 
 
@@ -100,8 +101,7 @@ namespace RosTorv.Anders.Handlers
             Game.Instance.IncreaseTurns();
             card1.ShownSide = card1.BackSide;
             card2.ShownSide = card2.BackSide;
-            //CardCatalogViewModel.SelectedIndex = -1;
-            //CardCatalogViewModel.SelectedCard = null;
+            
         }
 
 

@@ -53,8 +53,8 @@ namespace RosTorv.Anders.ViewModel
             get { return _selectedCard; }
             set
             {
-                _selectedCard = value; 
-                //OnPropertyChanged();
+                _selectedCard = value;
+                OnPropertyChanged();
             }
         }
 
@@ -64,7 +64,7 @@ namespace RosTorv.Anders.ViewModel
             set
             {
                 _selectedIndex = value;
-                //OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
 
