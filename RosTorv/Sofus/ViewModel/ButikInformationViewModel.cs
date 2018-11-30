@@ -31,7 +31,7 @@ namespace RosTorv.Sofus.ViewModel
 
         }
         public ObservableCollection<Butik> Butikker { get; set; }
-        public List<string> Kategorier { get; set; }
+        public ObservableCollection<string> Kategorier { get; set; }
 
         public string SelectedKategori
         {
@@ -56,10 +56,13 @@ namespace RosTorv.Sofus.ViewModel
         public ButikInformationViewModel()
         {
             Butikker = new ObservableCollection<Butik>();
-            Kategorier = new List<string>();
+            Kategorier = new ObservableCollection<string>();
 
             Kategorier.Add("Alle butikker");
-            Kategorier.AddRange(Persistency.ReadAndDeserializeKategorier());
+            foreach (string k in Persistency.ReadAndDeserializeKategorier())
+            {
+                Kategorier.Add(k);
+            }
 
             SelectedKategori = Kategorier.First();
             CurrentButik = Butikker.First();
@@ -67,21 +70,37 @@ namespace RosTorv.Sofus.ViewModel
 
         private void KategoriChanged()
         {
-            if (SelectedKategori == "Alle butikker")
+            if (!Kategorier.Contains(SelectedKategori))
             {
+                string queryText = SelectedKategori;
+                _selectedKategori = "Søge resultater";
+                if(!Kategorier.Contains(SelectedKategori))
+                    Kategorier.Add(SelectedKategori);
+                OnPropertyChanged("SelectedKategori");
+
                 Butikker.Clear();
-                foreach (Butik b in ButikKatalogSingleton.Instance.ButikKatalog)
+                foreach (Butik b in ButikKatalogSingleton.Instance.ButikKatalog.Where(x => x.Navn.ToLower().StartsWith(queryText.ToLower())))
                 {
+                    Butikker.Add(b);
+                }
+                return;
+            }
+            else if (SelectedKategori == "Alle butikker") {
+                Butikker.Clear();
+                foreach (Butik b in ButikKatalogSingleton.Instance.ButikKatalog) {
                     Butikker.Add(b);
                 }
             }
-            else
-            {
+            else {
                 Butikker.Clear();
-                foreach (Butik b in ButikKatalogSingleton.Instance.GetButikkerByKategori(SelectedKategori))
-                {
+                foreach (Butik b in ButikKatalogSingleton.Instance.GetButikkerByKategori(SelectedKategori)) {
                     Butikker.Add(b);
                 }
+            }
+
+            if (Kategorier.Contains("Søge resultater"))
+            {
+                Kategorier.Remove("Søge resultater");
             }
         }
 

@@ -91,10 +91,6 @@ namespace RosTorv.Sofus.ViewModel
             {
                 // If not navigates to ButikInformationPage
                 NavigationService.Navigate(typeof(ButikInformationPage));
-
-                // Gets the ViewModel of the MenuPage and then changes the selected item
-                MenuViewModel mvm = ((Windows.UI.Xaml.Window.Current.Content as Frame).Content as MenuPage).DataContext as MenuViewModel;
-                mvm.SelectedItem = mvm.NavigationItems.First(x => (x.Tag as Type) == typeof(ButikInformationPage));
             }
 
             // Gets the ViewModel for the ButikInformationPage
@@ -103,6 +99,7 @@ namespace RosTorv.Sofus.ViewModel
             // Checks if a store name matches what user submitted
             if (_navneKeywords.Contains(args.QueryText))
             {
+                bipVM.SelectedKategori = "Alle butikker";
                 // Changes the current butik to what the user searched for
                 bipVM.CurrentButik = bipVM.Butikker.First(x => x.Navn == args.QueryText);
             }
@@ -113,7 +110,11 @@ namespace RosTorv.Sofus.ViewModel
                 bipVM.SelectedKategori = bipVM.Kategorier.First(x => x == args.QueryText);
             }
             // SofusTODO : shows a list of stores that starts with what user submitted
-            else { }
+            else
+            {
+                bipVM.SelectedKategori = args.QueryText;
+                bipVM.CurrentButik = bipVM.Butikker.First();
+            }
         }
 
 
