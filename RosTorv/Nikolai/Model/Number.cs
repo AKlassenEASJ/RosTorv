@@ -5,39 +5,45 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using RosTorv.Annotations;
-using RosTorv.Common;
-using RosTorv.Nikolai.Model;
 
-namespace RosTorv.Nikolai.ViewModel
+namespace RosTorv.Nikolai.Model
 {
-    public class STBVM : INotifyPropertyChanged
+    public class Number : INotifyPropertyChanged
     {
-        public Spil Game { get; set; }
+        private int numberValue;
 
-
-        public STBVM()
+        public int NumberValue
         {
-            Game = new Spil();
-            RollCommand = new RelayCommand(Game.RollAll);
-        }
-
-        private Number selectedNumber;
-
-        public Number SelectedNumber
-        {
-            get { return selectedNumber; }
+            get { return numberValue; }
             set
             {
-                selectedNumber = value;
+                numberValue = value; 
+                OnPropertyChanged();
+            }
+            
+        }
+
+        private bool taken;
+
+        public bool Taken
+        {
+            get { return taken; }
+            set
+            {
+                taken = value;
                 OnPropertyChanged();
             }
         }
 
+        public Number(int number, bool taken)
+        {
+            numberValue = number;
+            this.Taken = taken;
+        }
 
 
-        public ICommand RollCommand { get; set; }
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;
