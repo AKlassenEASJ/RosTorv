@@ -153,7 +153,7 @@
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Nikolai\Model\Dice.cs" />
-    <Compile Include="Nikolai\Model\INotifyPropertyChanged.cs" />
+    <Compile Include="Nikolai\Model\Number.cs" />
     <Compile Include="Nikolai\Model\Numbers.cs" />
     <Compile Include="Nikolai\Model\Spil.cs" />
     <Compile Include="Nikolai\ViewModel\STBVM.cs" />
@@ -179,6 +179,18 @@
     </AppxManifest>
     <None Include="RosTorv_TemporaryKey.pfx" />
     <Content Include="Anders\Assets\cardback_65.png" />
+    <Content Include="Line\Assets - Copy\die_1.png" />
+    <Content Include="Line\Assets - Copy\die_2.png" />
+    <Content Include="Line\Assets - Copy\die_3.png" />
+    <Content Include="Line\Assets - Copy\die_4.png" />
+    <Content Include="Line\Assets - Copy\die_5.png" />
+    <Content Include="Line\Assets - Copy\die_6.png" />
+    <Content Include="Nikolai\Assets\die_1.png" />
+    <Content Include="Nikolai\Assets\die_2.png" />
+    <Content Include="Nikolai\Assets\die_3.png" />
+    <Content Include="Nikolai\Assets\die_4.png" />
+    <Content Include="Nikolai\Assets\die_5.png" />
+    <Content Include="Nikolai\Assets\die_6.png" />
     <Content Include="Sofus\Data\butikker.json" />
     <Content Include="Sofus\Data\kategorier.json" />
     <Content Include="Sofus\Data\butikNavne.json" />

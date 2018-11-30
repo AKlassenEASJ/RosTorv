@@ -21,6 +21,35 @@ namespace RosTorv.Nikolai.Model
             {
                 _diceValue = value;
                 OnPropertyChanged();
+                UpdateImage();
+            }
+        }
+
+        private void UpdateImage()
+        {
+            if (_diceValue == 1)
+            {
+                ImageSource = "/Nikolai/Assets/die_1.png";
+            }
+            if (_diceValue == 2)
+            {
+                ImageSource = "/Nikolai/Assets/die_2.png";
+            }
+            if (_diceValue == 3)
+            {
+                ImageSource = "/Nikolai/Assets/die_3.png";
+            }
+            if (_diceValue == 4)
+            {
+                ImageSource = "/Nikolai/Assets/die_4.png";
+            }
+            if (_diceValue == 5)
+            {
+                ImageSource = "/Nikolai/Assets/die_5.png";
+            }
+            if (_diceValue == 6)
+            {
+                ImageSource = "/Nikolai/Assets/die_6.png";
             }
         }
 
@@ -36,6 +65,17 @@ namespace RosTorv.Nikolai.Model
 
             DiceValue = _random.Next(1, 7);
 
+        }
+        private string imageSource;
+
+        public string ImageSource
+        {
+            get { return imageSource; }
+            set
+            {
+                imageSource = value;
+                OnPropertyChanged();
+            }
         }
 
 

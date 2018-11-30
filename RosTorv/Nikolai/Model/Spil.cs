@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using RosTorv.Annotations;
 
 namespace RosTorv.Nikolai.Model
 {
@@ -29,21 +32,36 @@ namespace RosTorv.Nikolai.Model
             }
         }
 
+        public Numbers NumberCatalog { get; set; }
+
         public Spil()
         {
             _dice1 = new Dice();
             _dice2 = new Dice();
+            RollAll();
+            NumberCatalog = new Numbers();
         }
+
         public void RollAll()
         {
             Dice1.Roll();
             Dice2.Roll();
+            NumberCatalog = new Numbers();
+        }
 
 
-            //if (Numbers 7,8,9 = null);
+        //if (Numbers 7,8,9 = null);
             //{
             //    Dice.RemoveAt(Dice2);
             //}
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+    
 }
