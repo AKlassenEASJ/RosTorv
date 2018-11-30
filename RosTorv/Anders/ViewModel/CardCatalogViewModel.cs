@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using RosTorv.Anders.Handlers;
 using RosTorv.Anders.Model;
+using RosTorv.Annotations;
 using RosTorv.Common;
 
 namespace RosTorv.Anders.ViewModel
 {
-    public class CardCatalogViewModel
+    public class CardCatalogViewModel : INotifyPropertyChanged
     {
 
         #region Instance Fields
@@ -22,8 +25,8 @@ namespace RosTorv.Anders.ViewModel
         private ICommand _flipCommand;
 
         private Card _selectedCard;
-        private static int _selectedIndex;
-        
+        private int _selectedIndex = -1;
+
 
         #endregion
 
@@ -48,13 +51,21 @@ namespace RosTorv.Anders.ViewModel
         public Card SelectedCard
         {
             get { return _selectedCard; }
-            set { _selectedCard = value; }
+            set
+            {
+                _selectedCard = value; 
+                //OnPropertyChanged();
+            }
         }
 
-        public static int SelectedIndex
+        public int SelectedIndex
         {
             get { return _selectedIndex; }
-            set { _selectedIndex = value; }
+            set
+            {
+                _selectedIndex = value;
+                //OnPropertyChanged();
+            }
         }
 
         public Game TheGame
@@ -83,15 +94,18 @@ namespace RosTorv.Anders.ViewModel
 
         #region Methods
 
+        
 
 
         #endregion
 
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
-
-
-
-
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

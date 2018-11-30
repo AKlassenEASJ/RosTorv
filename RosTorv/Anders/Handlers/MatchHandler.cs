@@ -100,6 +100,8 @@ namespace RosTorv.Anders.Handlers
             Game.Instance.IncreaseTurns();
             card1.ShownSide = card1.BackSide;
             card2.ShownSide = card2.BackSide;
+            //CardCatalogViewModel.SelectedIndex = -1;
+            //CardCatalogViewModel.SelectedCard = null;
         }
 
 

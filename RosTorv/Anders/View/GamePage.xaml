@@ -3,6 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RosTorv.Anders.View"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Interations="using:Microsoft.Xaml.Interactions.Core"
     xmlns:ViewModel="using:RosTorv.Anders.ViewModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -18,16 +20,22 @@
             <RowDefinition />
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
+        
+            <GridView Name="CardGridView" Grid.Row="0" ItemsSource="{Binding ObservableCollectionOfCards, Mode=TwoWay}" 
+                  SelectedItem="{Binding SelectedCard, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+            <Interactivity:Interaction.Behaviors>
+                <Interations:EventTriggerBehavior EventName="SelectionChanged">
+                    <Interations:InvokeCommandAction Command="{Binding FlipCommand}"/>
 
-        <GridView Name="CardGridView" Grid.Row="0" ItemsSource="{Binding ObservableCollectionOfCards, Mode=TwoWay}" 
-                  SelectedItem="{Binding SelectedCard, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
-                  SelectionMode="Single" IsItemClickEnabled="False">
+                    
+                </Interations:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Width="200" Height="200">
-                        <Button Width="200" Command="{Binding DataContext.FlipCommand, ElementName=CardGridView}" Background="#33FFFFFF" HorizontalAlignment="Center" Height="200" Margin="0,0,0,0" VerticalAlignment="Center">
+                        <!--<Button Width="200" Command="{Binding DataContext.FlipCommand, ElementName=CardGridView}" Background="#33FFFFFF" HorizontalAlignment="Center" Height="200" Margin="0,0,0,0" VerticalAlignment="Center">-->
                             <Image Source="{Binding ShownSide}" HorizontalAlignment="Stretch" Height="134" Margin="0,0,0,0" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5"/>
-                        </Button>
+                        <!--</Button>-->
                            
                     </StackPanel>
                 </DataTemplate>
