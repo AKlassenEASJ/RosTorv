@@ -79,11 +79,11 @@ namespace RosTorv.Anders.Model
             _arrayOfCards[0] = new Card("ADSE", "/Anders/Assets/FlowerCat.JPG");
             _arrayOfCards[1] = new Card("BEDS", "/Anders/Assets/an-asian-funny-cat-meme.jpg");
             _arrayOfCards[2] = new Card("CDES", "/Anders/Assets/FatCat.jpg");
-            _arrayOfCards[3] = new Card("CDES", "/Anders/Assets/GrumpyCat.png");
-            _arrayOfCards[4] = new Card("CDES", "/Anders/Assets/Heavy-Breathing-Cat.jpg");
-            _arrayOfCards[5] = new Card("CDES", "/Anders/Assets/LaserCat.jpg");
-            _arrayOfCards[6] = new Card("CDES", "/Anders/Assets/SnailCat.jpg");
-            _arrayOfCards[7] = new Card("CDES", "/Anders/Assets/BlamingTheDogCat.jpg");
+            _arrayOfCards[3] = new Card("GFHR", "/Anders/Assets/GrumpyCat.png");
+            _arrayOfCards[4] = new Card("JKSD", "/Anders/Assets/Heavy-Breathing-Cat.jpg");
+            _arrayOfCards[5] = new Card("HISF", "/Anders/Assets/LaserCat.jpg");
+            _arrayOfCards[6] = new Card("BHSD", "/Anders/Assets/SnailCat.jpg");
+            _arrayOfCards[7] = new Card("SDFO", "/Anders/Assets/BlamingTheDogCat.jpg");
             //_collectionOfCards.Add(new Card("adse", "/Anders/Assets/FlowerCat.JPG"));
             //_collectionOfCards.Add(new Card("BEDS", "/Anders/Assets/Heavy-Breathing-Cat.jpg"));
             //_collectionOfCards.Add(new Card("CDSE", "/Anders/Assets/GrumpyCat.png"));
