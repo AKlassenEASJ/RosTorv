@@ -33,18 +33,12 @@ namespace RosTorv.MainView
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             NavigationService.GoBack();
-            Type t = NavigationService.NavigationFrame.Content.GetType();
-            sender.SelectedItem = (sender.MenuItemsSource as IEnumerable<NavigationViewItemBase>).First(x => (x.Tag as Type) == t);
         }
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            if (args.IsSettingsInvoked)
-            {
-
-            }
-            else
-            {
+            if (args.IsSettingsInvoked) { }
+            else {
                 string itemtitle = args.InvokedItem as string;
                 NavigationViewItemBase navItem = (sender.MenuItemsSource as IEnumerable<NavigationViewItemBase>).First(x => x.Content as string == itemtitle);
                 NavigationService.Navigate(navItem.Tag as Type);
