@@ -36,12 +36,12 @@ namespace RosTorv.Anders.Handlers
             if (CardCatalogViewModel.SelectedCard.ShownSide == CardCatalogViewModel.SelectedCard.BackSide)
             {
                 CardCatalogViewModel.SelectedCard.ShownSide = CardCatalogViewModel.SelectedCard.FrontSide;
-                MatchHandler.Match();
+                MatchHandler.CheckMatch();
             }
-            else if (CardCatalogViewModel.SelectedCard.ShownSide == CardCatalogViewModel.SelectedCard.FrontSide)
-            {
-                CardCatalogViewModel.SelectedCard.ShownSide = CardCatalogViewModel.SelectedCard.BackSide;
-            }
+            //else if (CardCatalogViewModel.SelectedCard.ShownSide == CardCatalogViewModel.SelectedCard.FrontSide)
+            //{
+            //    CardCatalogViewModel.SelectedCard.ShownSide = CardCatalogViewModel.SelectedCard.BackSide;
+            //}
 
         }
 

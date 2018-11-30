@@ -49,7 +49,12 @@
 
             <StackPanel Orientation="Horizontal" Grid.Column="1">
                 <TextBlock  Text="Turns Used:" VerticalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,0,20,0"/>
-                <TextBlock Text="Mangler Binding" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+                <TextBlock Text="{Binding TheGame.Turns}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                <TextBlock Text="Score:" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                <TextBlock Text="{Binding TheGame.Score}" FontSize="30" FontWeight="Bold" VerticalAlignment="Center"/>
             </StackPanel>
 
         </Grid>

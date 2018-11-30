@@ -17,6 +17,7 @@ namespace RosTorv.Anders.ViewModel
         #region Instance Fields
 
         private ObservableCollection<Card> _observableCollectionOfCards = CardCatalog.Instance.CollectionOfCards;
+        private Game _theGame = Game.Instance;
 
         private ICommand _flipCommand;
 
@@ -54,6 +55,11 @@ namespace RosTorv.Anders.ViewModel
         {
             get { return _selectedIndex; }
             set { _selectedIndex = value; }
+        }
+
+        public Game TheGame
+        {
+            get { return _theGame; }
         }
 
 
