@@ -70,30 +70,74 @@ namespace RosTorv.Line.Model
 
         public void TjekEns()
         {
-            for (int i = 1; i <= 6; i++)
+            for (int i = 6; i > 0; i--)
             {
                 if (_terninsværdi[i] > 1)
                 {
-                    Spil.Spiller1.PointFelter[7].Point = 0;
-                    Spil.Spiller1.PointFelter[7].Point = i * 2;
+                    if (Spil.Spiller1.PointFelter[7].CanChange)
+                    {
+                        Spil.Spiller1.PointFelter[7].Point = i * 2;
+                    }
 
                     if (_terninsværdi[i]>2)
                     {
-                        Spil.Spiller1.PointFelter[8].Point = 0;
-                        Spil.Spiller1.PointFelter[8].Point = i * 3;
+                        if (Spil.Spiller1.PointFelter[9].CanChange)
+                        {
+                            Spil.Spiller1.PointFelter[9].Point = i * 3;
+                        }
+
+                        if (Spil.Spiller1.PointFelter[8].CanChange || Spil.Spiller1.PointFelter[14].CanChange)
+                        {
+                            for (int j = i - 1; j < 0; j--)
+                            {
+                                if (_terninsværdi[j] > 1)
+                                {
+                                    if (Spil.Spiller1.PointFelter[8].CanChange)
+                                    {
+                                        Spil.Spiller1.PointFelter[8].Point = (i*2) + (j*2);
+                                    }
+
+                                    if (_terninsværdi[j] > 2)
+                                    {
+                                        if (Spil.Spiller1.PointFelter[14].CanChange)
+                                        {
+                                            Spil.Spiller1.PointFelter[14].Point = (i * 2) + (j * 3);
+                                        }
+                                    }
+                                }
+                            }
+                        }
 
                         if (_terninsværdi[i] > 3)
                         {
-                            Spil.Spiller1.PointFelter[9].Point = 0;
-                            Spil.Spiller1.PointFelter[9].Point = i * 4;
+                            if (Spil.Spiller1.PointFelter[10].CanChange)
+                            {
+                                Spil.Spiller1.PointFelter[10].Point = i * 4;
+                            }
+
+                            for (int j = i - 1; j < 0; j--)
+                            {
+                                if (_terninsværdi[j] > 2)
+                                {
+                                    if (Spil.Spiller1.PointFelter[14].CanChange)
+                                    {
+                                        Spil.Spiller1.PointFelter[14].Point = (j * 2) + (i * 3);
+                                    }
+                                }
+                            }
 
                             if (_terninsværdi[i] > 5)
                             {
-                                Spil.Spiller1.PointFelter[16].Point = 50;
+                                if (Spil.Spiller1.PointFelter[16].CanChange)
+                                {
+                                    Spil.Spiller1.PointFelter[16].Point = 50;
+                                }
                             }
                         }
                     }
+                    break;
                 }
+                
             }
         }
 
