@@ -56,26 +56,31 @@ namespace RosTorv.Sofus.ViewModel
         {
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-                // Clear the previous suggestions
-                SuggestedItems.Clear();
+                UpdateSuggestedItems();
+            }
+        }
 
-                // Finds all keywords that starts whith what the user has typed
-                // And then suggests them
-                foreach (string s in _navneKeywords)
-                {
-                    if (s.ToLower().StartsWith(SearchText.ToLower()))
-                        SuggestedItems.Add(s);
-                }
-                foreach (string s in _kategoriKeyword)
-                {
-                    if (s.ToLower().StartsWith(SearchText.ToLower()))
-                        SuggestedItems.Add(s);
-                }
+        private void UpdateSuggestedItems()
+        {
+            // Clear the previous suggestions
+            SuggestedItems.Clear();
 
-                if (SuggestedItems.Count == 0)
-                {
-                    //SuggestedItems.Add("No Results");
-                }
+            // Finds all keywords that starts whith what the user has typed
+            // And then suggests them
+            foreach (string s in _navneKeywords)
+            {
+                if (s.ToLower().StartsWith(SearchText.ToLower()))
+                    SuggestedItems.Add(s);
+            }
+            foreach (string s in _kategoriKeyword)
+            {
+                if (s.ToLower().StartsWith(SearchText.ToLower()))
+                    SuggestedItems.Add(s);
+            }
+
+            if (SuggestedItems.Count == 0)
+            {
+                //SuggestedItems.Add("No Results");
             }
         }
 
@@ -86,6 +91,14 @@ namespace RosTorv.Sofus.ViewModel
 
         private void QuerySubmitted(AutoSuggestBoxQuerySubmittedEventArgs args)
         {
+            UpdateSuggestedItems();
+            // Is not thread safe
+            // SofusTODO : make it so suggested items alwaays has been calculated before searching
+            if (SuggestedItems.Count == 0)
+            {
+                return;
+            }
+
             // Checks if already on the page
             if (NavigationService.NavigationFrame.Content.GetType() != typeof(ButikInformationPage))
             {
@@ -95,26 +108,32 @@ namespace RosTorv.Sofus.ViewModel
 
             // Gets the ViewModel for the ButikInformationPage
             ButikInformationViewModel bipVM = (NavigationService.NavigationFrame.Content as ButikInformationPage).DataContext as ButikInformationViewModel;
-            
+            string queryToLower = args.QueryText.ToLower();
+
             // Checks if a store name matches what user submitted
-            if (_navneKeywords.Contains(args.QueryText))
+            foreach (string s in _navneKeywords)
             {
-                bipVM.SelectedKategori = "Alle butikker";
-                // Changes the current butik to what the user searched for
-                bipVM.CurrentButik = bipVM.Butikker.First(x => x.Navn == args.QueryText);
+                if (s.ToLower() == queryToLower)
+                {
+                    bipVM.SelectedKategori = "Alle butikker";
+                    // Changes the current butik to what the user searched for
+                    bipVM.CurrentButik = bipVM.Butikker.First(x => x.Navn == s);
+                    return;
+                }
             }
             // Checks if a category matches what user submitted
-            else if (_kategoriKeyword.Contains(args.QueryText))
+            foreach (string s in _kategoriKeyword)
             {
-                // Changes the selected category to match what user searched
-                bipVM.SelectedKategori = bipVM.Kategorier.First(x => x == args.QueryText);
+                if (s.ToLower().StartsWith(queryToLower))
+                {
+                    // Changes the selected category to match what user searched
+                    bipVM.SelectedKategori = bipVM.Kategorier.First(x => x == s);
+                    return;
+                }
             }
-            // SofusTODO : shows a list of stores that starts with what user submitted
-            else
-            {
-                bipVM.SelectedKategori = args.QueryText;
-                bipVM.CurrentButik = bipVM.Butikker.First();
-            }
+
+            bipVM.SelectedKategori = args.QueryText;
+            bipVM.CurrentButik = bipVM.Butikker.First();
         }
 
 
