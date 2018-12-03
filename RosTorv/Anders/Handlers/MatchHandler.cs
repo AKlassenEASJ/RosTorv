@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Controls;
 using RosTorv.Anders.Model;
 using RosTorv.Anders.View;
 using RosTorv.Anders.ViewModel;
+using RosTorv.Common;
 
 namespace RosTorv.Anders.Handlers
 {
@@ -131,9 +132,8 @@ namespace RosTorv.Anders.Handlers
 
             if (IsAllCardsMatched())
             {
-                Frame endFrame = new Frame();
-                endFrame.Navigate(typeof(EnterPlayerNamePage));
-                Window.Current.Content = endFrame;
+                
+                NavigationService.Navigate(typeof(EnterPlayerNamePage));
 
                 
             }
