@@ -124,7 +124,7 @@ namespace RosTorv.Sofus.ViewModel
             // Checks if a category matches what user submitted
             foreach (string s in _kategoriKeyword)
             {
-                if (s.ToLower().StartsWith(queryToLower))
+                if (s.ToLower() == queryToLower)
                 {
                     // Changes the selected category to match what user searched
                     bipVM.SelectedKategori = bipVM.Kategorier.First(x => x == s);
@@ -133,7 +133,13 @@ namespace RosTorv.Sofus.ViewModel
             }
 
             bipVM.SelectedKategori = args.QueryText;
-            bipVM.CurrentButik = bipVM.Butikker.First();
+            bipVM.CurrentButik = bipVM.Butikker.FirstOrDefault();
+
+            if (bipVM.CurrentButik == null)
+            {
+                bipVM.SelectedKategori = _kategoriKeyword.First(x => x.ToLower().StartsWith(queryToLower));
+            }
+
         }
 
 
