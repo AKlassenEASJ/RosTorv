@@ -33,10 +33,10 @@ namespace RosTorv.Line.Model
         private BægerSingelton()
         {
             Terninger = new ObservableCollection<Terning>();
-            Terninger.Add(new Terning(1));
-            Terninger.Add(new Terning(2));
-            Terninger.Add(new Terning(3));
-            Terninger.Add(new Terning(4));
+            Terninger.Add(new Terning(5));
+            Terninger.Add(new Terning(10));
+            Terninger.Add(new Terning(15));
+            Terninger.Add(new Terning(20));
             Terninger.Add(new Terning(5));
         }
 

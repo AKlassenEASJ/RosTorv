@@ -22,7 +22,7 @@
         <Grid Column="1">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <GridView ItemsSource="{Binding Spil.Bæger.Terninger, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedTerning, Mode=TwoWay}">
+                    <GridView ItemsSource="{Binding Spil.Bæger.Terninger, Mode=TwoWay}" SelectedIndex="{Binding SelectedTerningIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedTerning, Mode=TwoWay}">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="model:Terning">
                                 <controls:DropShadowPanel BlurRadius="5.0" ShadowOpacity="{Binding ShadowOpacity}"
@@ -52,22 +52,22 @@
                 <Grid Column="0">
                     <StackPanel>
                         <TextBlock Text="Navn:" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-                    <ListView ItemsSource="{Binding Pointtekst.PointTeksterlist}" SelectionMode="None">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Tekst}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <ListView ItemsSource="{Binding Pointtekst.PointTeksterlist}" SelectionMode="None" Height="757" Margin="0,0,287,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Tekst}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackPanel>
                 </Grid>
                 <Grid Column="1">
                     <StackPanel>
                         <TextBlock Text="{Binding Spil.Spiller1.Name}" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-                        <ListView ItemsSource="{Binding Spil.Spiller1.PointFelter}">
+                        <ListView ItemsSource="{Binding Spil.Spiller1.PointFelter}" Height="762" Margin="3,0,-3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding MidlertidigPoint, Mode=TwoWay}"/>
+                                    <TextBlock Text="{Binding Point, Mode=TwoWay}"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>

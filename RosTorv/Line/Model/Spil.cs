@@ -14,6 +14,7 @@ namespace RosTorv.Line.Model
         private int _slagTilbage = 3;
         public Spiller Spiller1 { get; set; }
         public BægerSingelton Bæger { get; set; }
+        public EvaluateTerninger EvaluateTerninger { get; set; }
 
         public int SlagTilbage
         {
@@ -28,11 +29,22 @@ namespace RosTorv.Line.Model
         {
             Spiller1 = new Spiller("Line");
             Bæger = BægerSingelton.InstanBægerSingelton;
+            EvaluateTerninger = new EvaluateTerninger(this);
         }
 
         public void RollInTurn()
         {
+            foreach (PointFelt pointFelt in Spiller1.PointFelter)
+            {
+                if (pointFelt.CanChange)
+                {
+                    pointFelt.Point = 0;
+                }
+            }
             Bæger.RollAll();
+            EvaluateTerninger.NulStilVærdi();
+            EvaluateTerninger.GetTerningsVærdi();
+            //GetPreviewpoints();
 
             if (SlagTilbage == 1)
             {
@@ -48,6 +60,29 @@ namespace RosTorv.Line.Model
                 SlagTilbage = SlagTilbage - 1;
             }
         }
+
+        //public void GetPreviewpoints()
+        //{
+        //    int antalØjne = 1;
+
+
+        //    for (int i = 0; i <= 6; i++)
+        //    {
+        //        if (Spiller1.PointFelter[i].CanChange)
+        //        {
+        //            for (int j = 0; j <= Bæger.Terninger.Count; j++)
+        //            {
+        //                if (Bæger.Terninger[j].Eyes == antalØjne)
+        //                {
+        //                    Spiller1.PointFelter[i].Point = Spiller1.PointFelter[i].Point + Bæger.Terninger[j].Eyes;
+        //                }
+        //            }
+        //        }
+
+        //        antalØjne++;
+        //    }
+
+        //}
 
         public void resetSlag()
         {

@@ -11,15 +11,15 @@ namespace RosTorv.Line.Model
 {
     public class PointFelt : INotifyPropertyChanged
     {
-        private int _midlertidigPoint;
+        private bool _canChange = true;
         private int _point;
 
-        public int MidlertidigPoint
+        public bool CanChange
         {
-            get { return _midlertidigPoint;}
+            get { return _canChange;}
             set
             {
-                _midlertidigPoint = value;
+                _canChange = value;
                 OnPropertyChanged();
             }
         }

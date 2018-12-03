@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Line\Handler\TerningButtonHandler.cs" />
     <Compile Include="Line\Model\BægerSingelton.cs" />
+    <Compile Include="Line\Model\EvaluateTerninger.cs" />
     <Compile Include="Line\Model\PointTekster.cs" />
     <Compile Include="Line\Model\PointFelt.cs" />
     <Compile Include="Line\Model\Spil.cs" />
