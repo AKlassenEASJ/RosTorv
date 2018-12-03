@@ -8,9 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Button Click="StartSpil_Click" Content="Start Spil" HorizontalAlignment="Left" Margin="440,788,0,0" VerticalAlignment="Top" Height="118" Width="191" FontSize="36"/>
-        <Button Content="Skift Tema" HorizontalAlignment="Left" Margin="810,788,0,0" VerticalAlignment="Top" Height="118" Width="191" FontSize="36"/>
+    <StackPanel Orientation="Horizontal" Spacing="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+        <Button Click="StartSpil_Click" Content="Start Spil"  Height="118" Width="191" FontSize="36"/>
+        <Button Content="Skift Tema"  Height="118" Width="191" FontSize="36"/>
 
-    </Grid>
+    </StackPanel>
 </Page>

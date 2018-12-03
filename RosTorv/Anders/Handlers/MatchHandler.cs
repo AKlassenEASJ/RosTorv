@@ -14,6 +14,7 @@ namespace RosTorv.Anders.Handlers
         #region Instance Fields
 
         private int _numberOfFlips;
+        private Game _theGame = Game.Instance;
 
 
         #endregion
@@ -29,6 +30,8 @@ namespace RosTorv.Anders.Handlers
         }
 
         public CardHandler CardHandler { get; set; }
+
+        public Game Game { get; set; }
 
 
         #endregion
@@ -47,8 +50,11 @@ namespace RosTorv.Anders.Handlers
 
         #region Methods
 
-        public void Match()
+
+
+        public void CheckMatch()
         {
+
             List<Card> templListOfCards = new List<Card>();
             Card cardholder = null;
             foreach (Card card in CardCatalogViewModel.ObservableCollectionOfCards)
@@ -62,18 +68,46 @@ namespace RosTorv.Anders.Handlers
                     templListOfCards.Add(card);
                     if (templListOfCards.Count == 2 && templListOfCards[0].ID == templListOfCards[1].ID)
                     {
-                        cardholder.ShownSide = null;
-                        card.ShownSide = null;
+                        Match(cardholder, card);
                     }
-                    
+                    else if (templListOfCards.Count == 2 && templListOfCards[0].ID != templListOfCards[1].ID)
+                    {
+                        NoMatch(cardholder, card);
+                    }
+
                 }
-                
+
 
             }
 
+        }
+
+
+        public void Match(Card card1, Card card2)
+        {
+            card1.ShownSide = null;
+            card2.ShownSide = null;
+            Game.Instance.IncreaseTurns();
+            Game.Instance.AddPointsToScore(500);
             
+
+
+
+
+        }
+
+        public void NoMatch(Card card1, Card card2)
+        {
+            Game.Instance.IncreaseTurns();
+            card1.ShownSide = card1.BackSide;
+            card2.ShownSide = card2.BackSide;
             
         }
+
+
+
+
+
 
 
         #endregion

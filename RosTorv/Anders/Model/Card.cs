@@ -53,7 +53,7 @@ namespace RosTorv.Anders.Model
             }
         }
 
-        public bool IsMatched
+        public bool IsMatched//Behøves nok ikke mere
         {
             get { return _isMatched; }
             set { _isMatched = value; }

@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:ViewModel="using:RosTorv.Nikolai.ViewModel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:model="using:RosTorv.Nikolai.Model"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -15,7 +17,33 @@
 
     <Grid>
 <StackPanel>
-    <TextBlock Text="{Binding Game.Dice1.DiceValue}" ></TextBlock>
+        <GridView ItemsSource="{Binding Game.NumberCatalog.NumberList, Mode=TwoWay}" SelectedItem="{Binding SelectedNumber, Mode=TwoWay}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="model:Number">
+                        <TextBlock FontSize="20" FontWeight="ExtraBlack" Text="{Binding NumberValue}"></TextBlock>
+                    </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Game.Dice1.DiceValue}" ></TextBlock>
+    <Image Width="50" Height="50" Source="{Binding Game.Dice1.ImageSource}"></Image>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Game.Dice2.DiceValue}" ></TextBlock>
+    <Image Width="50" Height="50" Source="{Binding Game.Dice2.ImageSource}"></Image>
+            </StackPanel>
+            <Button Command="{Binding RollCommand}">
+        <Button.Content>
+                <StackPanel Width="100">
+                    
+                    
+                        <TextBlock Text="roll" FontSize="50"></TextBlock>
+                </StackPanel>
+            </Button.Content>
+    </Button>
+<TextBlock Text="{Binding SelectedNumber.NumberValue}"></TextBlock>
+        </StackPanel>
 </StackPanel>
     </Grid>
 </Page>

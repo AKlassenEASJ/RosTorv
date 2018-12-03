@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Windows.UI.Xaml.Controls;
+using RosTorv.MainView;
+using RosTorv.ViewModel;
 
 namespace RosTorv.Common
 {
@@ -15,6 +19,7 @@ namespace RosTorv.Common
         public static void Navigate(Type pageType, object parameter = null)
         {
             NavigationFrame.Navigate(pageType, parameter);
+            ChangeMenuSelection();
         }
 
         /// <summary>
@@ -23,6 +28,18 @@ namespace RosTorv.Common
         public static void GoBack()
         {
             NavigationFrame.GoBack();
+            ChangeMenuSelection();
+        }
+
+        private static void ChangeMenuSelection()
+        {
+            MenuPage mp = Windows.UI.Xaml.Window.Current.Content as MenuPage;
+            if (mp != null)
+            {
+                MenuViewModel VM = mp.DataContext as MenuViewModel;
+                Type t = NavigationFrame.Content.GetType();
+                VM.SelectedItem = (VM.NavigationItems as IEnumerable<NavigationViewItemBase>).First(x => (x.Tag as Type) == t);
+            }
         }
     }
 }
