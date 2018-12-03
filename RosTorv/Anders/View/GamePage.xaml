@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         
             <GridView Name="CardGridView" Grid.Row="0" ItemsSource="{Binding ObservableCollectionOfCards, Mode=TwoWay}" 
-                  SelectedItem="{Binding SelectedCard, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" IsItemClickEnabled="True">
+                  SelectedItem="{Binding SelectedCard, Mode=TwoWay}"  IsItemClickEnabled="True">
             <Interactivity:Interaction.Behaviors>
                 <Interations:EventTriggerBehavior EventName="SelectionChanged">
                     <Interations:InvokeCommandAction Command="{Binding FlipCommand}"/>

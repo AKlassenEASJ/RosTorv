@@ -19,7 +19,7 @@ namespace RosTorv.Anders.Model
         private string _frontSide;
         private string _backSide = "/Anders/Assets/cardback_65.png";
         private string _shownSide = "/Anders/Assets/cardback_65.png";
-        private bool _isMatched; //TODO: skal implementeres
+        private bool _isMatched = false; 
 
 
         #endregion
@@ -53,7 +53,7 @@ namespace RosTorv.Anders.Model
             }
         }
 
-        public bool IsMatched//Behøves nok ikke mere
+        public bool IsMatched
         {
             get { return _isMatched; }
             set { _isMatched = value; }
@@ -75,6 +75,7 @@ namespace RosTorv.Anders.Model
         #endregion
 
         #region Methods
+
 
         
 
