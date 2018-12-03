@@ -36,8 +36,7 @@ namespace RosTorv.Common
         /// </summary>
         private static void ChangeMenuSelection()
         {
-            MenuPage mp = Windows.UI.Xaml.Window.Current.Content as MenuPage;
-            if (mp != null)
+            if ((Windows.UI.Xaml.Window.Current.Content as Frame).Content is MenuPage mp)
             {
                 MenuViewModel VM = mp.DataContext as MenuViewModel;
                 Type t = NavigationFrame.Content.GetType();
