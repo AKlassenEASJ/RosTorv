@@ -31,6 +31,9 @@ namespace RosTorv.Common
             ChangeMenuSelection();
         }
 
+        /// <summary>
+        /// Changes the selected item in the hamburger menu to match what is navigated to
+        /// </summary>
         private static void ChangeMenuSelection()
         {
             MenuPage mp = Windows.UI.Xaml.Window.Current.Content as MenuPage;
@@ -38,7 +41,9 @@ namespace RosTorv.Common
             {
                 MenuViewModel VM = mp.DataContext as MenuViewModel;
                 Type t = NavigationFrame.Content.GetType();
-                VM.SelectedItem = (VM.NavigationItems as IEnumerable<NavigationViewItemBase>).First(x => (x.Tag as Type) == t);
+                NavigationViewItemBase tmp = (VM.NavigationItems as IEnumerable<NavigationViewItemBase>).FirstOrDefault(x => (x.Tag as Type) == t);
+                if (tmp != null)
+                    VM.SelectedItem = tmp;
             }
         }
     }
