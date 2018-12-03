@@ -42,8 +42,7 @@ namespace RosTorv.Line.Model
                 }
             }
             Bæger.RollAll();
-            EvaluateTerninger.NulStilVærdi();
-            EvaluateTerninger.GetTerningsVærdi();
+            EvaluateTerninger.RunAllEvaluate();
             //GetPreviewpoints();
 
             if (SlagTilbage == 1)
