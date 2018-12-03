@@ -57,7 +57,8 @@ namespace RosTorv.Line.Model
                                 PointFelter[3].Point + PointFelter[4].Point + PointFelter[5].Point;
             if (forløbigPoint >= 63)
             {
-                PointFelter[7].Point = 50;
+                PointFelter[6].Point = 50;
+                PointFelter[6].CanChange = false;
             }
         }
         public void GetTotalPoints()

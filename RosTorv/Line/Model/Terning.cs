@@ -66,7 +66,7 @@ namespace RosTorv.Line.Model
 
         public void Roll()
         {
-            Eyes = _random.Next(1, 6);
+            Eyes = _random.Next(1, 7);
             UpdateImage();
         }
 
