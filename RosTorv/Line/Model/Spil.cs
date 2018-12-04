@@ -25,6 +25,7 @@ namespace RosTorv.Line.Model
                 OnPropertyChanged();
             }
         }
+
         public Spil()
         {
             Spiller1 = new Spiller("Line");

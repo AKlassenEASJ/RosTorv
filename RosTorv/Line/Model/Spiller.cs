@@ -33,22 +33,23 @@ namespace RosTorv.Line.Model
         public Spiller(string Navn)
         {
             _name = Navn;
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
+            PointFelter.Add(new PointFelt());//enere 0
+            PointFelter.Add(new PointFelt());//Toere  1  
+            PointFelter.Add(new PointFelt());//Trerer 2
+            PointFelter.Add(new PointFelt());//Fire 3
+            PointFelter.Add(new PointFelt());//Fem 4 
+            PointFelter.Add(new PointFelt());//seks 5
+            PointFelter.Add(new PointFelt());//bonus 6
+            PointFelter.Add(new PointFelt());//1Par 7
+            PointFelter.Add(new PointFelt());//2Par 8 
+            PointFelter.Add(new PointFelt());//3 ens 9
+            PointFelter.Add(new PointFelt());//4 ens 10
+            PointFelter.Add(new PointFelt());//høj 11
+            PointFelter.Add(new PointFelt());//lav12
+            PointFelter.Add(new PointFelt());//fuldHus 13
+            PointFelter.Add(new PointFelt());//chance 14
+            PointFelter.Add(new PointFelt());//Yatzy 15
+            PointFelter.Add(new PointFelt());//sum 16
         }
 
         public void TjekBonusPoint()
@@ -59,6 +60,14 @@ namespace RosTorv.Line.Model
             {
                 PointFelter[6].Point = 50;
                 PointFelter[6].CanChange = false;
+            }
+        }
+
+        public void FåSum()
+        {
+            for (int i = 0; i < 16; i++)
+            {
+                PointFelter[16].Point = PointFelter[16].Point + PointFelter[i].Point;
             }
         }
         public void GetTotalPoints()

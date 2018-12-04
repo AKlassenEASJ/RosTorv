@@ -21,15 +21,15 @@ namespace RosTorv.Line.Model
             get { return instansBægerSingelton; }
         }
 
-        public int Score
-        {
-            get { return _score;}
-            set
-            {
-                _score = value;
-                OnPropertyChanged();
-            }
-        }
+        //public int Score
+        //{
+        //    get { return _score;}
+        //    set
+        //    {
+        //        _score = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
         private BægerSingelton()
         {
             Terninger = new ObservableCollection<Terning>();
@@ -49,7 +49,7 @@ namespace RosTorv.Line.Model
                     terning.Roll();
                 }
             }
-            GetPoint();
+            //GetPoint();
         }
 
         public void ChangeCanRoll(int index)
@@ -66,10 +66,10 @@ namespace RosTorv.Line.Model
             }
         }
 
-        public void GetPoint()
-        {
-             Score = Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
-        }
+        //public void GetPoint()
+        //{
+        //     Score = Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
 

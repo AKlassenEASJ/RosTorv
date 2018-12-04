@@ -180,12 +180,6 @@
     </AppxManifest>
     <None Include="RosTorv_TemporaryKey.pfx" />
     <Content Include="Anders\Assets\cardback_65.png" />
-    <Content Include="Line\Assets - Copy\die_1.png" />
-    <Content Include="Line\Assets - Copy\die_2.png" />
-    <Content Include="Line\Assets - Copy\die_3.png" />
-    <Content Include="Line\Assets - Copy\die_4.png" />
-    <Content Include="Line\Assets - Copy\die_5.png" />
-    <Content Include="Line\Assets - Copy\die_6.png" />
     <Content Include="Nikolai\Assets\die_1.png" />
     <Content Include="Nikolai\Assets\die_2.png" />
     <Content Include="Nikolai\Assets\die_3.png" />
