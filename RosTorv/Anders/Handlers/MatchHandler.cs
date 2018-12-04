@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using RosTorv.Anders.Model;
+using RosTorv.Anders.View;
 using RosTorv.Anders.ViewModel;
+using RosTorv.Common;
 
 namespace RosTorv.Anders.Handlers
 {
@@ -85,10 +89,13 @@ namespace RosTorv.Anders.Handlers
 
         public void Match(Card card1, Card card2)
         {
+            card1.IsMatched = true;
+            card2.IsMatched = true;
             card1.ShownSide = null;
             card2.ShownSide = null;
             Game.Instance.IncreaseTurns();
             Game.Instance.AddPointsToScore(500);
+            EndGame();
             
 
 
@@ -104,7 +111,34 @@ namespace RosTorv.Anders.Handlers
             
         }
 
+        private bool IsAllCardsMatched()
+        {
 
+            bool allCardsMatched = true;
+            foreach (Card card in CardCatalogViewModel.ObservableCollectionOfCards)
+            {
+                if (card.IsMatched == false)
+                {
+                    allCardsMatched = false;
+                }
+            }
+
+            return allCardsMatched;
+        }
+
+
+        private void EndGame()
+        {
+
+            if (IsAllCardsMatched())
+            {
+                
+                NavigationService.Navigate(typeof(EnterPlayerNamePage));
+
+                
+            }
+
+        }
 
 
 

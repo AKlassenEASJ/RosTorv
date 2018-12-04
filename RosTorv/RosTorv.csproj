@@ -122,8 +122,12 @@
     <Compile Include="Anders\Model\Card.cs" />
     <Compile Include="Anders\Model\CardCatalog.cs" />
     <Compile Include="Anders\Model\Game.cs" />
+    <Compile Include="Anders\Model\Player.cs" />
     <Compile Include="Anders\Model\Skabelon.cs" />
     <Compile Include="Anders\ViewModel\CardCatalogViewModel.cs" />
+    <Compile Include="Anders\View\EnterPlayerNamePage.xaml.cs">
+      <DependentUpon>EnterPlayerNamePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Anders\View\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
@@ -219,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Anders\View\EnterPlayerNamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Anders\View\GamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
