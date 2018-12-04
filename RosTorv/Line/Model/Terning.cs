@@ -15,7 +15,7 @@ namespace RosTorv.Line.Model
         private int _eyes;
         private string _image;
         private bool _canRoll = true;
-        private double _ShadowOpacity = 0;
+        private double _shadowOpacity = 0;
 
         private Random _random;
 
@@ -51,10 +51,10 @@ namespace RosTorv.Line.Model
 
         public double ShadowOpacity
         {
-            get { return _ShadowOpacity;}
+            get { return _shadowOpacity;}
             set
             {
-                _ShadowOpacity = value;
+                _shadowOpacity = value;
                 OnPropertyChanged();
             }
         }
@@ -91,6 +91,9 @@ namespace RosTorv.Line.Model
                     break;
                 case 6:
                     Image = "/Line/Assets/die_6.png";
+                    break;
+                default:
+                    Image = "";
                     break;
             }
         }

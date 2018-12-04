@@ -13,7 +13,7 @@ namespace RosTorv.Line.Model
     public class BægerSingelton :INotifyPropertyChanged
     {
         public ObservableCollection<Terning> Terninger { get; set; }
-        private int _score;
+        //private int _score;
         private static BægerSingelton instansBægerSingelton = new BægerSingelton();
 
         public static BægerSingelton InstanBægerSingelton

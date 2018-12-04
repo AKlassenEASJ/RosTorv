@@ -53,7 +53,7 @@ namespace RosTorv.Line.Model
                     terning.CanRoll = true;
                     terning.ShadowOpacity = 0;
                 }
-                resetSlag();
+                ResetSlag();
             }
             else
             {
@@ -84,7 +84,7 @@ namespace RosTorv.Line.Model
 
         //}
 
-        public void resetSlag()
+        public void ResetSlag()
         {
             SlagTilbage = 3;
         }

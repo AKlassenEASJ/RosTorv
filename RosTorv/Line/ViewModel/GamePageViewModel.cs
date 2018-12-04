@@ -53,11 +53,15 @@ namespace RosTorv.Line.ViewModel
             }
         }
 
-        //public PointTekst SelectedPointTekst
-        //{
-        //    get { return _selectedPointFelt;}
-        //    set { _selectedPointFelt = value; }
-        //}
+        public PointFelt SelectedPointFelt
+        {
+            get { return _selectedPointFelt; }
+            set
+            {
+                _selectedPointFelt = value;
+                OnPropertyChanged();
+            }
+        }
 
         public GamePageViewModel()
         {

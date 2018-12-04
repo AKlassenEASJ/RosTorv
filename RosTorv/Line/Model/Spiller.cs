@@ -9,30 +9,15 @@ namespace RosTorv.Line.Model
 {
     public class Spiller
     {
-        private string _name;
-        private ObservableCollection<PointFelt> _pointFelter = new ObservableCollection<PointFelt>();
-        private int _totalPoint;
-        public string Name
-        {
-            get { return _name;}
-            set { _name = value; }
-        }
+        public string Name { get; set; }
 
-        public ObservableCollection<PointFelt> PointFelter
-        {
-            get { return _pointFelter;}
-            set { _pointFelter = value; }
-        }
+        public ObservableCollection<PointFelt> PointFelter { get; set; } = new ObservableCollection<PointFelt>();
 
-        public int TotalPoint
-        {
-            get { return _totalPoint;}
-            set { _totalPoint = value; }
-        }
+        public int TotalPoint { get; set; }
 
-        public Spiller(string Navn)
+        public Spiller(string navn)
         {
-            _name = Navn;
+            Name = navn;
             PointFelter.Add(new PointFelt());//enere 0
             PointFelter.Add(new PointFelt());//Toere  1  
             PointFelter.Add(new PointFelt());//Trerer 2

@@ -38,6 +38,8 @@ namespace RosTorv.Line.Model
         {
             
         }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

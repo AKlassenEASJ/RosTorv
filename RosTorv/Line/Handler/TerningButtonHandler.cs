@@ -13,9 +13,9 @@ namespace RosTorv.Line.Handler
     {
         public GamePageViewModel GamePageViewModel { get; set; }
 
-        public TerningButtonHandler(GamePageViewModel GamePageViewModel)
+        public TerningButtonHandler(GamePageViewModel gamePageViewModel)
         {
-            this.GamePageViewModel = GamePageViewModel;
+            this.GamePageViewModel = gamePageViewModel;
         }
 
         public void HoldTerning()
