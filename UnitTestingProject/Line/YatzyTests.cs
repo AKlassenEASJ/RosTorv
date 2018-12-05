@@ -1,72 +1,12 @@
-﻿
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RosTorv.Line.Model;
 
-namespace UnitTestingProject
+namespace UnitTestingProject.Line
 {
     [TestClass]
-    public class LineUnitTest
+    public class YatzyUnitTest
     {
         private Spil _spil;
-
-
-        [TestMethod]
-        public void TestMethod1()
-        {
-            _spil = new Spil();
-
-            _spil.Bæger.Terninger[0].Eyes = 1;
-            _spil.Bæger.Terninger[1].Eyes = 2;
-            _spil.Bæger.Terninger[2].Eyes = 2;
-            _spil.Bæger.Terninger[3].Eyes = 1;
-            _spil.Bæger.Terninger[4].Eyes = 2;
-
-            int exptedResult = 6;
-
-            _spil.EvaluateTerninger.RunAllEvaluate();
-
-            //Assert.AreEqual(2,_spil.Spiller1.PointFelter[0].Point);
-            //Assert.AreEqual(exptedResult,_spil.Spiller1.PointFelter[1].Point);
-            Assert.AreEqual(4,_spil.Spiller1.PointFelter[7].Point);
-
-        }
-
-        [TestMethod]
-        public void TestFuldtHus()
-        {
-            _spil = new Spil();
-
-            _spil.Bæger.Terninger[0].Eyes = 1;
-            _spil.Bæger.Terninger[1].Eyes = 2;
-            _spil.Bæger.Terninger[2].Eyes = 2;
-            _spil.Bæger.Terninger[3].Eyes = 1;
-            _spil.Bæger.Terninger[4].Eyes = 2;
-
-            int exptedResult = 8;
-
-            _spil.EvaluateTerninger.RunAllEvaluate();
-
-            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[13].Point);
-        }
-
-        [TestMethod]
-        public void TestFuldtHus2()
-        {
-            _spil = new Spil();
-
-            _spil.Bæger.Terninger[0].Eyes = 1;
-            _spil.Bæger.Terninger[1].Eyes = 2;
-            _spil.Bæger.Terninger[2].Eyes = 1;
-            _spil.Bæger.Terninger[3].Eyes = 1;
-            _spil.Bæger.Terninger[4].Eyes = 2;
-
-            int exptedResult = 8;
-
-            _spil.EvaluateTerninger.RunAllEvaluate();
-
-            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[13].Point);
-        }
 
         [TestMethod]
         public void TestYatzyMed1()
@@ -83,7 +23,7 @@ namespace UnitTestingProject
 
             _spil.EvaluateTerninger.RunAllEvaluate();
 
-            Assert.AreEqual(exptedResult,_spil.Spiller1.PointFelter[15].Point);
+            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[15].Point);
         }
 
         [TestMethod]
@@ -175,7 +115,7 @@ namespace UnitTestingProject
         }
 
         [TestMethod]
-        public void TestYatzyMed4ens()
+        public void TestYatzyMed4Ens()
         {
             _spil = new Spil();
 
@@ -191,5 +131,25 @@ namespace UnitTestingProject
 
             Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[15].Point);
         }
+
+        [TestMethod]
+        public void TestYatzyKanIkkeÆndres()
+        {
+            _spil = new Spil();
+            _spil.Spiller1.PointFelter[15].CanChange = false;
+
+            _spil.Bæger.Terninger[0].Eyes = 6;
+            _spil.Bæger.Terninger[1].Eyes = 1;
+            _spil.Bæger.Terninger[2].Eyes = 1;
+            _spil.Bæger.Terninger[3].Eyes = 1;
+            _spil.Bæger.Terninger[4].Eyes = 1;
+
+            int exptedResult = 0;
+
+            _spil.EvaluateTerninger.RunAllEvaluate();
+
+            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[15].Point);
+        }
+
     }
 }

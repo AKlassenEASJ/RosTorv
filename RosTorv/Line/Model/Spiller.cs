@@ -25,8 +25,8 @@ namespace RosTorv.Line.Model
             PointFelter.Add(new PointFelt());//Fem 4 
             PointFelter.Add(new PointFelt());//seks 5
             PointFelter.Add(new PointFelt());//bonus 6
-            PointFelter.Add(new PointFelt());//1Par 7
-            PointFelter.Add(new PointFelt());//2Par 8 
+            PointFelter.Add(new PointFelt());//1 Par 7
+            PointFelter.Add(new PointFelt());//2 Par 8 
             PointFelter.Add(new PointFelt());//3 ens 9
             PointFelter.Add(new PointFelt());//4 ens 10
             PointFelter.Add(new PointFelt());//høj 11

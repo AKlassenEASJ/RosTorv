@@ -11,7 +11,7 @@ namespace RosTorv.Line.Model
     {
         public Spil Spil { get; set; }
         private Dictionary<int, int> _terninsværdi = new Dictionary<int, int>();
-            
+
         public EvaluateTerninger(Spil spil)
         {
             this.Spil = spil;
@@ -29,17 +29,30 @@ namespace RosTorv.Line.Model
             GetTerningsVærdi();
             First6();
             TjekEns();
+            if (Spil.Spiller1.PointFelter[14].CanChange)
+            {
+                GetChange();
+            }
         }
 
-        public void NulStilVærdi()
+        private void GetChange()
+        {
+            Spil.Spiller1.PointFelter[14].Point = 0;
+            for (int i = 1; i < 7; i++)
+            {
+                Spil.Spiller1.PointFelter[14].Point = Spil.Spiller1.PointFelter[14].Point + _terninsværdi[i];
+            }
+        }
+
+        private void NulStilVærdi()
         {
             for (int i = 1; i < 7; i++)
             {
                 _terninsværdi[i] = 0;
             }
         }
-        //kan gøres private
-        public void GetTerningsVærdi()
+
+        private void GetTerningsVærdi()
         {
             for (int i = 1; i < 7; i++)
             {
@@ -49,14 +62,14 @@ namespace RosTorv.Line.Model
                     {
                         _terninsværdi[i]++;
                     }
-                } 
+                }
             }
         }
 
-        public void First6()
+        private void First6()
         {
             int j = 0;
-            for (int i = 1; i <=6; i++)
+            for (int i = 1; i <= 6; i++)
             {
                 if (Spil.Spiller1.PointFelter[j].CanChange)
                 {
@@ -67,7 +80,7 @@ namespace RosTorv.Line.Model
             }
         }
 
-        public void TjekEns()
+        private void TjekEns()
         {
             for (int i = 1; i < 7; i++)
             {
@@ -78,35 +91,57 @@ namespace RosTorv.Line.Model
                     {
                         Spil.Spiller1.PointFelter[7].Point = i * 2;
                     }
+
+                    //Tjek om 2 par Og FuldtHus
+                    if (Spil.Spiller1.PointFelter[8].CanChange || Spil.Spiller1.PointFelter[13].CanChange)
+                    {
+                        for (int j = 1; j < 7; j++)
+                        {
+                            if (j != i)
+                            {
+                                if (Spil.Spiller1.PointFelter[8].CanChange)
+                                {
+                                    if (_terninsværdi[j] > 1)
+                                    {
+                                        Spil.Spiller1.PointFelter[8].Point = (i * 2) + (j * 2);
+
+                                    }
+                                }
+
+                                if (Spil.Spiller1.PointFelter[13].CanChange)
+                                {
+                                        if (_terninsværdi[j] == 3)
+                                        {
+                                            Spil.Spiller1.PointFelter[13].Point = (i * 2) + (j * 3);
+                                        }
+                                }
+                                
+                            }
+                        }
+                    }
+                    
                     //hvis der er 3 ens
-                    if (_terninsværdi[i]>2)
+                    if (_terninsværdi[i] > 2)
                     {
                         if (Spil.Spiller1.PointFelter[9].CanChange)
                         {
                             Spil.Spiller1.PointFelter[9].Point = i * 3;
                         }
-                        //tjek for 2 par og FuldtHus
-                        if (Spil.Spiller1.PointFelter[8].CanChange || Spil.Spiller1.PointFelter[14].CanChange)
+                        //fuldthus
+                        if (Spil.Spiller1.PointFelter[13].CanChange)
                         {
-                            for (int j = i - 1; j < 0; j--)
+                            for (int j = 1; j < 7; j++)
                             {
-                                if (_terninsværdi[j] > 1)
+                                if (j != i)
                                 {
-                                    if (Spil.Spiller1.PointFelter[8].CanChange)
+                                    if (_terninsværdi[j] == 2)
                                     {
-                                        Spil.Spiller1.PointFelter[8].Point = (i*2) + (j*2);
-                                    }
-
-                                    if (_terninsværdi[j] > 2)
-                                    {
-                                        if (Spil.Spiller1.PointFelter[13].CanChange)
-                                        {
-                                            Spil.Spiller1.PointFelter[13].Point = (i * 2) + (j * 3);
-                                        }
+                                        Spil.Spiller1.PointFelter[13].Point = (j * 2) + (i * 3);
                                     }
                                 }
                             }
                         }
+
                         //4 ens
                         if (_terninsværdi[i] > 3)
                         {
@@ -114,32 +149,23 @@ namespace RosTorv.Line.Model
                             {
                                 Spil.Spiller1.PointFelter[10].Point = i * 4;
                             }
-                            //fuldthus
-                            for (int j = i - 1; j < 0; j--)
-                            {
-                                if (_terninsværdi[j] > 2)
-                                {
-                                    if (Spil.Spiller1.PointFelter[13].CanChange)
-                                    {
-                                        Spil.Spiller1.PointFelter[13].Point = (j * 2) + (i * 3);
-                                    }
-                                }
-                            }
-                            //yatzy
+
+
+                         //yatzy
                             if (_terninsværdi[i] > 4)
                             {
-                                if (Spil.Spiller1.PointFelter[15].CanChange)
-                                {
-                                    Spil.Spiller1.PointFelter[15].Point = 50;
-                                }
+                                    if (Spil.Spiller1.PointFelter[15].CanChange)
+                                    {
+                                        Spil.Spiller1.PointFelter[15].Point = 50;
+                                    }
                             }
+                            
                         }
                     }
-                }  
+                }
             }
+
         }
-
-
-
     }
 }
+
