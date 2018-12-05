@@ -124,6 +124,7 @@
     <Compile Include="Line\3EnsUnitTest.cs" />
     <Compile Include="Line\4EnsUnitTest.cs" />
     <Compile Include="Line\FuldtHusUnitTest.cs" />
+    <Compile Include="Line\HojOgLavTest.cs" />
     <Compile Include="Line\YatzyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestApp.xaml.cs">
