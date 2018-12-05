@@ -38,7 +38,7 @@ namespace RosTorv.Line.Model
                 _terninsværdi[i] = 0;
             }
         }
-
+        //kan gøres private
         public void GetTerningsVærdi()
         {
             for (int i = 1; i < 7; i++)
@@ -69,7 +69,7 @@ namespace RosTorv.Line.Model
 
         public void TjekEns()
         {
-            for (int i = 6; i > 0; i--)
+            for (int i = 1; i < 7; i++)
             {
                 //hvis der et par
                 if (_terninsværdi[i] > 1)
@@ -135,8 +135,7 @@ namespace RosTorv.Line.Model
                             }
                         }
                     }
-                }
-                
+                }  
             }
         }
 
