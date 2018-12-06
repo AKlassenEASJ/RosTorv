@@ -36,9 +36,9 @@ namespace RosTorv.Anders.Handlers
 
             if (CardCatalogViewModel.SelectedCard != null && CardCatalogViewModel.SelectedCard.ShownSide == CardCatalogViewModel.SelectedCard.BackSide)
             {
+                MatchHandler.NumberOfFlips++;
                 CardCatalogViewModel.SelectedCard.ShownSide = CardCatalogViewModel.SelectedCard.FrontSide;
                 MatchHandler.CheckMatch();
-                CardCatalogViewModel.SelectedIndex = -1;
                 CardCatalogViewModel.SelectedCard = null;
             }
             //else if (CardCatalogViewModel.SelectedCard.ShownSide == CardCatalogViewModel.SelectedCard.FrontSide)
