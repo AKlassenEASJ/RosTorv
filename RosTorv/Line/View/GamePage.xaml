@@ -22,7 +22,7 @@
         <Grid Column="1">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <GridView ItemsSource="{Binding Spil.Bæger.Terninger, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedTerning, Mode=TwoWay}">
+                    <GridView ItemsSource="{Binding Spil.Bæger.Terninger, Mode=TwoWay}" SelectedIndex="{Binding SelectedTerningIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedTerning, Mode=TwoWay}">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="model:Terning">
                                 <controls:DropShadowPanel BlurRadius="5.0" ShadowOpacity="{Binding ShadowOpacity}"
@@ -36,10 +36,10 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Antal slag tilbage"/>
                     <TextBlock Text="{Binding Spil.SlagTilbage, Mode=TwoWay}"/>
-                    <TextBlock Text="Score"/>
-                    <TextBlock Text="{Binding Spil.Bæger.Score, Mode=TwoWay}"/>
+                    <!--<TextBlock Text="Score"/>
+                    <TextBlock Text="{Binding Spil.Bæger.Score, Mode=TwoWay}"/>-->
                 </StackPanel>
-                <Button x:Name="button" Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+                <Button Content="Slå!" Command="{Binding RollCommand}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
             </StackPanel>
         </Grid>
 
@@ -51,27 +51,28 @@
                 </Grid.ColumnDefinitions>
                 <Grid Column="0">
                     <StackPanel>
-                        <TextBlock Text="Navn:" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-                    <ListView ItemsSource="{Binding Pointtekst.PointTeksterlist}" SelectionMode="None">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Tekst}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <TextBlock Text="Navn:" HorizontalAlignment="Stretch" Height="29" Margin="175,0,0,0" VerticalAlignment="Stretch"/>
+                        <ListView ItemsSource="{Binding Pointtekst.PointTeksterlist}" SelectionMode="None" Height="757" Margin="175,0,10,0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Tekst}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackPanel>
                 </Grid>
                 <Grid Column="1">
                     <StackPanel>
                         <TextBlock Text="{Binding Spil.Spiller1.Name}" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-                        <ListView ItemsSource="{Binding Spil.Spiller1.PointFelter}">
+                        <ListView ItemsSource="{Binding Spil.Spiller1.PointFelter}" SelectedIndex="{Binding SelectedPointIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedPointFelt, Mode=TwoWay}" Height="762" Margin="3,0,-3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding MidlertidigPoint, Mode=TwoWay}"/>
+                                    <Border Background="{Binding BackgroundColor}">
+                                        <TextBlock IsTextSelectionEnabled="{Binding CanChange}" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}"/>
+                                    </Border>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock Text="{Binding Spil.Spiller1.TotalPoint}" Height="43" Margin="10,0,0,0"/>
                     </StackPanel>
 
                 </Grid>

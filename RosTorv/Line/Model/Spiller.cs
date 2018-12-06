@@ -9,46 +9,34 @@ namespace RosTorv.Line.Model
 {
     public class Spiller
     {
-        private string _name;
-        private ObservableCollection<PointFelt> _pointFelter = new ObservableCollection<PointFelt>();
-        private int _totalPoint;
-        public string Name
-        {
-            get { return _name;}
-            set { _name = value; }
-        }
+        public string Name { get; set; }
 
-        public ObservableCollection<PointFelt> PointFelter
-        {
-            get { return _pointFelter;}
-            set { _pointFelter = value; }
-        }
+        public ObservableCollection<PointFelt> PointFelter { get; set; } = new ObservableCollection<PointFelt>();
 
-        public int TotalPoint
-        {
-            get { return _totalPoint;}
-            set { _totalPoint = value; }
-        }
+        //public int TotalPoint { get; set; }
 
-        public Spiller(string Navn)
+        public Spiller(string navn)
         {
-            _name = Navn;
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
-            PointFelter.Add(new PointFelt());
+            Name = navn;
+            PointFelter.Add(new PointFelt());//enere 0
+            PointFelter.Add(new PointFelt());//Toere  1  
+            PointFelter.Add(new PointFelt());//Trerer 2
+            PointFelter.Add(new PointFelt());//Fire 3
+            PointFelter.Add(new PointFelt());//Fem 4 
+            PointFelter.Add(new PointFelt());//seks 5
+            PointFelter.Add(new PointFelt());//bonus 6
+            PointFelter[6].CanChange = false;
+            PointFelter.Add(new PointFelt());//1 Par 7
+            PointFelter.Add(new PointFelt());//2 Par 8 
+            PointFelter.Add(new PointFelt());//3 ens 9
+            PointFelter.Add(new PointFelt());//4 ens 10
+            PointFelter.Add(new PointFelt());//høj 11
+            PointFelter.Add(new PointFelt());//lav12
+            PointFelter.Add(new PointFelt());//fuldHus 13
+            PointFelter.Add(new PointFelt());//chance 14
+            PointFelter.Add(new PointFelt());//Yatzy 15
+            PointFelter.Add(new PointFelt());//sum 16
+            PointFelter[16].CanChange = false;
         }
 
         public void TjekBonusPoint()
@@ -57,14 +45,16 @@ namespace RosTorv.Line.Model
                                 PointFelter[3].Point + PointFelter[4].Point + PointFelter[5].Point;
             if (forløbigPoint >= 63)
             {
-                PointFelter[7].Point = 50;
+                PointFelter[6].Point = 50;
+                PointFelter[6].Color = "Black";
             }
         }
-        public void GetTotalPoints()
+
+        public void FåSum()
         {
-            foreach (PointFelt point in PointFelter)
+            for (int i = 0; i < 16; i++)
             {
-                TotalPoint = point.Point;
+                PointFelter[16].Point = PointFelter[16].Point + PointFelter[i].Point;
             }
         }
 

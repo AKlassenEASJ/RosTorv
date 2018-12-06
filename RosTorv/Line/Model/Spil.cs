@@ -14,6 +14,7 @@ namespace RosTorv.Line.Model
         private int _slagTilbage = 3;
         public Spiller Spiller1 { get; set; }
         public BægerSingelton Bæger { get; set; }
+        public EvaluateTerninger EvaluateTerninger { get; set; }
 
         public int SlagTilbage
         {
@@ -24,32 +25,54 @@ namespace RosTorv.Line.Model
                 OnPropertyChanged();
             }
         }
+
         public Spil()
         {
             Spiller1 = new Spiller("Line");
             Bæger = BægerSingelton.InstanBægerSingelton;
+            EvaluateTerninger = new EvaluateTerninger(this);
         }
 
         public void RollInTurn()
         {
-            Bæger.RollAll();
-
-            if (SlagTilbage == 1)
+            if (SlagTilbage > 0)
             {
-                foreach (Terning terning in Bæger.Terninger)
-                {
-                    terning.CanRoll = true;
-                    terning.ShadowOpacity = 0;
-                }
-                resetSlag();
+                NustilPoint();
+                Bæger.RollAll();
+                EvaluateTerninger.RunAllEvaluate();
+                SlagTilbage = SlagTilbage - 1;
+            }
+            
+        }
+
+        public void NyTur(int index)
+        {
+            if (Spiller1.PointFelter[index].Point == 0)
+            {
+                Spiller1.PointFelter[index].BackgroundColor = "Gray";
             }
             else
             {
-                SlagTilbage = SlagTilbage - 1;
+                Spiller1.PointFelter[index].Color = "Black";
+            }
+            Spiller1.PointFelter[index].CanChange = false;
+            NustilPoint();
+            ResetSlag();
+            Bæger.NulstilTerninger();
+        }
+
+        private void NustilPoint()
+        {
+            foreach (PointFelt pointFelt in Spiller1.PointFelter)
+            {
+                if (pointFelt.CanChange)
+                {
+                    pointFelt.Point = 0;
+                }
             }
         }
 
-        public void resetSlag()
+        public void ResetSlag()
         {
             SlagTilbage = 3;
         }

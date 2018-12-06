@@ -23,7 +23,7 @@ namespace RosTorv.Line.Model
 
         public int Score
         {
-            get { return _score;}
+            get { return _score; }
             set
             {
                 _score = value;
@@ -33,10 +33,10 @@ namespace RosTorv.Line.Model
         private BægerSingelton()
         {
             Terninger = new ObservableCollection<Terning>();
-            Terninger.Add(new Terning(1));
-            Terninger.Add(new Terning(2));
-            Terninger.Add(new Terning(3));
-            Terninger.Add(new Terning(4));
+            Terninger.Add(new Terning(5));
+            Terninger.Add(new Terning(10));
+            Terninger.Add(new Terning(15));
+            Terninger.Add(new Terning(20));
             Terninger.Add(new Terning(5));
         }
 
@@ -66,9 +66,20 @@ namespace RosTorv.Line.Model
             }
         }
 
+        public void NulstilTerninger()
+        {
+            foreach (Terning terning in Terninger)
+            {
+                terning.Eyes = 0;
+                terning.UpdateImage();
+                terning.CanRoll = true;
+                terning.ShadowOpacity = 0;
+            }
+        }
+
         public void GetPoint()
         {
-             Score = Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
+            Score = Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

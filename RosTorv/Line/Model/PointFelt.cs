@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -11,15 +12,17 @@ namespace RosTorv.Line.Model
 {
     public class PointFelt : INotifyPropertyChanged
     {
-        private int _midlertidigPoint;
+        private bool _canChange = true;
         private int _point;
+        private string _color = "Gray";
+        private string _backGroundColor = "None";
 
-        public int MidlertidigPoint
+        public bool CanChange
         {
-            get { return _midlertidigPoint;}
+            get { return _canChange;}
             set
             {
-                _midlertidigPoint = value;
+                _canChange = value;
                 OnPropertyChanged();
             }
         }
@@ -34,10 +37,30 @@ namespace RosTorv.Line.Model
             }
         }
 
+        public string Color
+        {
+            get { return _color;}
+            set
+            {
+                _color = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string BackgroundColor
+        {
+            get { return _backGroundColor;}
+            set
+            {
+                _backGroundColor = value;
+                OnPropertyChanged();
+            } }
         public PointFelt()
         {
             
         }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

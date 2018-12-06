@@ -6,7 +6,6 @@ using Windows.UI.Xaml.Controls;
 using RosTorv.Annotations;
 using RosTorv.MainView;
 using System.Linq;
-using RosTorv.Line.View;
 
 
 
@@ -32,8 +31,7 @@ namespace RosTorv.ViewModel
         public MenuViewModel()
         {
             NavigationItems = new ObservableCollection<NavigationViewItemBase>();
-
-            NavigationItems.Add(new NavigationViewItemHeader() {Content = "Header"});
+            
             PopulateNavigationItems();
 
             SelectedItem = NavigationItems.First(x => x.GetType() == typeof(NavigationViewItem));
@@ -44,6 +42,7 @@ namespace RosTorv.ViewModel
             AddPage("Home Page", Symbol.Home, typeof(HomePage));
             // Add pages under this comment
             AddPage("Butik information", Symbol.Admin, typeof(Sofus.View.ButikInformationPage));
+            NavigationItems.Add(new NavigationViewItemHeader() { Content = "Spil" });
             AddPage("Lines Yatzy", Symbol.Bullets, typeof(RosTorv.Line.View.GamePage));
             AddPage("Turn Over", Symbol.ClearSelection, typeof(RosTorv.Anders.View.StartingPage));
             AddPage("DetBedsteSpil", Symbol.Bold, typeof (RosTorv.Nikolai.View.BlankPage1));

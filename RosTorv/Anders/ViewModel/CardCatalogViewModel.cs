@@ -25,7 +25,7 @@ namespace RosTorv.Anders.ViewModel
         private ICommand _flipCommand;
 
         private Card _selectedCard;
-        private int _selectedIndex = -1;
+        
 
 
         #endregion
@@ -54,16 +54,6 @@ namespace RosTorv.Anders.ViewModel
             set
             {
                 _selectedCard = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int SelectedIndex
-        {
-            get { return _selectedIndex; }
-            set
-            {
-                _selectedIndex = value;
                 OnPropertyChanged();
             }
         }

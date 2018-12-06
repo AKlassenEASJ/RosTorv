@@ -13,14 +13,14 @@ namespace RosTorv.Line.Handler
     {
         public GamePageViewModel GamePageViewModel { get; set; }
 
-        public TerningButtonHandler(GamePageViewModel GamePageViewModel)
+        public TerningButtonHandler(GamePageViewModel gamePageViewModel)
         {
-            this.GamePageViewModel = GamePageViewModel;
+            this.GamePageViewModel = gamePageViewModel;
         }
 
         public void HoldTerning()
         {
-            GamePageViewModel.Spil.Bæger.ChangeCanRoll(GamePageViewModel.SelectedIndex);
+            GamePageViewModel.Spil.Bæger.ChangeCanRoll(GamePageViewModel.SelectedTerningIndex);
         }
 
         
