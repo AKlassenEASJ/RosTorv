@@ -16,7 +16,7 @@ namespace RosTorv.Nikolai.Model
     {
         private Dice _dice1;
         private Dice _dice2;
-        private int _diceCounter = 20;
+        private int _diceCounter;
 
         public Dice Dice1
         {
@@ -40,7 +40,7 @@ namespace RosTorv.Nikolai.Model
             get { return _diceCounter; }
             set
             {
-                value = _diceCounter;
+                _diceCounter = value;
                 OnPropertyChanged();
             }
         }
@@ -55,7 +55,9 @@ namespace RosTorv.Nikolai.Model
             _dice2 = new Dice();         
             RemovedNumbers = new ObservableCollection<Number>();
             NumberCatalog = new Numbers();
+            _diceCounter = 21;
             RollAll();
+
         }
 
         public void CheckNumbers()
@@ -81,9 +83,9 @@ namespace RosTorv.Nikolai.Model
             
             if (DiceCounter == 0)
             {
-                MessageDialogHelper.Show("Congratz mah Bruddah!", "Uganda");
+                MessageDialogHelper.Show("Hej", "hej");
             }
-            DiceCounter--;
+            DiceCounter = _diceCounter -1;
 
             if (RemovedNumbers.Contains(new Number(7, true)) && RemovedNumbers.Contains(new Number(8, true)) && RemovedNumbers.Contains(new Number(9, true)))
             {

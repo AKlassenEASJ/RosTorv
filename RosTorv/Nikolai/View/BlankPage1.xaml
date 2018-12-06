@@ -52,7 +52,7 @@
                     </Button.Content>
                 </Button>
                 <TextBlock Text="{Binding SelectedNumber.NumberValue}"></TextBlock>
-                <TextBlock Text="{Binding DiceCounter}" ></TextBlock>
+                <TextBlock Text="{Binding Game.DiceCounter}" ></TextBlock>
             </StackPanel>
             <GridView ItemsSource="{Binding Game.RemovedNumbers, Mode=TwoWay}">
                 <GridView.ItemTemplate>
