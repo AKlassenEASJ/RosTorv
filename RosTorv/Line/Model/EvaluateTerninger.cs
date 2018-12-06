@@ -32,11 +32,11 @@ namespace RosTorv.Line.Model
             TjekHøjOgLav();
             if (Spil.Spiller1.PointFelter[14].CanChange)
             {
-                GetChange();
+                GetChance();
             }
         }
 
-        private void GetChange()
+        private void GetChance()
         {
             Spil.Spiller1.PointFelter[14].Point = 0;
             for (int i = 1; i < 7; i++)
@@ -83,18 +83,24 @@ namespace RosTorv.Line.Model
 
         private void TjekHøjOgLav()
         {
-            if (!_terningsværdi.ContainsValue(2))
+            if (_terningsværdi[2] == 1)
             {
-                if (_terningsværdi[1] == 1)
+                if (_terningsværdi[3] == 1)
                 {
-                    if (_terningsværdi[6] == 0)
+                    if (_terningsværdi[4] == 1)
                     {
-                        Spil.Spiller1.PointFelter[12].Point = 15;
+                        if (_terningsværdi[5] == 1)
+                        {
+                            if (_terningsværdi[1] == 1)
+                            {
+                                Spil.Spiller1.PointFelter[12].Point = 15;
+                            }
+                            else if (_terningsværdi[6] == 1)
+                            {
+                                Spil.Spiller1.PointFelter[11].Point = 20;
+                            }
+                        }
                     }
-                }
-                else
-                {
-                    Spil.Spiller1.PointFelter[11].Point = 20;
                 }
             }
         }

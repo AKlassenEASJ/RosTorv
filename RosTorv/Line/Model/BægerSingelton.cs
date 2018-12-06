@@ -13,7 +13,7 @@ namespace RosTorv.Line.Model
     public class BægerSingelton :INotifyPropertyChanged
     {
         public ObservableCollection<Terning> Terninger { get; set; }
-        //private int _score;
+        private int _score;
         private static BægerSingelton instansBægerSingelton = new BægerSingelton();
 
         public static BægerSingelton InstanBægerSingelton
@@ -21,15 +21,15 @@ namespace RosTorv.Line.Model
             get { return instansBægerSingelton; }
         }
 
-        //public int Score
-        //{
-        //    get { return _score;}
-        //    set
-        //    {
-        //        _score = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        public int Score
+        {
+            get { return _score; }
+            set
+            {
+                _score = value;
+                OnPropertyChanged();
+            }
+        }
         private BægerSingelton()
         {
             Terninger = new ObservableCollection<Terning>();
@@ -49,7 +49,7 @@ namespace RosTorv.Line.Model
                     terning.Roll();
                 }
             }
-            //GetPoint();
+            GetPoint();
         }
 
         public void ChangeCanRoll(int index)
@@ -66,10 +66,21 @@ namespace RosTorv.Line.Model
             }
         }
 
-        //public void GetPoint()
-        //{
-        //     Score = Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
-        //}
+        public void NulstilTerninger()
+        {
+            foreach (Terning terning in Terninger)
+            {
+                terning.Eyes = 0;
+                terning.UpdateImage();
+                terning.CanRoll = true;
+                terning.ShadowOpacity = 0;
+            }
+        }
+
+        public void GetPoint()
+        {
+            Score = Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

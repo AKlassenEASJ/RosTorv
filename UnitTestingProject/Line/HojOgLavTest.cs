@@ -26,6 +26,25 @@ namespace UnitTestingProject.Line
 
             Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[11].Point);
         }
+
+        //Tjekker om Høj
+        [TestMethod]
+        public void TestIkkeHøj()
+        {
+            _spil = new Spil();
+
+            _spil.Bæger.Terninger[0].Eyes = 6;
+            _spil.Bæger.Terninger[1].Eyes = 5;
+            _spil.Bæger.Terninger[2].Eyes = 5;
+            _spil.Bæger.Terninger[3].Eyes = 5;
+            _spil.Bæger.Terninger[4].Eyes = 5;
+
+            int exptedResult = 0;
+
+            _spil.EvaluateTerninger.RunAllEvaluate();
+
+            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[11].Point);
+        }
         //Tjekker om lav
         [TestMethod]
         public void TestLav()
@@ -39,6 +58,25 @@ namespace UnitTestingProject.Line
             _spil.Bæger.Terninger[4].Eyes = 5;
 
             int exptedResult = 15;
+
+            _spil.EvaluateTerninger.RunAllEvaluate();
+
+            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[12].Point);
+        }
+
+        //Tjekker om lav
+        [TestMethod]
+        public void TestIkkeLav()
+        {
+            _spil = new Spil();
+
+            _spil.Bæger.Terninger[0].Eyes = 1;
+            _spil.Bæger.Terninger[1].Eyes = 2;
+            _spil.Bæger.Terninger[2].Eyes = 4;
+            _spil.Bæger.Terninger[3].Eyes = 4;
+            _spil.Bæger.Terninger[4].Eyes = 5;
+
+            int exptedResult = 0;
 
             _spil.EvaluateTerninger.RunAllEvaluate();
 

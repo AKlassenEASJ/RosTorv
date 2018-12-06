@@ -70,7 +70,7 @@ namespace RosTorv.Line.Model
             UpdateImage();
         }
 
-        private void UpdateImage()
+        public void UpdateImage()
         {
             switch (Eyes)
             {
