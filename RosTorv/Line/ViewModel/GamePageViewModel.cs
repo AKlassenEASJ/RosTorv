@@ -18,27 +18,27 @@ namespace RosTorv.Line.ViewModel
 {
     public class GamePageViewModel : INotifyPropertyChanged
     {
-        private ICommand _roll;
-        private ICommand _holdTerning;
+        //private ICommand _holdTerning;
         private Terning _selectedTerning;
         private PointFelt _selectedPointFelt;
+        private int _selectedTerningIndex;
         public TerningButtonHandler TerningButtonHandler { get; set; }
         public Spil Spil { get; set; }
         public PointTekster Pointtekst { get; set; }
 
-        public ICommand RollCommand
-        {
-            get { return _roll;}
-            set { _roll = value; }
-        }
+        public ICommand RollCommand { get; }
 
-        public ICommand HoldTerningCommand
-        {
-            get { return _holdTerning; }
-            set { _holdTerning = value; }
-        }
+        //public ICommand HoldTerningCommand
+        //{
+        //    get { return _holdTerning; }
+        //    set { _holdTerning = value; }
+        //}
 
-        public int SelectedTerningIndex { get; set; }
+        public int SelectedTerningIndex
+        {
+            get => _selectedTerningIndex;
+            set => _selectedTerningIndex = value;
+        }
 
         public int  SelectedPointIndex { get; set; }
 
@@ -60,15 +60,17 @@ namespace RosTorv.Line.ViewModel
             {
                 _selectedPointFelt = value;
                 OnPropertyChanged();
+                Spil.NyTur(SelectedPointIndex);
             }
         }
+
 
         public GamePageViewModel()
         {
             Spil = new Spil();
             Pointtekst = new PointTekster();
             TerningButtonHandler = new TerningButtonHandler(this);
-            _roll = new RelayCommand(Spil.RollInTurn);
+            RollCommand = new RelayCommand(Spil.RollInTurn);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

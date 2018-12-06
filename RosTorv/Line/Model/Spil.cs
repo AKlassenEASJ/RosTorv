@@ -35,6 +35,34 @@ namespace RosTorv.Line.Model
 
         public void RollInTurn()
         {
+            if (SlagTilbage > 0)
+            {
+                NustilPoint();
+                Bæger.RollAll();
+                EvaluateTerninger.RunAllEvaluate();
+                SlagTilbage = SlagTilbage - 1;
+            }
+            
+        }
+
+        public void NyTur(int index)
+        {
+            if (Spiller1.PointFelter[index].Point == 0)
+            {
+                Spiller1.PointFelter[index].BackgroundColor = "Gray";
+            }
+            else
+            {
+                Spiller1.PointFelter[index].Color = "Black";
+            }
+            Spiller1.PointFelter[index].CanChange = false;
+            NustilPoint();
+            ResetSlag();
+            Bæger.NulstilTerninger();
+        }
+
+        private void NustilPoint()
+        {
             foreach (PointFelt pointFelt in Spiller1.PointFelter)
             {
                 if (pointFelt.CanChange)
@@ -42,47 +70,7 @@ namespace RosTorv.Line.Model
                     pointFelt.Point = 0;
                 }
             }
-            Bæger.RollAll();
-            EvaluateTerninger.RunAllEvaluate();
-            //GetPreviewpoints();
-
-            if (SlagTilbage == 1)
-            {
-                foreach (Terning terning in Bæger.Terninger)
-                {
-                    terning.CanRoll = true;
-                    terning.ShadowOpacity = 0;
-                }
-                ResetSlag();
-            }
-            else
-            {
-                SlagTilbage = SlagTilbage - 1;
-            }
         }
-
-        //public void GetPreviewpoints()
-        //{
-        //    int antalØjne = 1;
-
-
-        //    for (int i = 0; i <= 6; i++)
-        //    {
-        //        if (Spiller1.PointFelter[i].CanChange)
-        //        {
-        //            for (int j = 0; j <= Bæger.Terninger.Count; j++)
-        //            {
-        //                if (Bæger.Terninger[j].Eyes == antalØjne)
-        //                {
-        //                    Spiller1.PointFelter[i].Point = Spiller1.PointFelter[i].Point + Bæger.Terninger[j].Eyes;
-        //                }
-        //            }
-        //        }
-
-        //        antalØjne++;
-        //    }
-
-        //}
 
         public void ResetSlag()
         {
