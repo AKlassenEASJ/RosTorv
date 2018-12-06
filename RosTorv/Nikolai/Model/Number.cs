@@ -12,6 +12,18 @@ namespace RosTorv.Nikolai.Model
     public class Number : INotifyPropertyChanged
     {
         private int numberValue;
+        private double _ShadowOpacity = 5;
+
+
+        public double ShadowOpacity
+        {
+            get { return _ShadowOpacity; }
+            set
+            {
+                _ShadowOpacity = value;
+                OnPropertyChanged();
+            }
+        }
 
         public int NumberValue
         {
@@ -42,8 +54,10 @@ namespace RosTorv.Nikolai.Model
             this.Taken = taken;
         }
 
-
-
+        public override bool Equals(object obj)
+        {
+            return numberValue == ((Number)obj).NumberValue;
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

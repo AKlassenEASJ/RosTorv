@@ -14,27 +14,51 @@ namespace RosTorv.Nikolai.ViewModel
 {
     public class STBVM : INotifyPropertyChanged
     {
-        public Spil Game { get; set; }
+        private Number _selectedNumber;
+        private int _diceCounter;
 
+        public Spil Game { get; set; }
 
         public STBVM()
         {
             Game = new Spil();
             RollCommand = new RelayCommand(Game.RollAll);
+            RemoveCommand = new RelayCommand(Game.CheckNumbers);
         }
 
-        private Number selectedNumber;
+        
+        
+
+
+       
+
+       
 
         public Number SelectedNumber
         {
-            get { return selectedNumber; }
+            get { return _selectedNumber; }
             set
             {
-                selectedNumber = value;
+                _selectedNumber = value;
                 OnPropertyChanged();
+                //SelectedNumber.ShadowOpacity = 0;
+                if (_selectedNumber!= null)
+                    Game.SelectedNumbers.Add(_selectedNumber);
             }
         }
 
+        //public int DiceCounter
+        //{
+        //    get { return; }
+        //    set
+        //    {
+        //        Game.DiceCounter = value;
+        //        OnPropertyChanged();
+        //    }
+
+        //}
+
+        public ICommand RemoveCommand { get; set; }
 
 
         public ICommand RollCommand { get; set; }

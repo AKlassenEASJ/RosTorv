@@ -12,7 +12,7 @@ namespace RosTorv.Nikolai.Model
     public class Dice:INotifyPropertyChanged
     {
         private int _diceValue;
-        private Random _random;
+        private static Random _random;
 
         public int DiceValue
         {

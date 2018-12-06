@@ -16,34 +16,55 @@
     </Page.DataContext>
 
     <Grid>
-<StackPanel>
-        <GridView ItemsSource="{Binding Game.NumberCatalog.NumberList, Mode=TwoWay}" SelectedItem="{Binding SelectedNumber, Mode=TwoWay}">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="model:Number">
-                        <TextBlock FontSize="20" FontWeight="ExtraBlack" Text="{Binding NumberValue}"></TextBlock>
-                    </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
         <StackPanel>
-            <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding Game.Dice1.DiceValue}" ></TextBlock>
-    <Image Width="50" Height="50" Source="{Binding Game.Dice1.ImageSource}"></Image>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding Game.Dice2.DiceValue}" ></TextBlock>
-    <Image Width="50" Height="50" Source="{Binding Game.Dice2.ImageSource}"></Image>
-            </StackPanel>
-            <Button Command="{Binding RollCommand}">
-        <Button.Content>
-                <StackPanel Width="100">
-                    
-                    
-                        <TextBlock Text="roll" FontSize="50"></TextBlock>
+            <GridView ItemsSource="{Binding Game.NumberCatalog.NumberList, Mode=TwoWay}" SelectedItem="{Binding SelectedNumber, Mode=TwoWay}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Number">
+                        <controls:DropShadowPanel BlurRadius="5.0" ShadowOpacity="{Binding ShadowOpacity}"
+                                                  OffsetX="5.0" OffsetY="5.0" Color="Gold">
+                            <TextBlock FontSize="20" FontWeight="ExtraBlack" Text="{Binding NumberValue}"></TextBlock>
+                        </controls:DropShadowPanel>
+
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Game.Dice1.DiceValue}" ></TextBlock>
+                    <Image Width="50" Height="50" Source="{Binding Game.Dice1.ImageSource}"></Image>
                 </StackPanel>
-            </Button.Content>
-    </Button>
-<TextBlock Text="{Binding SelectedNumber.NumberValue}"></TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Game.Dice2.DiceValue}" ></TextBlock>
+                    <Image Width="50" Height="50" Source="{Binding Game.Dice2.ImageSource}"></Image>
+                </StackPanel>
+                <Button Command="{Binding RollCommand}">
+                    <Button.Content>
+                        <StackPanel Width="100">
+                            <TextBlock Text="roll" FontSize="50"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Command="{Binding RemoveCommand}">
+                    <Button.Content>
+                        <StackPanel Width="100">
+                            <TextBlock Text="remove" FontSize="50"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <TextBlock Text="{Binding SelectedNumber.NumberValue}"></TextBlock>
+                <TextBlock Text="{Binding DiceCounter}" ></TextBlock>
+            </StackPanel>
+            <GridView ItemsSource="{Binding Game.RemovedNumbers, Mode=TwoWay}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Number">
+                        <controls:DropShadowPanel BlurRadius="5.0" ShadowOpacity="{Binding ShadowOpacity}"
+                                                  OffsetX="5.0" OffsetY="5.0" Color="Red">
+                            <TextBlock FontSize="20" FontWeight="ExtraBlack" Text="{Binding NumberValue}"></TextBlock>
+                        </controls:DropShadowPanel>
+
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
         </StackPanel>
-</StackPanel>
     </Grid>
 </Page>

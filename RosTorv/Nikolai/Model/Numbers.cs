@@ -12,6 +12,7 @@ namespace RosTorv.Nikolai.Model
 {
     public class Numbers : INotifyPropertyChanged
     {
+
         public ObservableCollection<Number> NumberList { get; set; }
 
         public Numbers()

@@ -152,6 +152,7 @@
     <Compile Include="MainView\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Nikolai\Common\MessageDialogHelper.cs" />
     <Compile Include="Nikolai\Model\Dice.cs" />
     <Compile Include="Nikolai\Model\Number.cs" />
     <Compile Include="Nikolai\Model\Numbers.cs" />
