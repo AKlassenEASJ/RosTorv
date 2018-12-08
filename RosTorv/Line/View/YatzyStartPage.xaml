@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="RosTorv.Line.View.YatzyStartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RosTorv.Line.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RosTorv.Line.ViewModel"
+    mc:Ignorable="d"
+    Background="White">
+    <Page.DataContext>
+        <viewModel:StartPageViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Column="1">
+            <StackPanel>
+                <TextBlock Text="Antal spillere:" FontSize="40"/>
+                <Button  Content="1" FontSize="40" Width="100" Margin="10"/>
+                <!--<Button Content="2" FontSize="45" Width="100" Margin="10"/>
+                <Button Content="3" FontSize="45" Width="100" Margin="10"/>
+                <Button Content="4" FontSize="45" Width="100" Margin="10"/>
+                <Button Content="5" FontSize="45" Width="100" Margin="10"/>-->
+
+                
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Column="2">
+            <StackPanel>
+                <TextBlock Text="Spiller:" FontSize="40"/>
+                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="Visible" Header="Spiller 1" FontSize="30"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Column="3">
+            <Button Content="Start Spil" FontSize="40" Command="{Binding StartGameCommand}"/><!--skal linkes-->
+            
+        </Grid>
+
+    </Grid>
+</Page>

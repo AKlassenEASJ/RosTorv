@@ -6,13 +6,13 @@ namespace UnitTestingProject.Line
     [TestClass]
     public class Test2Par
     {
-        private Spil _spil;
+        private SpilSingelton _spil;
 
         //Tjekker om Point bliver ændret hvis der er 2 Par
         [TestMethod]
         public void TestOm2Par()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -30,7 +30,7 @@ namespace UnitTestingProject.Line
         [TestMethod]
         public void TestOmIkke2Par()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -47,7 +47,7 @@ namespace UnitTestingProject.Line
         //I tilfælde af at der er mere end 2 af den ene skal den stadig kunne måle ud fra 2 Par
         public void TestOmMereEnd2Par()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -65,7 +65,7 @@ namespace UnitTestingProject.Line
         [TestMethod]
         public void TestOm4EnsCanNotChange()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
             _spil.Spiller1.PointFelter[8].CanChange = false;
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;

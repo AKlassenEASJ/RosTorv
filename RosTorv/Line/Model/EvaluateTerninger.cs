@@ -9,10 +9,10 @@ namespace RosTorv.Line.Model
 {
     public class EvaluateTerninger
     {
-        public Spil Spil { get; set; }
+        public SpilSingelton Spil { get; set; }
         private Dictionary<int, int> _terningsværdi = new Dictionary<int, int>();
 
-        public EvaluateTerninger(Spil spil)
+        public EvaluateTerninger(SpilSingelton spil)
         {
             this.Spil = spil;
             _terningsværdi.Add(1, 0);
@@ -41,7 +41,7 @@ namespace RosTorv.Line.Model
             Spil.Spiller1.PointFelter[14].Point = 0;
             for (int i = 1; i < 7; i++)
             {
-                Spil.Spiller1.PointFelter[14].Point = Spil.Spiller1.PointFelter[14].Point + _terningsværdi[i];
+                Spil.Spiller1.PointFelter[14].Point = Spil.Spiller1.PointFelter[14].Point + (_terningsværdi[i]*i);
             }
         }
 

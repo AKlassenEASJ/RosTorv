@@ -9,12 +9,19 @@ using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
 {
-    public class Spil : INotifyPropertyChanged
+    public class SpilSingelton : INotifyPropertyChanged
     {
         private int _slagTilbage = 3;
         public Spiller Spiller1 { get; set; }
         public BægerSingelton Bæger { get; set; }
         public EvaluateTerninger EvaluateTerninger { get; set; }
+        
+        private static SpilSingelton _instansSpil = new SpilSingelton();
+
+        public static SpilSingelton InstansSpil
+        {
+            get { return _instansSpil; }
+        }
 
         public int SlagTilbage
         {
@@ -26,7 +33,7 @@ namespace RosTorv.Line.Model
             }
         }
 
-        public Spil()
+        private SpilSingelton()
         {
             Spiller1 = new Spiller("Line");
             Bæger = BægerSingelton.InstanBægerSingelton;
@@ -57,6 +64,8 @@ namespace RosTorv.Line.Model
             }
             Spiller1.PointFelter[index].CanChange = false;
             NustilPoint();
+            Spiller1.TjekBonusPoint();
+            Spiller1.FåSum();
             ResetSlag();
             Bæger.NulstilTerninger();
         }
