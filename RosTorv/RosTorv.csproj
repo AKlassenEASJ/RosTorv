@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="Thomas\Model\Dice.cs" />
     <Compile Include="Thomas\Model\Game.cs" />
+    <Compile Include="Thomas\ViewModel\YatziDuelViewModel.cs" />
     <Compile Include="Thomas\View\YatziDuel.xaml.cs">
       <DependentUpon>YatziDuel.xaml</DependentUpon>
     </Compile>
@@ -295,9 +296,7 @@
       <Version>5.0.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Thomas\ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -9,6 +9,80 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="61,33,0,0" Text="YaziDuel Regler" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="138"/>
+        <TextBlock HorizontalAlignment="Left" Margin="61,58,0,0" Text="Spil Yazi mod Computeren.                                                     Væd et antal points, og få dem dobbelt tilbage igen hvis du vinder!" TextWrapping="Wrap" VerticalAlignment="Top" Height="64" Width="281"/>
+        <TextBlock HorizontalAlignment="Left" Margin="61,154,0,0" Text="Hvad er mest værd? her er listen over ting du kan slå, fra højest til lavest:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="61,179,0,0" Spacing="4">
+            <TextBlock HorizontalAlignment="Right" Text="Yazi" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Right" Text="Stor Straight" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Right" Text="Lille Straight" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Right" Text="Fire Ens" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Right" Text="Fuldt Hus" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Right" Text="Tre Ens" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Right" Text="To Par" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Right" Text="To Ens" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Right" Text="Chancen" VerticalAlignment="Top"/>
+        </StackPanel >
+        <TextBlock HorizontalAlignment="Left" Margin="61,403,0,0" Text="Har begge spillere slået for eksempel to par, vinder den spiller der har den højeste terning værdi." TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="148,179,0,0" Spacing="4">
+            <StackPanel Orientation="Horizontal" Height="21" Spacing="1">
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="21" Spacing="1">
+                <Image Source="/Thomas/Assets/die_2.png"/>
+                <Image Source="/Thomas/Assets/die_3.png"/>
+                <Image Source="/Thomas/Assets/die_4.png"/>
+                <Image Source="/Thomas/Assets/die_5.png"/>
+                <Image Source="/Thomas/Assets/die_6.png"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="21" Spacing="1">
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_2.png"/>
+                <Image Source="/Thomas/Assets/die_3.png"/>
+                <Image Source="/Thomas/Assets/die_4.png"/>
+                <Image Source="/Thomas/Assets/die_5.png"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="21" Spacing="1">
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="21" Spacing="1">
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_2.png"/>
+                <Image Source="/Thomas/Assets/die_2.png"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="21" Spacing="1">
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="21" Spacing="1">
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_2.png"/>
+                <Image Source="/Thomas/Assets/die_2.png"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="21" Spacing="1">
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_1.png"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="21" Spacing="1">
+                <Image Source="/Thomas/Assets/die_1.png"/>
+                <Image Source="/Thomas/Assets/die_2.png"/>
+                <Image Source="/Thomas/Assets/die_3.png"/>
+                <Image Source="/Thomas/Assets/die_4.png"/>
+                <Image Source="/Thomas/Assets/die_6.png"/>
+            </StackPanel>
+        </StackPanel>
 
     </Grid>
+
 </Page>

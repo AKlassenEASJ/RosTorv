@@ -5,10 +5,28 @@
     xmlns:local="using:RosTorv.Thomas.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RosTorv.Thomas.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.DataContext>
+        <viewModel:YatziDuelViewModel/>
+    </Page.DataContext>
     <Grid>
+        <StackPanel Orientation="Horizontal"  Margin="432,142,563,592">
+            <CheckBox HorizontalAlignment="Left" Width="15" Margin="0,0,0,0" VerticalAlignment="Center"/>
+            <CheckBox HorizontalAlignment="Left" Width="1"/>
+            <CheckBox HorizontalAlignment="Left" Width="1"/>
+            <CheckBox HorizontalAlignment="Left" Width="1"/>
+            <CheckBox HorizontalAlignment="Left" Width="1"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"  Margin="432,409,555,325">
+            <CheckBox HorizontalAlignment="Left" Width="15" Margin="0,0,0,0" VerticalAlignment="Center"/>
+            <CheckBox HorizontalAlignment="Left" Width="1"/>
+            <CheckBox HorizontalAlignment="Left" Width="1"/>
+            <CheckBox HorizontalAlignment="Left" Width="1"/>
+            <CheckBox HorizontalAlignment="Left" Width="1"/>
+        </StackPanel>
+        <Image HorizontalAlignment="Left" Height="100" Margin="1170,400,0,0" VerticalAlignment="Top" Width="100"/>
 
     </Grid>
 </Page>
