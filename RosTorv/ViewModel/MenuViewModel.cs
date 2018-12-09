@@ -46,6 +46,8 @@ namespace RosTorv.ViewModel
             AddPage("Lines Yatzy", Symbol.Bullets, typeof(RosTorv.Line.View.GamePage));
             AddPage("Turn Over", Symbol.ClearSelection, typeof(RosTorv.Anders.View.StartingPage));
             AddPage("DetBedsteSpil", Symbol.Bold, typeof (RosTorv.Nikolai.View.BlankPage1));
+            AddPage("Yatzi Duel", Symbol.ThreeBars, typeof(RosTorv.Thomas.View.YatziDuel));
+            AddPage("Regler for Yatzi Duel", Symbol.TwoBars, typeof(RosTorv.Thomas.View.YatziDuelRules));
 
         }
 
