@@ -191,6 +191,12 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Thomas\Assets\die_1.png" />
+    <Content Include="Thomas\Assets\die_2.png" />
+    <Content Include="Thomas\Assets\die_3.png" />
+    <Content Include="Thomas\Assets\die_4.png" />
+    <Content Include="Thomas\Assets\die_5.png" />
+    <Content Include="Thomas\Assets\die_6.png" />
     <None Include="RosTorv_TemporaryKey.pfx" />
     <Content Include="Anders\Assets\cardback_65.png" />
     <Content Include="Nikolai\Assets\die_1.png" />
@@ -290,7 +296,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Thomas\Assets\" />
     <Folder Include="Thomas\ViewModel\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
