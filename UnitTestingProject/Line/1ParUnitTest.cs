@@ -6,13 +6,15 @@ namespace UnitTestingProject.Line
     [TestClass]
     public class Test1Par
     {
-        private Spil _spil;
+        private SpilSingelton _spil;
 
         //Tjekker om Point bliver ændret hvis der er 1 Par
         [TestMethod]
         public void TestOm1Par()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
+            _spil.Spiller1.PointFelter[7].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -30,7 +32,9 @@ namespace UnitTestingProject.Line
         [TestMethod]
         public void TestOmIkke1Par()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
+            _spil.Spiller1.PointFelter[7].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 4;
@@ -47,7 +51,9 @@ namespace UnitTestingProject.Line
         //I tilfælde af at der er mere end 2 skal den stadig kunne måle ud fra 1 Par
         public void TestOmMereEnd2Par()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
+            _spil.Spiller1.PointFelter[7].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -64,7 +70,9 @@ namespace UnitTestingProject.Line
         //I tilfælde af at der er 2 1 par skal den Kunne vælge den højeste
         public void TestOmHøjesteValgt()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
+            _spil.Spiller1.PointFelter[7].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -82,8 +90,10 @@ namespace UnitTestingProject.Line
         [TestMethod]
         public void TestOm4EnsCanNotChange()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
             _spil.Spiller1.PointFelter[7].CanChange = false;
+
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
             _spil.Bæger.Terninger[2].Eyes = 3;

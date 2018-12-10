@@ -6,12 +6,14 @@ namespace UnitTestingProject.Line
     [TestClass]
     public class Test4Ens
     {
-        private Spil _spil;
+        private SpilSingelton _spil;
         //Tjekker om Point bliver ændret hvis der er 4 ens
         [TestMethod]
         public void TestOm4Ens()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[10].Point = 0;
+            _spil.Spiller1.PointFelter[10].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
@@ -29,7 +31,9 @@ namespace UnitTestingProject.Line
         [TestMethod]
         public void TestOmIkke4Ens()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[10].Point = 0;
+            _spil.Spiller1.PointFelter[10].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
@@ -47,7 +51,9 @@ namespace UnitTestingProject.Line
         [TestMethod]
         public void TestOmMereEnd4Ens()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[10].Point = 0;
+            _spil.Spiller1.PointFelter[10].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 2;
             _spil.Bæger.Terninger[1].Eyes = 2;
@@ -65,8 +71,10 @@ namespace UnitTestingProject.Line
         [TestMethod]
         public void TestOm4EnsCanNotChange()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[10].Point = 0;
             _spil.Spiller1.PointFelter[10].CanChange = false;
+
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
             _spil.Bæger.Terninger[2].Eyes = 2;
