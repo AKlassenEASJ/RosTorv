@@ -13,6 +13,8 @@ namespace UnitTestingProject.Line
         public void TestOm1Par()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
+            _spil.Spiller1.PointFelter[7].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -31,6 +33,8 @@ namespace UnitTestingProject.Line
         public void TestOmIkke1Par()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
+            _spil.Spiller1.PointFelter[7].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 4;
@@ -48,6 +52,8 @@ namespace UnitTestingProject.Line
         public void TestOmMereEnd2Par()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
+            _spil.Spiller1.PointFelter[7].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -65,6 +71,8 @@ namespace UnitTestingProject.Line
         public void TestOmHøjesteValgt()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
+            _spil.Spiller1.PointFelter[7].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -83,7 +91,9 @@ namespace UnitTestingProject.Line
         public void TestOm4EnsCanNotChange()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[7].Point = 0;
             _spil.Spiller1.PointFelter[7].CanChange = false;
+
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
             _spil.Bæger.Terninger[2].Eyes = 3;

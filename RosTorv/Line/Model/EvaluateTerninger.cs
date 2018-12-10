@@ -132,7 +132,7 @@ namespace RosTorv.Line.Model
 
                                     }
                                 }
-
+                                //FuldtHus
                                 if (Spil.Spiller1.PointFelter[13].CanChange)
                                 {
                                         if (_terningsværdi[j] == 3)

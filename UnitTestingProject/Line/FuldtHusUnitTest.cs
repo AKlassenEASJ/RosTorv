@@ -12,6 +12,8 @@ namespace UnitTestingProject.Line
         public void TestFuldtHusFlestHøjttal()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[13].Point = 0;
+            _spil.Spiller1.PointFelter[13].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
@@ -30,6 +32,8 @@ namespace UnitTestingProject.Line
         public void TestFuldtHusFlestLavtTal()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[13].Point = 0;
+            _spil.Spiller1.PointFelter[13].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
@@ -49,6 +53,9 @@ namespace UnitTestingProject.Line
         public void TestFuldtHusHvisDerIkkeEr()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[13].Point = 0;
+            _spil.Spiller1.PointFelter[13].CanChange = true;
+
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
             _spil.Bæger.Terninger[2].Eyes = 3;
@@ -67,7 +74,9 @@ namespace UnitTestingProject.Line
         public void TestFuldtHusCanNotChange()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[13].Point = 0;
             _spil.Spiller1.PointFelter[13].CanChange = false;
+
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
             _spil.Bæger.Terninger[2].Eyes = 1;

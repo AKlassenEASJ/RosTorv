@@ -12,6 +12,8 @@ namespace UnitTestingProject.Line
         public void TestYatzyMed1()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[15].Point = 0;
+            _spil.Spiller1.PointFelter[15].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -30,6 +32,8 @@ namespace UnitTestingProject.Line
         public void TestYatzyMed2()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[15].Point = 0;
+            _spil.Spiller1.PointFelter[15].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 2;
             _spil.Bæger.Terninger[1].Eyes = 2;
@@ -48,6 +52,8 @@ namespace UnitTestingProject.Line
         public void TestYatzyMed3()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[15].Point = 0;
+            _spil.Spiller1.PointFelter[15].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 3;
             _spil.Bæger.Terninger[1].Eyes = 3;
@@ -65,6 +71,8 @@ namespace UnitTestingProject.Line
         public void TestYatzyMed4()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[15].Point = 0;
+            _spil.Spiller1.PointFelter[15].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 4;
             _spil.Bæger.Terninger[1].Eyes = 4;
@@ -83,6 +91,8 @@ namespace UnitTestingProject.Line
         public void TestYatzyMed5()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[15].Point = 0;
+            _spil.Spiller1.PointFelter[15].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 5;
             _spil.Bæger.Terninger[1].Eyes = 5;
@@ -100,6 +110,8 @@ namespace UnitTestingProject.Line
         public void TestYatzyMed6()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[15].Point = 0;
+            _spil.Spiller1.PointFelter[15].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 6;
             _spil.Bæger.Terninger[1].Eyes = 6;
@@ -118,6 +130,8 @@ namespace UnitTestingProject.Line
         public void TestYatzyMed4Ens()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[15].Point = 0;
+            _spil.Spiller1.PointFelter[15].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 6;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -136,6 +150,7 @@ namespace UnitTestingProject.Line
         public void TestYatzyKanIkkeÆndres()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.Spiller1.PointFelter[15].Point = 0;
             _spil.Spiller1.PointFelter[15].CanChange = false;
 
             _spil.Bæger.Terninger[0].Eyes = 6;

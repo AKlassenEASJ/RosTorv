@@ -32,7 +32,7 @@ namespace RosTorv.Line.Model
             PointFelter.Add(new PointFelt());//3 ens 9
             PointFelter.Add(new PointFelt());//4 ens 10
             PointFelter.Add(new PointFelt());//høj 11
-            PointFelter.Add(new PointFelt());//lav12
+            PointFelter.Add(new PointFelt());//lav 12
             PointFelter.Add(new PointFelt());//fuldHus 13
             PointFelter.Add(new PointFelt());//chance 14
             PointFelter.Add(new PointFelt());//Yatzy 15
