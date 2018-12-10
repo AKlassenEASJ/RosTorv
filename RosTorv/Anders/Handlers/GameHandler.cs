@@ -44,7 +44,8 @@ namespace RosTorv.Anders.Handlers
 
         public void Reset()
         {
-            Game = null;
+            Game.Score = 0;
+            Game.Turns = 0;
             CardCatalog.ResetCards();
         }
 

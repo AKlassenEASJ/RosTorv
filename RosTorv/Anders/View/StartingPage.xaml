@@ -14,12 +14,14 @@
     </Page.DataContext>
 
     
-
+<Grid>
     <StackPanel Orientation="Horizontal" Spacing="100" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-        <Button Click="StartSpil_Click" Content="Start Spil"  Height="118" Width="191" FontSize="36"/>
+        <Button Click="StartSpil_Click" Command="{Binding ResetCommand}"  Content="Start Spil"  Height="118" Width="191" FontSize="36"/>
         <Button Content="Skift Tema"  Height="118" Width="191" FontSize="36"/>
-        
+
 
     </StackPanel>
+    </Grid>
+    
 </Page>

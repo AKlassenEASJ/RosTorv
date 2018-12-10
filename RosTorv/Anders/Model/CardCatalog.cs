@@ -43,7 +43,8 @@ namespace RosTorv.Anders.Model
         public ObservableCollection<Card> CollectionOfCards
         {
             get { return _collectionOfCards; }
-            
+            set { _collectionOfCards = value; }
+
 
         }
 
@@ -94,6 +95,15 @@ namespace RosTorv.Anders.Model
             _collectionOfCards.Clear();
             foreach (Card theCard in _arrayOfCards)
             {
+                if (theCard.ShownSide == null)
+                {
+                    theCard.ShownSide = theCard.BackSide;
+                }
+
+                if (theCard.IsMatched)
+                {
+                    theCard.IsMatched = false;
+                }
                 _collectionOfCards.Add(theCard);
                 _collectionOfCards.Add(new Card(theCard.ID, theCard.FrontSide));
             }

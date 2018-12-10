@@ -25,6 +25,7 @@ namespace RosTorv.Anders.Handlers
 
         public HighScore HighScore { get; set; }
 
+        public FileHandler FileHandler { get; set; }
 
 
         #endregion
@@ -35,7 +36,7 @@ namespace RosTorv.Anders.Handlers
         {
             PlayerViewModel = playerViewModel;
             HighScore = HighScore.Instance;
-
+            FileHandler = new FileHandler(this);
         }
 
         

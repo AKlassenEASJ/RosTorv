@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="Anders\Handlers\CardHandler.cs" />
     <Compile Include="Anders\Handlers\CardListRandomizier.cs" />
+    <Compile Include="Anders\Handlers\FileHandler.cs" />
     <Compile Include="Anders\Handlers\GameHandler.cs" />
     <Compile Include="Anders\Handlers\MatchHandler.cs" />
     <Compile Include="Anders\Handlers\PlayerHandler.cs" />
