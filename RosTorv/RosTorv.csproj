@@ -149,6 +149,9 @@
     <Compile Include="Line\Model\Turn.cs" />
     <Compile Include="Line\ViewModel\GamePageViewModel.cs" />
     <Compile Include="Line\ViewModel\StartPageViewModel.cs" />
+    <Compile Include="Line\View\EndPage.xaml.cs">
+      <DependentUpon>EndPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Line\View\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
@@ -238,6 +241,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Anders\View\StartingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Line\View\EndPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

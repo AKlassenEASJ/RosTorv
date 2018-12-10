@@ -27,7 +27,6 @@ namespace RosTorv.Line.Model
             PointFelter.Add(new PointFelt());//seks 5
             PointFelter.Add(new PointFelt());//bonus 6
             PointFelter[6].CanChange = false;
-            PointFelter[6].Color = "Black";
             PointFelter.Add(new PointFelt());//1 Par 7
             PointFelter.Add(new PointFelt());//2 Par 8 
             PointFelter.Add(new PointFelt());//3 ens 9
@@ -50,14 +49,6 @@ namespace RosTorv.Line.Model
             {
                 PointFelter[6].Point = 50;
                 PointFelter[6].Color = "Black";
-            }
-        }
-
-        public void FåSum()
-        {
-            for (int i = 0; i < 16; i++)
-            {
-                PointFelter[16].Point = PointFelter[16].Point + PointFelter[i].Point;
             }
         }
 

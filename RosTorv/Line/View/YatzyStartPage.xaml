@@ -22,11 +22,11 @@
         <Grid Column="1">
             <StackPanel>
                 <TextBlock Text="Antal spillere:" FontSize="40"/>
-                <Button  Content="1" FontSize="40" Width="100" Margin="10"/>
-                <!--<Button Content="2" FontSize="45" Width="100" Margin="10"/>
-                <Button Content="3" FontSize="45" Width="100" Margin="10"/>
-                <Button Content="4" FontSize="45" Width="100" Margin="10"/>
-                <Button Content="5" FontSize="45" Width="100" Margin="10"/>-->
+                <Button  Content="1" Command="{Binding Command1Spiller}"  FontSize="40" Width="100" Margin="10"/>
+                <Button Content="2" Command="{Binding Command2Spiller}" FontSize="45" Width="100" Margin="10"/>
+                <Button Content="3" Command="{Binding Command3Spiller}" FontSize="45" Width="100" Margin="10"/>
+                <Button Content="4" Command="{Binding Command4Spiller}" FontSize="45" Width="100" Margin="10"/>
+                <Button Content="5" Command="{Binding Command5Spiller}" FontSize="45" Width="100" Margin="10"/>
 
                 
             </StackPanel>
@@ -36,7 +36,11 @@
         <Grid Column="2">
             <StackPanel>
                 <TextBlock Text="Spiller:" FontSize="40"/>
-                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="Visible" Header="Spiller 1" FontSize="30"/>
+                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton1}" Header="Spiller 1" FontSize="30"/>
+                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton2}" Header="Spiller 2" FontSize="30"/>
+                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton3}" Header="Spiller 3" FontSize="30"/>
+                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton4}" Header="Spiller 4" FontSize="30"/>
+                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton5}" Header="Spiller 5" FontSize="30"/>
             </StackPanel>
         </Grid>
 

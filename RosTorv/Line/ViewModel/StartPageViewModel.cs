@@ -16,69 +16,76 @@ namespace RosTorv.Line.ViewModel
 {
     class StartPageViewModel : INotifyPropertyChanged
     {
-        private string _name1;
-        private string _name2;
-        private string _name3;
-        private string _name4;
-        private string _name5;
-
-        public StartPageHandler StartPageHandler { get; set; }
-
         public ICommand Command1Spiller { get; set; }
         public ICommand Command2Spiller { get; set; }
-        public ICommand command3Spiller { get; set; }
-        public ICommand command4Spiller { get; set; }
-        public ICommand command5Spiller { get; set; }
+        public ICommand Command3Spiller { get; set; }
+        public ICommand Command4Spiller { get; set; }
+        public ICommand Command5Spiller { get; set; }
         public ICommand StartGameCommand { get; set; }
 
         public SpilSingelton Spil { get; set; }
+        public StartPageHandler StartPageHandler { get; set; }
+        public int AntalSpillere { get; set; }
 
-        public string Name1
+        public string Name1 { get; set; }
+        public string Name2 { get; set; }
+        public string Name3 { get; set; }
+        public string Name4 { get; set; }
+        public string Name5 { get; set; }
+
+        private string _nameButton1;
+        private string _nameButton2;
+        private string _nameButton3;
+        private string _nameButton4;
+        private string _nameButton5;
+
+        public string NameButton1
         {
-            get { return _name1;}
+            get { return _nameButton1; }
             set
             {
-                _name1 = value;
+                _nameButton1 = value;
                 OnPropertyChanged();
             }
         }
 
-        public string Name2
+        public string NameButton2
         {
-            get { return _name2; }
+            get { return _nameButton2; }
             set
             {
-                _name2 = value;
+                _nameButton2 = value;
                 OnPropertyChanged();
             }
         }
-
-        public string Name3
+        public string NameButton3
         {
-            get { return _name3; }
+            get { return _nameButton3; }
             set
             {
-                _name3 = value;
+                _nameButton3 = value;
                 OnPropertyChanged();
             }
         }
-
-        public string Name4
+        public string NameButton4
         {
-            get { return _name4; }
+            get
+            {
+                return _nameButton4;
+            }
             set
             {
-                _name4 = value;
+                _nameButton4 = value;
                 OnPropertyChanged();
             }
         }
-
-        public string Name5
+        public string NameButton5 { get
         {
-            get { return _name5; }
+            return _nameButton5;
+        }
             set
             {
-                _name5 = value;
+                _nameButton5 = value;
                 OnPropertyChanged();
             }
         }
@@ -87,7 +94,17 @@ namespace RosTorv.Line.ViewModel
         {
             StartPageHandler = new StartPageHandler(this);
             Spil = SpilSingelton.InstansSpil;
-            StartGameCommand= new RelayCommand(StartPageHandler.StartGame);
+            StartGameCommand = new RelayCommand(StartPageHandler.StartGame);
+            Command1Spiller = new RelayCommand(StartPageHandler.Button1);
+            Command2Spiller = new RelayCommand(StartPageHandler.Button2);
+            Command3Spiller = new RelayCommand(StartPageHandler.Button3);
+            Command4Spiller = new RelayCommand(StartPageHandler.Button4);
+            Command5Spiller = new RelayCommand(StartPageHandler.Button5);
+            NameButton1 = "Collapsed";
+            NameButton2 = "Collapsed";
+            NameButton3 = "Collapsed";
+            NameButton4 = "Collapsed";
+            NameButton5 = "Collapsed";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

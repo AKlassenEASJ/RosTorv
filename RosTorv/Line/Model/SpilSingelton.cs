@@ -6,12 +6,16 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using RosTorv.Annotations;
+using RosTorv.Common;
+using RosTorv.Line.View;
+using static RosTorv.Common.NavigationService;
 
 namespace RosTorv.Line.Model
 {
     public class SpilSingelton : INotifyPropertyChanged
     {
         private int _slagTilbage = 3;
+        public int Tur { get; set; }
         public Spiller Spiller1 { get; set; }
         public BægerSingelton Bæger { get; set; }
         public EvaluateTerninger EvaluateTerninger { get; set; }
@@ -54,20 +58,28 @@ namespace RosTorv.Line.Model
 
         public void NyTur(int index)
         {
-            if (Spiller1.PointFelter[index].Point == 0)
+            if (Spiller1.PointFelter[index].CanChange)
             {
-                Spiller1.PointFelter[index].BackgroundColor = "Gray";
+                Tur--;
+                if (Spiller1.PointFelter[index].Point == 0)
+                {
+                    Spiller1.PointFelter[index].BackgroundColor = "Gray";
+                }
+                else
+                {
+                    Spiller1.PointFelter[index].Color = "Black";
+                }
+                Spiller1.PointFelter[index].CanChange = false;
+                NustilPoint();
+                Spiller1.TjekBonusPoint();
+                Spiller1.PointFelter[16].Point = Spiller1.PointFelter[16].Point + Spiller1.PointFelter[index].Point;
+                ResetSlag();
+                Bæger.NulstilTerninger();
+                if (Tur ==0)
+                {
+                    NavigationService.Navigate(typeof(EndPage));
+                }
             }
-            else
-            {
-                Spiller1.PointFelter[index].Color = "Black";
-            }
-            Spiller1.PointFelter[index].CanChange = false;
-            NustilPoint();
-            Spiller1.TjekBonusPoint();
-            Spiller1.FåSum();
-            ResetSlag();
-            Bæger.NulstilTerninger();
         }
 
         private void NustilPoint()
