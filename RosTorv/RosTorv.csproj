@@ -118,18 +118,27 @@
   <ItemGroup>
     <Compile Include="Anders\Handlers\CardHandler.cs" />
     <Compile Include="Anders\Handlers\CardListRandomizier.cs" />
+    <Compile Include="Anders\Handlers\GameHandler.cs" />
     <Compile Include="Anders\Handlers\MatchHandler.cs" />
+    <Compile Include="Anders\Handlers\PlayerHandler.cs" />
     <Compile Include="Anders\Model\Card.cs" />
     <Compile Include="Anders\Model\CardCatalog.cs" />
     <Compile Include="Anders\Model\Game.cs" />
+    <Compile Include="Anders\Model\HighScore.cs" />
     <Compile Include="Anders\Model\Player.cs" />
     <Compile Include="Anders\Model\Skabelon.cs" />
     <Compile Include="Anders\ViewModel\CardCatalogViewModel.cs" />
+    <Compile Include="Anders\ViewModel\HighScoreListViewModel.cs" />
+    <Compile Include="Anders\ViewModel\PlayerViewModel.cs" />
+    <Compile Include="Anders\ViewModel\StartingPageViewModel.cs" />
     <Compile Include="Anders\View\EnterPlayerNamePage.xaml.cs">
       <DependentUpon>EnterPlayerNamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Anders\View\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Anders\View\HighScoreListPage.xaml.cs">
+      <DependentUpon>HighScoreListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Anders\View\StartingPage.xaml.cs">
       <DependentUpon>StartingPage.xaml</DependentUpon>
@@ -229,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Anders\View\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Anders\View\HighScoreListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

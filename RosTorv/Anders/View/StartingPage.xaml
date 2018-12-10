@@ -5,13 +5,21 @@
     xmlns:local="using:RosTorv.Anders.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RosTorv.Anders.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <viewModel:StartingPageViewModel/>
+    </Page.DataContext>
+
+    
+
     <StackPanel Orientation="Horizontal" Spacing="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-        
+
         <Button Click="StartSpil_Click" Content="Start Spil"  Height="118" Width="191" FontSize="36"/>
         <Button Content="Skift Tema"  Height="118" Width="191" FontSize="36"/>
+        
 
     </StackPanel>
 </Page>

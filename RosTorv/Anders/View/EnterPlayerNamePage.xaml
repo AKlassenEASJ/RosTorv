@@ -5,10 +5,36 @@
     xmlns:local="using:RosTorv.Anders.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RosTorv.Anders.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <viewModel:PlayerViewModel/>
+    </Page.DataContext>
+
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <TextBlock Text="Du Fik" FontSize="48"/>
+            <TextBlock Text="{Binding TheGame.Score}" Margin="5,0,0,0" FontSize="48"/>
+            <TextBlock Text="point" Margin="5,0,0,0" FontSize="48"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="Skriv Navn" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="25" Width="133"/>
+        <TextBox Grid.Row="3" HorizontalAlignment="Center"  PlaceholderText="Navn" Text="{Binding NewPlayer.Name, Mode=TwoWay}" VerticalAlignment="Top" Width="139"/>
+        <Button Grid.Row="4" Command="{Binding NewPlayerCommand}" Content="Confirm" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="92" Width="158" />
+
+
 
     </Grid>
 </Page>

@@ -89,6 +89,16 @@ namespace RosTorv.Anders.Model
             //_collectionOfCards.Add(new Card("CDSE", "/Anders/Assets/GrumpyCat.png"));
         }
 
+        public void ResetCards()
+        {
+            _collectionOfCards.Clear();
+            foreach (Card theCard in _arrayOfCards)
+            {
+                _collectionOfCards.Add(theCard);
+                _collectionOfCards.Add(new Card(theCard.ID, theCard.FrontSide));
+            }
+
+        }
 
 
         #endregion
