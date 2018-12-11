@@ -118,18 +118,28 @@
   <ItemGroup>
     <Compile Include="Anders\Handlers\CardHandler.cs" />
     <Compile Include="Anders\Handlers\CardListRandomizier.cs" />
+    <Compile Include="Anders\Handlers\FileHandler.cs" />
+    <Compile Include="Anders\Handlers\GameHandler.cs" />
     <Compile Include="Anders\Handlers\MatchHandler.cs" />
+    <Compile Include="Anders\Handlers\PlayerHandler.cs" />
     <Compile Include="Anders\Model\Card.cs" />
     <Compile Include="Anders\Model\CardCatalog.cs" />
     <Compile Include="Anders\Model\Game.cs" />
+    <Compile Include="Anders\Model\HighScore.cs" />
     <Compile Include="Anders\Model\Player.cs" />
     <Compile Include="Anders\Model\Skabelon.cs" />
     <Compile Include="Anders\ViewModel\CardCatalogViewModel.cs" />
+    <Compile Include="Anders\ViewModel\HighScoreListViewModel.cs" />
+    <Compile Include="Anders\ViewModel\PlayerViewModel.cs" />
+    <Compile Include="Anders\ViewModel\StartingPageViewModel.cs" />
     <Compile Include="Anders\View\EnterPlayerNamePage.xaml.cs">
       <DependentUpon>EnterPlayerNamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Anders\View\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Anders\View\HighScoreListPage.xaml.cs">
+      <DependentUpon>HighScoreListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Anders\View\StartingPage.xaml.cs">
       <DependentUpon>StartingPage.xaml</DependentUpon>
@@ -137,18 +147,29 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Line\Commen\MessageDialogHelper.cs" />
+    <Compile Include="Line\Exceptions\NameMissing.cs" />
+    <Compile Include="Line\Handler\StartPageHandler.cs" />
     <Compile Include="Line\Handler\TerningButtonHandler.cs" />
     <Compile Include="Line\Model\BægerSingelton.cs" />
     <Compile Include="Line\Model\EvaluateTerninger.cs" />
     <Compile Include="Line\Model\PointTekster.cs" />
     <Compile Include="Line\Model\PointFelt.cs" />
-    <Compile Include="Line\Model\Spil.cs" />
+    <Compile Include="Line\Model\Spillere.cs" />
+    <Compile Include="Line\Model\SpilSingelton.cs" />
     <Compile Include="Line\Model\Spiller.cs" />
     <Compile Include="Line\Model\Terning.cs" />
     <Compile Include="Line\Model\Turn.cs" />
     <Compile Include="Line\ViewModel\GamePageViewModel.cs" />
+    <Compile Include="Line\ViewModel\StartPageViewModel.cs" />
+    <Compile Include="Line\View\EndPage.xaml.cs">
+      <DependentUpon>EndPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Line\View\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Line\View\YatzyStartPage.xaml.cs">
+      <DependentUpon>YatzyStartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainView\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -232,11 +253,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Anders\View\HighScoreListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Anders\View\StartingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Line\View\EndPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Line\View\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Line\View\YatzyStartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

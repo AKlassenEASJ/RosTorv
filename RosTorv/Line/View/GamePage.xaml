@@ -9,7 +9,7 @@
     xmlns:viewModel="using:RosTorv.Line.ViewModel"
     xmlns:model="using:RosTorv.Line.Model"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="White">
     <Page.DataContext>
         <viewModel:GamePageViewModel/>
     </Page.DataContext>
@@ -61,20 +61,113 @@
                         </ListView>
                     </StackPanel>
                 </Grid>
-                <Grid Column="1">
-                    <StackPanel>
-                        <TextBlock Text="{Binding Spil.Spiller1.Name}" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-                        <ListView ItemsSource="{Binding Spil.Spiller1.PointFelter}" SelectedIndex="{Binding SelectedPointIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedPointFelt, Mode=TwoWay}" Height="762" Margin="3,0,-3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Background="{Binding BackgroundColor}">
-                                        <TextBlock IsTextSelectionEnabled="{Binding CanChange}" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}"/>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
 
+                
+                <Grid Column="1">
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Column="0">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Spil.SpillereCollection[0].Name}" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+                                <ListView ItemsSource="{Binding Spil.SpillereCollection[0].PointFelter}" SelectedIndex="{Binding SelectedPointIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedPointFelt, Mode=TwoWay}" Height="762" Margin="3,0,-3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{Binding BackgroundColor}">
+                                                <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Column="1">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Spil.SpillereCollection[1].Name}" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+                                <ListView ItemsSource="{Binding Spil.SpillereCollection[1].PointFelter}" SelectedIndex="{Binding SelectedPointIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedPointFelt, Mode=TwoWay}" Height="762" Margin="3,0,-3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{Binding BackgroundColor}">
+                                                <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Column="2">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Spil.SpillereCollection[2].Name}" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+                                <ListView ItemsSource="{Binding Spil.SpillereCollection[2].PointFelter}" SelectedIndex="{Binding SelectedPointIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedPointFelt, Mode=TwoWay}" Height="762" Margin="3,0,-3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{Binding BackgroundColor}">
+                                                <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Column="3">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Spil.SpillereCollection[3].Name}" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+                                <ListView ItemsSource="{Binding Spil.SpillereCollection[3].PointFelter}" SelectedIndex="{Binding SelectedPointIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedPointFelt, Mode=TwoWay}" Height="762" Margin="3,0,-3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{Binding BackgroundColor}">
+                                                <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Column="4">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Spil.SpillereCollection[4].Name}" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+                                <ListView ItemsSource="{Binding Spil.SpillereCollection[4].PointFelter}" SelectedIndex="{Binding SelectedPointIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedPointFelt, Mode=TwoWay}" Height="762" Margin="3,0,-3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{Binding BackgroundColor}">
+                                                <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <!--<GridView ItemsSource="{Binding Spil.SpillereCollection}">
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Stretch" Height="29" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+                            <ListView ItemsSource="{Binding PointFelter}" SelectedIndex="{Binding SelectedPointIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedPointFelt, Mode=TwoWay}" Height="762" Margin="3,0,-3,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="{Binding BackgroundColor}">
+                                            <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>-->
                 </Grid>
             </Grid>
         </Grid>

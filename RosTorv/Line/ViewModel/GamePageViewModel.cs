@@ -23,7 +23,7 @@ namespace RosTorv.Line.ViewModel
         private PointFelt _selectedPointFelt;
         private int _selectedTerningIndex;
         public TerningButtonHandler TerningButtonHandler { get; set; }
-        public Spil Spil { get; set; }
+        public SpilSingelton Spil { get; set; }
         public PointTekster Pointtekst { get; set; }
 
         public ICommand RollCommand { get; }
@@ -67,7 +67,7 @@ namespace RosTorv.Line.ViewModel
 
         public GamePageViewModel()
         {
-            Spil = new Spil();
+            Spil = SpilSingelton.InstansSpil;
             Pointtekst = new PointTekster();
             TerningButtonHandler = new TerningButtonHandler(this);
             RollCommand = new RelayCommand(Spil.RollInTurn);
