@@ -9,7 +9,6 @@ namespace RosTorv.Line.Model
 {
     public class Spiller
     {
-
         public string Name { get; set; }
 
         public ObservableCollection<PointFelt> PointFelter { get; set; } = new ObservableCollection<PointFelt>();

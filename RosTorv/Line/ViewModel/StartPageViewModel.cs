@@ -92,6 +92,7 @@ namespace RosTorv.Line.ViewModel
 
         public StartPageViewModel()
         {
+            AntalSpillere = 1;
             StartPageHandler = new StartPageHandler(this);
             Spil = SpilSingelton.InstansSpil;
             StartGameCommand = new RelayCommand(StartPageHandler.StartGame);
@@ -100,7 +101,7 @@ namespace RosTorv.Line.ViewModel
             Command3Spiller = new RelayCommand(StartPageHandler.Button3);
             Command4Spiller = new RelayCommand(StartPageHandler.Button4);
             Command5Spiller = new RelayCommand(StartPageHandler.Button5);
-            NameButton1 = "Collapsed";
+            NameButton1 = "Visible";
             NameButton2 = "Collapsed";
             NameButton3 = "Collapsed";
             NameButton4 = "Collapsed";
