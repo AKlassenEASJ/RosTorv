@@ -90,8 +90,9 @@ namespace RosTorv.Anders.Handlers
         }
 
 
-        private void Match(Card card1, Card card2)
+        private async void Match(Card card1, Card card2)
         {
+            await Task.Delay(500);
             card1.IsMatched = true;
             card2.IsMatched = true;
             card1.ShownSide = null;
@@ -108,8 +109,9 @@ namespace RosTorv.Anders.Handlers
 
         }
 
-        private void NoMatch(Card card1, Card card2)
+        private async void NoMatch(Card card1, Card card2)
         {
+            await Task.Delay(500);
             _numberOfFlips = 0;
             CardCatalogViewModel.TheGame.IncreaseTurns();
             card1.ShownSide = card1.BackSide;
