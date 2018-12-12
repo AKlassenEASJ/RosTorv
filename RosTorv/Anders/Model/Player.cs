@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RosTorv.Anders.Model
 {
-    class Player
+    public class Player
     {
 
 
@@ -14,6 +14,7 @@ namespace RosTorv.Anders.Model
 
         private string _name;
         private int _playerScore;
+        private int _turns;
 
 
         #endregion
@@ -24,20 +25,40 @@ namespace RosTorv.Anders.Model
         {
             get { return _name; }
             set { _name = value; }
+
         }
 
         public int PlayerScore
         {
             get { return _playerScore; }
             set { _playerScore = value; }
+
         }
+
+        public int Turns
+        {
+            get { return _turns; }
+            set { _turns = value; }
+        }
+
+        
 
         #endregion
 
         #region Constructor
 
-        public Player()
+        public Player(string name, int score, int turns)
         {
+            _name = name;
+            _playerScore = score;
+            _turns = turns;
+
+        }
+
+        public Player(int score, int turns)
+        {
+            _turns = turns;
+            _playerScore = score;
 
         }
 

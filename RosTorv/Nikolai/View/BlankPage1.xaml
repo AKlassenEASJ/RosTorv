@@ -51,6 +51,20 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                <Button Command="{Binding RulePage}">
+                    <Button.Content>
+                        <StackPanel Width="100">
+                            <TextBlock Text="rules" FontSize="50"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Command="{Binding ResetCommand}">
+                    <Button.Content>
+                        <StackPanel Width="100">
+                            <TextBlock Text="reset" FontSize="50"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
                 <TextBlock Text="{Binding SelectedNumber.NumberValue}"></TextBlock>
                 <TextBlock Text="{Binding Game.DiceCounter}" ></TextBlock>
             </StackPanel>

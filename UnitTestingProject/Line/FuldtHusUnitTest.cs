@@ -6,12 +6,14 @@ namespace UnitTestingProject.Line
     [TestClass]
     public class TestFuldtHus
     {
-        private Spil _spil;
+        private SpilSingelton _spil;
         //Test Hvis der er flest af det høje tal
         [TestMethod]
         public void TestFuldtHusFlestHøjttal()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.SpillereCollection[1].PointFelter[13].Point = 0;
+            _spil.SpillereCollection[1].PointFelter[13].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
@@ -21,15 +23,17 @@ namespace UnitTestingProject.Line
 
             int exptedResult = 8;
 
-            _spil.EvaluateTerninger.RunAllEvaluate();
+            _spil.EvaluateTerninger.RunAllEvaluate(1);
 
-            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[13].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[1].PointFelter[13].Point);
         }
         //Test Hvis der er flest af de lave tal
         [TestMethod]
         public void TestFuldtHusFlestLavtTal()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.SpillereCollection[1].PointFelter[13].Point = 0;
+            _spil.SpillereCollection[1].PointFelter[13].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
@@ -39,16 +43,19 @@ namespace UnitTestingProject.Line
 
             int exptedResult = 7;
 
-            _spil.EvaluateTerninger.RunAllEvaluate();
+            _spil.EvaluateTerninger.RunAllEvaluate(1);
 
-            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[13].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[1].PointFelter[13].Point);
         }
 
         //Test hvis der ikke er fuldt hus
         [TestMethod]
         public void TestFuldtHusHvisDerIkkeEr()
         {
-            _spil = new Spil();
+            _spil = SpilSingelton.InstansSpil;
+            _spil.SpillereCollection[1].PointFelter[13].Point = 0;
+            _spil.SpillereCollection[1].PointFelter[13].CanChange = true;
+
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
             _spil.Bæger.Terninger[2].Eyes = 3;
@@ -57,17 +64,19 @@ namespace UnitTestingProject.Line
 
             int exptedResult = 0;
 
-            _spil.EvaluateTerninger.RunAllEvaluate();
+            _spil.EvaluateTerninger.RunAllEvaluate(1);
 
-            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[13].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[1].PointFelter[13].Point);
         }
 
         //Test hvis ikke den kan ændres 
         [TestMethod]
         public void TestFuldtHusCanNotChange()
         {
-            _spil = new Spil();
-            _spil.Spiller1.PointFelter[13].CanChange = false;
+            _spil = SpilSingelton.InstansSpil;
+            _spil.SpillereCollection[1].PointFelter[13].Point = 0;
+            _spil.SpillereCollection[1].PointFelter[13].CanChange = false;
+
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 2;
             _spil.Bæger.Terninger[2].Eyes = 1;
@@ -76,9 +85,9 @@ namespace UnitTestingProject.Line
 
             int exptedResult = 0;
 
-            _spil.EvaluateTerninger.RunAllEvaluate();
+            _spil.EvaluateTerninger.RunAllEvaluate(1);
 
-            Assert.AreEqual(exptedResult, _spil.Spiller1.PointFelter[13].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[1].PointFelter[13].Point);
         }
     }
 }
