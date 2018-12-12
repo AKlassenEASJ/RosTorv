@@ -12,7 +12,8 @@ namespace RosTorv.Thomas.Model
     class Dice : INotifyPropertyChanged
     {
         private int _faceValue;
-        private Random _random;
+        private static Random _random;
+        private bool _canRoll;
 
         public int FaceValue
         {
@@ -23,18 +24,27 @@ namespace RosTorv.Thomas.Model
                 OnPropertyChanged();
             }
         }
+        public bool CanRoll
+        {
+            get { return _canRoll; }
+            set
+            {
+                _canRoll = value;
+                OnPropertyChanged();
+            }
+
+        }
 
         public Dice()
         {
             _random = new Random(DateTime.Now.Millisecond);
-
+            _canRoll = true;
         }
 
         public void Roll()
         {
-
-
-            FaceValue = _random.Next(1, 7);
+            if (CanRoll==true)
+            { FaceValue = _random.Next(1, 7);}
 
         }
 
