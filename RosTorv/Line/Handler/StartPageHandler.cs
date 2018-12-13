@@ -26,11 +26,10 @@ namespace RosTorv.Line.Handler
         {
             try
             {
-                StartPageViewModel.Spil.SpillereCollection = new List<Spiller>();
-
+                StartPageViewModel.Spil.SpillereCollection.Clear();
 
                 StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name1));
-                StartPageViewModel.Spil.Tur = 16;
+                StartPageViewModel.Spil.Tur = 1;
                 if (StartPageViewModel.AntalSpillere > 1)
                 {
                     StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name2));

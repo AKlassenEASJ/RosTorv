@@ -29,6 +29,7 @@ namespace UnitTestingProject.Line
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
             Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[7].Point);
+
         }
         //Tjekker om Point bliver ændret hvis der ikke er 1 par
         [TestMethod]
@@ -47,9 +48,9 @@ namespace UnitTestingProject.Line
 
             int exptedResult = 0;
 
-            _spil.EvaluateTerninger.RunAllEvaluate(1);
+            _spil.EvaluateTerninger.RunAllEvaluate(0);
 
-            Assert.AreEqual(exptedResult, _spil.SpillereCollection[1].PointFelter[7].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[7].Point);
         }
         //I tilfælde af at der er mere end 2 skal den stadig kunne måle ud fra 1 Par
         public void TestOmMereEnd2Par()

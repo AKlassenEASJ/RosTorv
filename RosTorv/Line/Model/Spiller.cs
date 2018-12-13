@@ -10,10 +10,14 @@ namespace RosTorv.Line.Model
     public class Spiller
     {
         public string Name { get; set; }
+        public int HighScorePlads { get; set; }
+
 
         public ObservableCollection<PointFelt> PointFelter { get; set; } = new ObservableCollection<PointFelt>();
 
-        //public int TotalPoint { get; set; }
+        public int TotalPoint
+        {
+            get { return PointFelter[16].Point;} }
 
         public Spiller(string navn)
         {
@@ -38,17 +42,6 @@ namespace RosTorv.Line.Model
             PointFelter.Add(new PointFelt());//sum 16
             PointFelter[16].CanChange = false;
             PointFelter[16].Color = "Black";
-        }
-
-        public void TjekBonusPoint()
-        {
-            int forløbigPoint = PointFelter[0].Point + PointFelter[1].Point + PointFelter[2].Point +
-                                PointFelter[3].Point + PointFelter[4].Point + PointFelter[5].Point;
-            if (forløbigPoint >= 63)
-            {
-                PointFelter[6].Point = 50;
-                PointFelter[6].Color = "Black";
-            }
         }
 
     }

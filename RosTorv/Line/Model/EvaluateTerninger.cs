@@ -9,7 +9,7 @@ namespace RosTorv.Line.Model
 {
     public class EvaluateTerninger
     {
-        public SpilSingelton Spil { get; set; }
+        public SpilSingelton Spil { get;}
         private Dictionary<int, int> _terningsværdi = new Dictionary<int, int>();
 
         public EvaluateTerninger(SpilSingelton spil)
@@ -105,7 +105,7 @@ namespace RosTorv.Line.Model
             }
         }
 
-        private void TjekEns(int index)
+        public void TjekEns(int index)
         {
             for (int i = 1; i < 7; i++)
             {
