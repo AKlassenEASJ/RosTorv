@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using RosTorv.Annotations;
+using RosTorv.Line.Persistencty;
 
 namespace RosTorv.Line.Model
 {
@@ -48,5 +49,20 @@ namespace RosTorv.Line.Model
             
         }
 
+        public void SaveHighScore()
+        {
+            PersistencyFacade.SaveStudentsAsJsonAsync(HighScoreList);
+        }
+
+        public async void LoadHighScore()
+        {
+            var loadedHighScores = await PersistencyFacade.LoadHighScoresFromJsonAsync();
+            HighScoreList.Clear();
+            if (loadedHighScores != null)
+                foreach (var spiller in loadedHighScores)
+                {
+                    HighScoreList.Add(spiller);
+                }
+        }
     }
 }

@@ -160,6 +160,7 @@
     <Compile Include="Line\Model\SpilSingelton.cs" />
     <Compile Include="Line\Model\Spiller.cs" />
     <Compile Include="Line\Model\Terning.cs" />
+    <Compile Include="Line\Persistencty\PersistencyFacade.cs" />
     <Compile Include="Line\ViewModel\EndPageViewModel.cs" />
     <Compile Include="Line\ViewModel\GamePageViewModel.cs" />
     <Compile Include="Line\ViewModel\StartPageViewModel.cs" />

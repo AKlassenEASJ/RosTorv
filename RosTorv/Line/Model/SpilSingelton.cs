@@ -95,10 +95,12 @@ namespace RosTorv.Line.Model
                 Bæger.NulstilTerninger();
                 if (Tur < 1)
                 {
+                    Highscore.LoadHighScore();
                     foreach (Spiller spiller in SpillereCollection)
                     {
                         Highscore.TjekHighScore(spiller);
                     }
+                    Highscore.SaveHighScore();
                     NavigationService.Navigate(typeof(EndPage));
                 }
 
