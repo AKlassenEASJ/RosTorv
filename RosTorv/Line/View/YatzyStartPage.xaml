@@ -37,16 +37,16 @@
             <StackPanel>
                 <TextBlock Text="Spiller:" FontSize="40"/>
                 <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton1}" Header="Spiller 1" FontSize="30"/>
-                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton2}" Header="Spiller 2" FontSize="30"/>
-                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton3}" Header="Spiller 3" FontSize="30"/>
-                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton4}" Header="Spiller 4" FontSize="30"/>
-                <TextBox Text="{Binding Name1, Mode=TwoWay}" Visibility="{Binding NameButton5}" Header="Spiller 5" FontSize="30"/>
+                <TextBox Text="{Binding Name2, Mode=TwoWay}" Visibility="{Binding NameButton2}" Header="Spiller 2" FontSize="30"/>
+                <TextBox Text="{Binding Name3, Mode=TwoWay}" Visibility="{Binding NameButton3}" Header="Spiller 3" FontSize="30"/>
+                <TextBox Text="{Binding Name4, Mode=TwoWay}" Visibility="{Binding NameButton4}" Header="Spiller 4" FontSize="30"/>
+                <TextBox Text="{Binding Name5, Mode=TwoWay}" Visibility="{Binding NameButton5}" Header="Spiller 5" FontSize="30"/>
             </StackPanel>
         </Grid>
 
         <Grid Column="3">
-            <Button Content="Start Spil" FontSize="40" Command="{Binding StartGameCommand}"/><!--skal linkes-->
-            
+
+            <Button Content="Start Spil" FontSize="40" Command="{Binding StartGameCommand}"/>
         </Grid>
 
     </Grid>

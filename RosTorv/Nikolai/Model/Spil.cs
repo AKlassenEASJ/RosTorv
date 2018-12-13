@@ -47,6 +47,7 @@ namespace RosTorv.Nikolai.Model
 
 
 
+
         public Numbers NumberCatalog { get; set; }
 
         public Spil()
@@ -55,6 +56,7 @@ namespace RosTorv.Nikolai.Model
             _dice2 = new Dice();         
             RemovedNumbers = new ObservableCollection<Number>();
             NumberCatalog = new Numbers();
+           //ResetNumbers();
             _diceCounter = 21;
             RollAll();
 
@@ -73,11 +75,32 @@ namespace RosTorv.Nikolai.Model
                 foreach (Number i in SelectedNumbers)
                 {
                     RemovedNumbers.Add(i);
-                    NumberCatalog.NumberList.Remove(i);                   
+                    NumberCatalog.NumberList.Remove(i);
+                    //NumberList.Remove(i);
                 }
             }
         }
 
+        public void RulePage()
+        {
+            MessageDialogHelper.Show("At the start of the game all levers or tiles are open (cleared, up), showing the numerals 1 to 9. During the game, each player plays in turn. A player begins his or her turn by throwing or rolling the die or dice into the box. If the sum of the remaining tile(s) is 6 or lower, the player may roll only one die.", "Rules");
+        }
+
+        public void Reset()
+        {
+            NumberCatalog.NumberList.Clear();
+            //NumberList.Clear();
+            RemovedNumbers.Clear();
+            SelectedNumbers.Clear();
+            RemovedNumbers = new ObservableCollection<Number>();
+            NumberCatalog = new Numbers();
+            //ResetNumbers();
+            SelectedNumbers = new ObservableCollection<Number>();
+            _diceCounter = 21;
+            RollAll();
+        }
+
+        
         public void RollAll()
         {
             
@@ -86,6 +109,8 @@ namespace RosTorv.Nikolai.Model
                 MessageDialogHelper.Show("Hej", "hej");
             }
             DiceCounter = _diceCounter -1;
+
+            
 
             if (RemovedNumbers.Contains(new Number(7, true)) && RemovedNumbers.Contains(new Number(8, true)) && RemovedNumbers.Contains(new Number(9, true)))
             {
@@ -98,11 +123,11 @@ namespace RosTorv.Nikolai.Model
             }
 
             Dice1.Roll();
-            SelectedNumbers = new ObservableCollection<Number>();
-
-                      
+            SelectedNumbers = new ObservableCollection<Number>();          
         }
 
+
+        
         public ObservableCollection<Number> RemovedNumbers { get; set; }
 
         public ObservableCollection<Number> SelectedNumbers { get; set; }

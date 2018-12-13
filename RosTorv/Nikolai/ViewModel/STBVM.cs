@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using RosTorv.Annotations;
 using RosTorv.Common;
+using RosTorv.Nikolai.Common;
 using RosTorv.Nikolai.Model;
 
 namespace RosTorv.Nikolai.ViewModel
@@ -15,7 +16,7 @@ namespace RosTorv.Nikolai.ViewModel
     public class STBVM : INotifyPropertyChanged
     {
         private Number _selectedNumber;
-        private int _diceCounter;
+        //private int _diceCounter;
 
         public Spil Game { get; set; }
 
@@ -24,15 +25,10 @@ namespace RosTorv.Nikolai.ViewModel
             Game = new Spil();
             RollCommand = new RelayCommand(Game.RollAll);
             RemoveCommand = new RelayCommand(Game.CheckNumbers);
+            RulePage = new RelayCommand(Game.RulePage);
+            ResetCommand = new RelayCommand(Game.Reset);
+
         }
-
-        
-        
-
-
-       
-
-       
 
         public Number SelectedNumber
         {
@@ -57,6 +53,9 @@ namespace RosTorv.Nikolai.ViewModel
         //    }
 
         //}
+        
+        public ICommand RulePage { get; set; }
+        public ICommand ResetCommand { get; set; }
 
         public ICommand RemoveCommand { get; set; }
 

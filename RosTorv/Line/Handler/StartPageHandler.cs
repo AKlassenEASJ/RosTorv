@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RosTorv.Common;
+using RosTorv.Line.Commen;
+using RosTorv.Line.Exceptions;
 using RosTorv.Line.Model;
 using RosTorv.Line.View;
 using RosTorv.Line.ViewModel;
@@ -12,7 +14,7 @@ namespace RosTorv.Line.Handler
 {
     class StartPageHandler
     {
-
+        private int _antalTure = 1;
         public StartPageViewModel StartPageViewModel { get; set; }
 
         public StartPageHandler(StartPageViewModel startPageViewModel)
@@ -22,13 +24,46 @@ namespace RosTorv.Line.Handler
 
         public void StartGame()
         {
-            StartPageViewModel.Spil.Spiller1 = new Spiller(StartPageViewModel.Name1);
-            NavigationService.Navigate(typeof(GamePage));
+            try
+            {
+                StartPageViewModel.Spil.SpillereCollection.Clear();
+
+                StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name1));
+                StartPageViewModel.Spil.Tur = _antalTure;
+                if (StartPageViewModel.AntalSpillere > 1)
+                {
+                    StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name2));
+                    StartPageViewModel.Spil.Tur = _antalTure *2;
+
+                    if (StartPageViewModel.AntalSpillere > 2)
+                    {
+                        StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name3));
+                        StartPageViewModel.Spil.Tur = _antalTure*3;
+
+                        if (StartPageViewModel.AntalSpillere > 3)
+                        {
+                            StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name4));
+                            StartPageViewModel.Spil.Tur = _antalTure * 4;
+
+                            if (StartPageViewModel.AntalSpillere > 4)
+                            {
+                                StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name5));
+                                StartPageViewModel.Spil.Tur = _antalTure * 5;
+                            }
+                        }
+                    }
+                }
+                StartPageViewModel.Spil.SpillersTur = 0;
+                NavigationService.Navigate(typeof(GamePage));
+            }
+            catch (NameMissing e)
+            {
+                MessageDialogHelper.Show(e.Message, "Alle spillere skal have navn");
+            }
         }
 
         public void Button1()
         {
-            StartPageViewModel.NameButton1 = "Visible";
             StartPageViewModel.NameButton2 = "Collapsed";
             StartPageViewModel.NameButton3 = "Collapsed";
             StartPageViewModel.NameButton4 = "Collapsed";
@@ -39,7 +74,6 @@ namespace RosTorv.Line.Handler
 
         public void Button2()
         {
-            StartPageViewModel.NameButton1 = "Visible";
             StartPageViewModel.NameButton2 = "Visible";
             StartPageViewModel.NameButton3 = "Collapsed";
             StartPageViewModel.NameButton4 = "Collapsed";
@@ -50,7 +84,6 @@ namespace RosTorv.Line.Handler
 
         public void Button3()
         {
-            StartPageViewModel.NameButton1 = "Visible";
             StartPageViewModel.NameButton2 = "Visible";
             StartPageViewModel.NameButton3 = "Visible";
             StartPageViewModel.NameButton4 = "Collapsed";
@@ -61,7 +94,6 @@ namespace RosTorv.Line.Handler
 
         public void Button4()
         {
-            StartPageViewModel.NameButton1 = "Visible";
             StartPageViewModel.NameButton2 = "Visible";
             StartPageViewModel.NameButton3 = "Visible";
             StartPageViewModel.NameButton4 = "Visible";
@@ -72,7 +104,6 @@ namespace RosTorv.Line.Handler
 
         public void Button5()
         {
-            StartPageViewModel.NameButton1 = "Visible";
             StartPageViewModel.NameButton2 = "Visible";
             StartPageViewModel.NameButton3 = "Visible";
             StartPageViewModel.NameButton4 = "Visible";

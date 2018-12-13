@@ -5,10 +5,79 @@
     xmlns:local="using:RosTorv.Line.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:RosTorv.Line.ViewModel"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="White">
 
+    <Page.DataContext>
+        <viewModel:EndPageViewModel/>
+    </Page.DataContext>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+       
+        <Grid Column="1">
+            <TextBlock Text="Spillet er slut" HorizontalTextAlignment="Center" VerticalAlignment="Center" FontSize="42"/>
+        </Grid>
+
+        <Grid Column="1" Row="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Spiller" Margin="5,5,5,5"/>
+                    <TextBlock Text="{Binding Vindernr}" Margin="5,5,5,5"/>
+                    <TextBlock Text="vandt" Margin="5,5,5,5"/>
+                </StackPanel>
+                <TextBlock Text="{Binding VinderNavn}"/>
+                <TextBlock Text="{Binding VinderPoint}"/>
+
+                <GridView ItemsSource="{Binding Spil.SpillereCollection}" SelectionMode="None">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding TotalPoint}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </StackPanel>
+            
+        </Grid>
+        
+        <Grid Column="2">
+            <TextBlock Text="HighScore" VerticalAlignment="Bottom" HorizontalTextAlignment="Center" FontSize="40"/>
+        </Grid>
+        <Grid Column="2" Row="1">
+            <ListView ItemsSource="{Binding Spil.Highscore.HighScoreList}" SelectionMode="None" HorizontalAlignment="Center"> 
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Column="0" Margin="10, 10, 10, 10">
+                            <TextBlock Text="{Binding HighScorePlads}"/>
+                            </Grid>
+                            <Grid Column="1" Margin="10, 10, 10, 10">
+                                <TextBlock Text="{Binding Name}"/>
+                            </Grid>
+                            <Grid Column="2" Margin="10, 10, 10, 10">
+                                <TextBlock Text="{Binding TotalPoint}"/>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate></ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

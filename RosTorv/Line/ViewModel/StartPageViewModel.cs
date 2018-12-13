@@ -11,6 +11,7 @@ using RosTorv.Annotations;
 using RosTorv.Common;
 using RosTorv.Line.Handler;
 using RosTorv.Line.Model;
+using RosTorv.Line.View;
 
 namespace RosTorv.Line.ViewModel
 {
@@ -22,8 +23,9 @@ namespace RosTorv.Line.ViewModel
         public ICommand Command4Spiller { get; set; }
         public ICommand Command5Spiller { get; set; }
         public ICommand StartGameCommand { get; set; }
+        public ICommand EndCommand { get; set; }
 
-        public SpilSingelton Spil { get; set; }
+        public SpilSingelton Spil { get;}
         public StartPageHandler StartPageHandler { get; set; }
         public int AntalSpillere { get; set; }
 
@@ -92,6 +94,7 @@ namespace RosTorv.Line.ViewModel
 
         public StartPageViewModel()
         {
+            AntalSpillere = 1;
             StartPageHandler = new StartPageHandler(this);
             Spil = SpilSingelton.InstansSpil;
             StartGameCommand = new RelayCommand(StartPageHandler.StartGame);
@@ -100,11 +103,17 @@ namespace RosTorv.Line.ViewModel
             Command3Spiller = new RelayCommand(StartPageHandler.Button3);
             Command4Spiller = new RelayCommand(StartPageHandler.Button4);
             Command5Spiller = new RelayCommand(StartPageHandler.Button5);
-            NameButton1 = "Collapsed";
+            EndCommand = new RelayCommand(end);
+            NameButton1 = "Visible";
             NameButton2 = "Collapsed";
             NameButton3 = "Collapsed";
             NameButton4 = "Collapsed";
             NameButton5 = "Collapsed";
+        }
+
+        public void end()
+        {
+            NavigationService.Navigate(typeof(EndPage));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
