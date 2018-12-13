@@ -11,7 +11,7 @@ namespace RosTorv.Thomas.Model
     public class AI
     {
         public int _case;
-        private int FindSmallestNumber(List<int> numbers)
+        public int FindSmallestNumber(List<int> numbers)
         {
             {
                 int smallest = numbers[0];

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Services.Store;
 using Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols;
 using RosTorv.Annotations;
 
@@ -29,10 +31,42 @@ namespace RosTorv.Thomas.Model
         private bool _canClickRoll;
         private bool _canPassTurn;
         private int _rollsLeft;
+        private int _playerHandRank;
+        private int _computerHandRank;
+        private bool _playerwon;
+
+        public bool PlayerWon
+        {
+            get { return _playerwon; }
+            set
+            {
+                _playerwon = value;
+                OnPropertyChanged();
+            }
+        }
 
         private AI FriendComputer
         {
             get { return _friendComputer; }
+        }
+
+        public int PlayerHandRank
+        {
+            get { return _playerHandRank; }
+            set
+            {
+                _playerHandRank=value;
+                OnPropertyChanged();
+            }
+        }
+        public int ComputerHandRank
+        {
+            get { return _computerHandRank; }
+            set
+            {
+                _computerHandRank = value;
+                OnPropertyChanged();
+            }
         }
         public Dice PlayerDie1
         {
@@ -144,6 +178,19 @@ namespace RosTorv.Thomas.Model
 
         public void EndGame()
         {
+            PlayerHandRank=DetermineRolls(PlayerDie1.FaceValue, PlayerDie2.FaceValue, PlayerDie3.FaceValue, PlayerDie4.FaceValue,
+                PlayerDie5.FaceValue);
+            ComputerHandRank=DetermineRolls(ComputerDie1.FaceValue, ComputerDie2.FaceValue, ComputerDie3.FaceValue,
+                ComputerDie4.FaceValue, ComputerDie5.FaceValue);
+            if (PlayerHandRank > ComputerHandRank)
+            {
+                PlayerWon = true;
+            }
+            else
+            {
+                PlayerWon = false;
+            }
+
             CanClickRoll = false;
             CanStartGame = true;
         }
@@ -364,6 +411,124 @@ namespace RosTorv.Thomas.Model
                     ComputerDie5.CanRoll = false;
                     return;
             }
+        }
+
+        int DetermineRolls(int Die1, int Die2, int Die3, int Die4, int Die5)
+        {   //Assume Chancen
+            int HandRank=8;
+            //Check for Et Par
+            if ((Die1 == Die2) || (Die1 == Die3) || (Die1 == Die4) || (Die1 == Die5) || (Die2 == Die3) || (Die2 == Die4) 
+                || (Die2 == Die5) || (Die3 == Die4) || (Die3 == Die5) || (Die4 == Die5))
+            {
+                HandRank = 7;
+            }
+            //Check for To Par
+            if (Die1 == Die2 && Die3 == Die4 ||
+                Die1 == Die2 && Die3 == Die5 ||
+                Die1 == Die2 && Die4 == Die5 ||
+                Die1 == Die3 && Die2 == Die4 ||
+                Die1 == Die3 && Die2 == Die5 ||
+                Die1 == Die3 && Die4 == Die5 ||
+                Die1 == Die4 && Die2 == Die3 ||
+                Die1 == Die4 && Die2 == Die5 ||
+                Die1 == Die4 && Die3 == Die5 ||
+                Die1 == Die5 && Die2 == Die3 ||
+                Die1 == Die5 && Die2 == Die4 ||
+                Die1 == Die5 && Die3 == Die4 ||
+                Die2 == Die5 && Die3 == Die4 ||
+                Die2 == Die3 && Die4 == Die5 ||
+                Die2 == Die4 && Die3 == Die5)
+            {
+                HandRank = 6;
+            }
+            //Check For Tre Ens
+            if ((Die1 == Die2 && Die2 == Die3) ||
+                (Die1 == Die2 && Die2 == Die4) ||
+                (Die1 == Die2 && Die2 == Die5) ||
+                (Die1 == Die3 && Die3 == Die4) ||
+                (Die2 == Die3 && Die3 == Die4) ||
+                (Die2 == Die3 && Die3 == Die5) ||
+                (Die1 == Die4 && Die4 == Die5) ||
+                (Die2 == Die4 && Die4 == Die5) ||
+                (Die3 == Die4 && Die4 == Die5) ||
+                (Die1 == Die3 && Die3 == Die5))
+            {
+                HandRank = 5;
+            }
+            //Check for Fuldt Hus
+            if ((Die1 == Die2 && Die2 == Die3 && Die4==Die5)||
+                (Die1 == Die2 && Die2 == Die4 && Die3 == Die5) ||
+                (Die1 == Die2 && Die2 == Die5 && Die3 == Die4) ||
+                (Die1 == Die3 && Die3 == Die4 && Die2 == Die5) ||
+                (Die2 == Die3 && Die3 == Die4 && Die1 == Die5) ||
+                (Die2 == Die3 && Die3 == Die5 && Die1 == Die4) ||
+                (Die1 == Die4 && Die4 == Die5 && Die2 == Die3) ||
+                (Die2 == Die4 && Die4 == Die5 && Die1 == Die3) ||
+                (Die3 == Die4 && Die4 == Die5 && Die1 == Die2) ||
+                (Die1 == Die3 && Die3 == Die5 && Die2 == Die4))
+            {
+                HandRank = 4;
+            }
+            //Check for Fire Ens
+            if (Die1 == Die2 && Die2 == Die3 && Die3 == Die4 ||
+                Die1 == Die3 && Die3 == Die4 && Die4 == Die5 ||
+                Die1 == Die2 && Die2 == Die4 && Die4 == Die5 ||
+                Die1 == Die2 && Die2 == Die3 && Die3 == Die5 ||
+                Die2 == Die3 && Die3 == Die4 && Die4 == Die5)
+            {
+                HandRank = 3;
+            }
+            //Check for Lille Straight
+            List<int> SmallStraightNumbers=new List<int>();
+            SmallStraightNumbers.Add(Die1);
+            SmallStraightNumbers.Add(Die2);
+            SmallStraightNumbers.Add(Die3);
+            SmallStraightNumbers.Add(Die4);
+            SmallStraightNumbers.Add(Die5);
+
+            int OrderStraightNumber1 = FriendComputer.FindSmallestNumber(SmallStraightNumbers);
+            SmallStraightNumbers.Remove(FriendComputer.FindSmallestNumber(SmallStraightNumbers));
+            int OrderStraightNumber2 = FriendComputer.FindSmallestNumber(SmallStraightNumbers);
+            SmallStraightNumbers.Remove(FriendComputer.FindSmallestNumber(SmallStraightNumbers));
+            int OrderStraightNumber3 = FriendComputer.FindSmallestNumber(SmallStraightNumbers);
+            SmallStraightNumbers.Remove(FriendComputer.FindSmallestNumber(SmallStraightNumbers));
+            int OrderStraightNumber4 = FriendComputer.FindSmallestNumber(SmallStraightNumbers);
+            SmallStraightNumbers.Remove(FriendComputer.FindSmallestNumber(SmallStraightNumbers));
+            int OrderStraightNumber5 = FriendComputer.FindSmallestNumber(SmallStraightNumbers);
+            if (OrderStraightNumber1 == 1 && OrderStraightNumber2 == 2 && OrderStraightNumber3 == 3 && OrderStraightNumber4 == 4 && OrderStraightNumber5 == 5)
+            {
+                HandRank = 2;
+            }
+
+
+            //Check for Stor Straight
+
+            List<int> BigStraightNumbers = new List<int>();
+            BigStraightNumbers.Add(Die1);
+            BigStraightNumbers.Add(Die2);
+            BigStraightNumbers.Add(Die3);
+            BigStraightNumbers.Add(Die4);
+            BigStraightNumbers.Add(Die5);
+            OrderStraightNumber1=FriendComputer.FindSmallestNumber(BigStraightNumbers);
+            BigStraightNumbers.Remove(FriendComputer.FindSmallestNumber(BigStraightNumbers));
+            OrderStraightNumber2=FriendComputer.FindSmallestNumber(BigStraightNumbers);
+            BigStraightNumbers.Remove(FriendComputer.FindSmallestNumber(BigStraightNumbers));
+            OrderStraightNumber3 = FriendComputer.FindSmallestNumber(BigStraightNumbers);
+            BigStraightNumbers.Remove(FriendComputer.FindSmallestNumber(BigStraightNumbers));
+            OrderStraightNumber4 = FriendComputer.FindSmallestNumber(BigStraightNumbers);
+            BigStraightNumbers.Remove(FriendComputer.FindSmallestNumber(BigStraightNumbers));
+            OrderStraightNumber5 = FriendComputer.FindSmallestNumber(BigStraightNumbers);
+            BigStraightNumbers.Remove(FriendComputer.FindSmallestNumber(BigStraightNumbers));
+            if (OrderStraightNumber1 ==2 && OrderStraightNumber2 == 3 && OrderStraightNumber3 == 4 && OrderStraightNumber4 == 5 && OrderStraightNumber5 == 6)
+            {
+                HandRank = 1;
+            }
+            //Check for Yatzi.
+            if (Die1 == Die2 && Die2 == Die3 && Die3 == Die4 && Die4 == Die5)
+            {
+                HandRank = 0;
+            }
+            return HandRank;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
