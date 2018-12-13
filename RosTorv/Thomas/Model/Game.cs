@@ -15,6 +15,7 @@ namespace RosTorv.Thomas.Model
     class Game : INotifyPropertyChanged
     {
         private AI _friendComputer;
+        private Player _player;
         private Dice _playerDie1;
         private Dice _playerDie2;
         private Dice _playerDie3;
@@ -33,18 +34,21 @@ namespace RosTorv.Thomas.Model
         private int _rollsLeft;
         private int _playerHandRank;
         private int _computerHandRank;
-        private bool _playerwon;
+        private bool _playerWon;
 
         public bool PlayerWon
         {
-            get { return _playerwon; }
+            get { return _playerWon; }
             set
             {
-                _playerwon = value;
+                _playerWon = value;
                 OnPropertyChanged();
             }
         }
-
+        public Player Player
+        {
+            get { return _player; }
+        }
         private AI FriendComputer
         {
             get { return _friendComputer; }
@@ -155,6 +159,8 @@ namespace RosTorv.Thomas.Model
 
         public Game()
         {
+            _player=new Player(10);
+
             _playerDie1 = new Dice();
             _playerDie2 = new Dice();
             _playerDie3 = new Dice();
@@ -184,6 +190,11 @@ namespace RosTorv.Thomas.Model
                 ComputerDie4.FaceValue, ComputerDie5.FaceValue);
             if (PlayerHandRank > ComputerHandRank)
             {
+                PlayerWon = true;
+            }
+            else if (PlayerHandRank == ComputerHandRank)
+            {
+                if ((PlayerDie1.FaceValue+PlayerDie2.FaceValue+PlayerDie3.FaceValue+PlayerDie4.FaceValue+PlayerDie5.FaceValue)>(ComputerDie1.FaceValue+ComputerDie2.FaceValue+ComputerDie3.FaceValue+ComputerDie4.FaceValue+ComputerDie5.FaceValue))
                 PlayerWon = true;
             }
             else

@@ -204,6 +204,7 @@
     <Compile Include="Thomas\Model\AI.cs" />
     <Compile Include="Thomas\Model\Dice.cs" />
     <Compile Include="Thomas\Model\Game.cs" />
+    <Compile Include="Thomas\Model\Player.cs" />
     <Compile Include="Thomas\ViewModel\YatziDuelViewModel.cs" />
     <Compile Include="Thomas\View\YatziDuel.xaml.cs">
       <DependentUpon>YatziDuel.xaml</DependentUpon>
