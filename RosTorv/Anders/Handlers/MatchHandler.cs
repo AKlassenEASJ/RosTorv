@@ -97,8 +97,9 @@ namespace RosTorv.Anders.Handlers
             card2.IsMatched = true;
             card1.ShownSide = null;
             card2.ShownSide = null;
+            ScoreCalculator.NumberOfMatchesInARow++;
             CardCatalogViewModel.TheGame.IncreaseTurns();
-            CardCatalogViewModel.TheGame.AddPointsToScore(500);
+            CardCatalogViewModel.TheGame.AddPointsToScore(ScoreCalculator.CalculateScoreToAdd());
             _numberOfFlips = 0;
             EndGame();
             
@@ -113,6 +114,7 @@ namespace RosTorv.Anders.Handlers
         {
             await Task.Delay(500);
             _numberOfFlips = 0;
+            ScoreCalculator.NumberOfMatchesInARow = 0;
             CardCatalogViewModel.TheGame.IncreaseTurns();
             card1.ShownSide = card1.BackSide;
             card2.ShownSide = card2.BackSide;
