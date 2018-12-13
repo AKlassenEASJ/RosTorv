@@ -149,17 +149,19 @@
     </Compile>
     <Compile Include="Line\Commen\MessageDialogHelper.cs" />
     <Compile Include="Line\Exceptions\NameMissing.cs" />
+    <Compile Include="Line\Handler\EndPageHandler.cs" />
     <Compile Include="Line\Handler\StartPageHandler.cs" />
     <Compile Include="Line\Handler\TerningButtonHandler.cs" />
     <Compile Include="Line\Model\BægerSingelton.cs" />
     <Compile Include="Line\Model\EvaluateTerninger.cs" />
+    <Compile Include="Line\Model\Highscore.cs" />
     <Compile Include="Line\Model\PointTekster.cs" />
     <Compile Include="Line\Model\PointFelt.cs" />
-    <Compile Include="Line\Model\Spillere.cs" />
     <Compile Include="Line\Model\SpilSingelton.cs" />
     <Compile Include="Line\Model\Spiller.cs" />
     <Compile Include="Line\Model\Terning.cs" />
-    <Compile Include="Line\Model\Turn.cs" />
+    <Compile Include="Line\Persistencty\PersistencyFacade.cs" />
+    <Compile Include="Line\ViewModel\EndPageViewModel.cs" />
     <Compile Include="Line\ViewModel\GamePageViewModel.cs" />
     <Compile Include="Line\ViewModel\StartPageViewModel.cs" />
     <Compile Include="Line\View\EndPage.xaml.cs">

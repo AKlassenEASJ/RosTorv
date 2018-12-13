@@ -14,6 +14,9 @@ using static RosTorv.Common.NavigationService;
 
 namespace RosTorv.Line.Model
 {
+    /// <summary>
+    /// Spillet er hvor det hele er koblet op på
+    /// </summary>
     public class SpilSingelton : INotifyPropertyChanged
     {
         private int _slagTilbage = 3;
@@ -22,6 +25,7 @@ namespace RosTorv.Line.Model
         //public Spiller Spiller1 { get; set; }
         public BægerSingelton Bæger { get; set; }
         public EvaluateTerninger EvaluateTerninger { get; set; }
+        public Highscore Highscore { get; set; }
         
         private static SpilSingelton _instansSpil = new SpilSingelton();
 
@@ -29,7 +33,7 @@ namespace RosTorv.Line.Model
 
         public List<Spiller> SpillereCollection
         {
-            get => _spillereCollection;
+            get { return _spillereCollection; }
             set { _spillereCollection = value; }
         }
 
@@ -52,8 +56,10 @@ namespace RosTorv.Line.Model
         private SpilSingelton()
         {
             //Spiller1 = new Spiller("Line");
+            SpillereCollection = new List<Spiller>();
             Bæger = BægerSingelton.InstanBægerSingelton;
             EvaluateTerninger = new EvaluateTerninger(this);
+            Highscore = new Highscore();
         }
 
         public void RollInTurn()
@@ -68,27 +74,33 @@ namespace RosTorv.Line.Model
             
         }
 
-        public void NyTur(int PointIndex)
+        public void NyTur(int pointIndex)
         {
-            if (SpillereCollection[SpillersTur].PointFelter[PointIndex].CanChange)
+            if (SpillereCollection[SpillersTur].PointFelter[pointIndex].CanChange)
             {
                 Tur--;
-                if (SpillereCollection[SpillersTur].PointFelter[PointIndex].Point == 0)
+                if (SpillereCollection[SpillersTur].PointFelter[pointIndex].Point == 0)
                 {
-                    SpillereCollection[SpillersTur].PointFelter[PointIndex].BackgroundColor = "Gray";
+                    SpillereCollection[SpillersTur].PointFelter[pointIndex].BackgroundColor = "Gray";
                 }
                 else
                 {
-                    SpillereCollection[SpillersTur].PointFelter[PointIndex].Color = "Black";
+                    SpillereCollection[SpillersTur].PointFelter[pointIndex].Color = "Black";
                 }
-                SpillereCollection[SpillersTur].PointFelter[PointIndex].CanChange = false;
+                SpillereCollection[SpillersTur].PointFelter[pointIndex].CanChange = false;
                 NustilPoint();
-                SpillereCollection[SpillersTur].TjekBonusPoint();
-                SpillereCollection[SpillersTur].PointFelter[16].Point = SpillereCollection[SpillersTur].PointFelter[16].Point + SpillereCollection[SpillersTur].PointFelter[PointIndex].Point;
+                TjekBonusPoint(SpillersTur);
+                SpillereCollection[SpillersTur].PointFelter[16].Point = SpillereCollection[SpillersTur].PointFelter[16].Point + SpillereCollection[SpillersTur].PointFelter[pointIndex].Point;
                 ResetSlag();
                 Bæger.NulstilTerninger();
                 if (Tur < 1)
                 {
+                    Highscore.LoadHighScore();
+                    foreach (Spiller spiller in SpillereCollection)
+                    {
+                        Highscore.TjekHighScore(spiller);
+                    }
+                    Highscore.SaveHighScore();
                     NavigationService.Navigate(typeof(EndPage));
                 }
 
@@ -111,6 +123,17 @@ namespace RosTorv.Line.Model
                 {
                     pointFelt.Point = 0;
                 }
+            }
+        }
+
+        public void TjekBonusPoint(int spiller)
+        {
+            int forløbigPoint = SpillereCollection[spiller].PointFelter[0].Point + SpillereCollection[spiller].PointFelter[1].Point + SpillereCollection[spiller].PointFelter[2].Point +
+                                SpillereCollection[spiller].PointFelter[3].Point + SpillereCollection[spiller].PointFelter[4].Point + SpillereCollection[spiller].PointFelter[5].Point;
+            if (forløbigPoint >= 63)
+            {
+                SpillereCollection[spiller].PointFelter[6].Point = 50;
+                SpillereCollection[spiller].PointFelter[6].Color = "Black";
             }
         }
 
