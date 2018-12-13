@@ -148,6 +148,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Line\Commen\MessageDialogHelper.cs" />
+    <Compile Include="Line\Exceptions\FileNotFoundException.cs" />
     <Compile Include="Line\Exceptions\NameMissing.cs" />
     <Compile Include="Line\Handler\EndPageHandler.cs" />
     <Compile Include="Line\Handler\StartPageHandler.cs" />

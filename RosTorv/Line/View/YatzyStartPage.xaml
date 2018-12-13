@@ -47,8 +47,6 @@
         <Grid Column="3">
 
             <Button Content="Start Spil" FontSize="40" Command="{Binding StartGameCommand}"/>
-            
-            <!--<Button Content="EndPage" Command="{Binding EndCommand}"></Button>-->
         </Grid>
 
     </Grid>

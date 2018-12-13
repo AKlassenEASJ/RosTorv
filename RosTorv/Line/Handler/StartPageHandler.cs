@@ -14,7 +14,7 @@ namespace RosTorv.Line.Handler
 {
     class StartPageHandler
     {
-
+        private int _antalTure = 1;
         public StartPageViewModel StartPageViewModel { get; set; }
 
         public StartPageHandler(StartPageViewModel startPageViewModel)
@@ -29,26 +29,26 @@ namespace RosTorv.Line.Handler
                 StartPageViewModel.Spil.SpillereCollection.Clear();
 
                 StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name1));
-                StartPageViewModel.Spil.Tur = 1;
+                StartPageViewModel.Spil.Tur = _antalTure;
                 if (StartPageViewModel.AntalSpillere > 1)
                 {
                     StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name2));
-                    StartPageViewModel.Spil.Tur = 16 + 16;
+                    StartPageViewModel.Spil.Tur = _antalTure *2;
 
                     if (StartPageViewModel.AntalSpillere > 2)
                     {
                         StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name3));
-                        StartPageViewModel.Spil.Tur = 16 + 16 + 16;
+                        StartPageViewModel.Spil.Tur = _antalTure*3;
 
                         if (StartPageViewModel.AntalSpillere > 3)
                         {
                             StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name4));
-                            StartPageViewModel.Spil.Tur = 16 + 16 + 16 + 16;
+                            StartPageViewModel.Spil.Tur = _antalTure * 4;
 
                             if (StartPageViewModel.AntalSpillere > 4)
                             {
                                 StartPageViewModel.Spil.AddSpiller(new Spiller(StartPageViewModel.Name5));
-                                StartPageViewModel.Spil.Tur = 16 + 16 + 16 + 16 + 16;
+                                StartPageViewModel.Spil.Tur = _antalTure * 5;
                             }
                         }
                     }

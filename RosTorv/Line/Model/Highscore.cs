@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using RosTorv.Annotations;
+using RosTorv.Line.Handler;
 using RosTorv.Line.Persistencty;
 
 namespace RosTorv.Line.Model

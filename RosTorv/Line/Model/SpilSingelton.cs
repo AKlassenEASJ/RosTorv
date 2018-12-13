@@ -59,7 +59,6 @@ namespace RosTorv.Line.Model
             SpillereCollection = new List<Spiller>();
             Bæger = BægerSingelton.InstanBægerSingelton;
             EvaluateTerninger = new EvaluateTerninger(this);
-            Highscore = new Highscore();
         }
 
         public void RollInTurn()
@@ -95,6 +94,7 @@ namespace RosTorv.Line.Model
                 Bæger.NulstilTerninger();
                 if (Tur < 1)
                 {
+                    Highscore = new Highscore();
                     Highscore.LoadHighScore();
                     foreach (Spiller spiller in SpillereCollection)
                     {

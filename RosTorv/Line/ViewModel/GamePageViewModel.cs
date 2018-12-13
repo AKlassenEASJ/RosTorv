@@ -28,12 +28,6 @@ namespace RosTorv.Line.ViewModel
 
         public ICommand RollCommand { get; }
 
-        //public ICommand HoldTerningCommand
-        //{
-        //    get { return _holdTerning; }
-        //    set { _holdTerning = value; }
-        //}
-
         public int SelectedTerningIndex
         {
             get => _selectedTerningIndex;

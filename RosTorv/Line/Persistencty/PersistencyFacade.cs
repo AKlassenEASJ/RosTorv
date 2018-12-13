@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Newtonsoft.Json;
 using RosTorv.Line.Commen;
+using RosTorv.Line.Exceptions;
 using RosTorv.Line.Model;
 
 namespace RosTorv.Line.Persistencty
@@ -37,17 +38,17 @@ namespace RosTorv.Line.Persistencty
 
         public static async Task<string> DeSerializeHighScoresFileAsync(String fileName)
         {
-            //try
-            //{
+            try
+            {
                 StorageFile localFile = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
                 return await FileIO.ReadTextAsync(localFile);
-            //}
-            //catch (FileNotFoundException ex)
-            //{
-
-            //    MessageDialogHelper.Show("Loading for the first time? Try Adding and Save some Students before you are trying to Load Persons!", "File not found!");
-            //    return null;
-            //}
         }
+            catch (FileNotFoundException e)
+            {
+
+                MessageDialogHelper.Show("Der var problemer med at loade HighscoreListen", "File not found!");
+                return null;
+            }
+}
     }
 }
