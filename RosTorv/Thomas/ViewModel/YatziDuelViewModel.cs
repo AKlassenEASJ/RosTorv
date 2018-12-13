@@ -29,6 +29,8 @@ namespace RosTorv.Thomas.ViewModel
         private string _pcDice5ImgSource;
         private bool _plCanChooseDice;
 
+        private string _scoreText;
+
         public bool PlCanChooseDice
         {
             get { return _plCanChooseDice; }
@@ -37,6 +39,11 @@ namespace RosTorv.Thomas.ViewModel
                 _plCanChooseDice = value;
                 OnPropertyChanged();
             }
+        }
+
+        public string ScoreText
+        {
+            get { return _scoreText; }
         }
 
         public string PlDice1ImgSource
@@ -160,7 +167,7 @@ namespace RosTorv.Thomas.ViewModel
             PcDice4ImgSource = Faces[0];
             PcDice5ImgSource = Faces[0];
             PlCanChooseDice = false;
-
+            _scoreText = $"{Game.Player.Score}000";
 
         }
 

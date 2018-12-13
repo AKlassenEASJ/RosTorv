@@ -55,9 +55,10 @@
                 <Button Content="Pass Turn" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding PcRollCommand}" IsEnabled="{Binding Game.CanPassTurn, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel>
-                <TextBlock HorizontalAlignment="Left" Text="1000"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding ScoreText}"/>
                 <TextBox Text=" " FontSize="12" Height="25"/>
                 <TextBlock HorizontalAlignment="Left" Text="{Binding Game.RollsLeft}"/>
+                <TextBlock HorizontalAlignment="Left"/>
             </StackPanel>
         </StackPanel>
     </Grid>
