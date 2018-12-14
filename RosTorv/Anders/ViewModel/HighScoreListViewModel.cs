@@ -39,6 +39,7 @@ namespace RosTorv.Anders.ViewModel
         public HighScoreListViewModel()
         {
             
+            
         }
 
 
@@ -46,10 +47,11 @@ namespace RosTorv.Anders.ViewModel
 
         #region Methods
 
+        
 
 
         #endregion
 
-        
+
     }
 }

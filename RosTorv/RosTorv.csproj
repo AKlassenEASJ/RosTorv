@@ -116,11 +116,15 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Anders\Exceptions\NameIsBlankException.cs" />
+    <Compile Include="Anders\Exceptions\NameIsInappropriateException.cs" />
     <Compile Include="Anders\Handlers\CardHandler.cs" />
     <Compile Include="Anders\Handlers\CardListRandomizier.cs" />
-    <Compile Include="Anders\Handlers\FileHandler.cs" />
     <Compile Include="Anders\Handlers\GameHandler.cs" />
     <Compile Include="Anders\Handlers\MatchHandler.cs" />
+    <Compile Include="Anders\Handlers\MessageDialogHelper.cs" />
+    <Compile Include="Anders\Handlers\ScoreCalculator.cs" />
+    <Compile Include="Anders\Persistency\PersistenceFacade.cs" />
     <Compile Include="Anders\Handlers\PlayerHandler.cs" />
     <Compile Include="Anders\Model\Card.cs" />
     <Compile Include="Anders\Model\CardCatalog.cs" />
@@ -148,18 +152,21 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Line\Commen\MessageDialogHelper.cs" />
+    <Compile Include="Line\Exceptions\FileNotFoundException.cs" />
     <Compile Include="Line\Exceptions\NameMissing.cs" />
+    <Compile Include="Line\Handler\EndPageHandler.cs" />
     <Compile Include="Line\Handler\StartPageHandler.cs" />
     <Compile Include="Line\Handler\TerningButtonHandler.cs" />
     <Compile Include="Line\Model\BægerSingelton.cs" />
     <Compile Include="Line\Model\EvaluateTerninger.cs" />
+    <Compile Include="Line\Model\Highscore.cs" />
     <Compile Include="Line\Model\PointTekster.cs" />
     <Compile Include="Line\Model\PointFelt.cs" />
-    <Compile Include="Line\Model\Spillere.cs" />
     <Compile Include="Line\Model\SpilSingelton.cs" />
     <Compile Include="Line\Model\Spiller.cs" />
     <Compile Include="Line\Model\Terning.cs" />
-    <Compile Include="Line\Model\Turn.cs" />
+    <Compile Include="Line\Persistencty\PersistencyFacade.cs" />
+    <Compile Include="Line\ViewModel\EndPageViewModel.cs" />
     <Compile Include="Line\ViewModel\GamePageViewModel.cs" />
     <Compile Include="Line\ViewModel\StartPageViewModel.cs" />
     <Compile Include="Line\View\EndPage.xaml.cs">
@@ -208,12 +215,29 @@
     <Compile Include="Sofus\View\ButikInformationPage.xaml.cs">
       <DependentUpon>ButikInformationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Thomas\Model\AI.cs" />
+    <Compile Include="Thomas\Model\Dice.cs" />
+    <Compile Include="Thomas\Model\Game.cs" />
+    <Compile Include="Thomas\Model\Player.cs" />
+    <Compile Include="Thomas\ViewModel\YatziDuelViewModel.cs" />
+    <Compile Include="Thomas\View\YatziDuel.xaml.cs">
+      <DependentUpon>YatziDuel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Thomas\View\YatziDuelRules.xaml.cs">
+      <DependentUpon>YatziDuelRules.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\MenuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Thomas\Assets\die_1.png" />
+    <Content Include="Thomas\Assets\die_2.png" />
+    <Content Include="Thomas\Assets\die_3.png" />
+    <Content Include="Thomas\Assets\die_4.png" />
+    <Content Include="Thomas\Assets\die_5.png" />
+    <Content Include="Thomas\Assets\die_6.png" />
     <None Include="RosTorv_TemporaryKey.pfx" />
     <Content Include="Anders\Assets\cardback_65.png" />
     <Content Include="Nikolai\Assets\die_1.png" />
@@ -306,6 +330,14 @@
     <Page Include="Sofus\View\ButikInformationPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Thomas\View\YatziDuel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Thomas\View\YatziDuelRules.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -324,9 +356,7 @@
       <Version>5.0.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Thomas\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

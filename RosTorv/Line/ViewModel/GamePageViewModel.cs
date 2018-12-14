@@ -23,16 +23,10 @@ namespace RosTorv.Line.ViewModel
         private PointFelt _selectedPointFelt;
         private int _selectedTerningIndex;
         public TerningButtonHandler TerningButtonHandler { get; set; }
-        public SpilSingelton Spil { get; set; }
+        public SpilSingelton Spil { get; }
         public PointTekster Pointtekst { get; set; }
 
         public ICommand RollCommand { get; }
-
-        //public ICommand HoldTerningCommand
-        //{
-        //    get { return _holdTerning; }
-        //    set { _holdTerning = value; }
-        //}
 
         public int SelectedTerningIndex
         {
