@@ -50,28 +50,24 @@ namespace RosTorv.Line.Model
             
         }
 
-        public void SaveHighScore()
+        public async Task SaveHighScore()
         {
-            PersistencyFacade.SaveStudentsAsJsonAsync(HighScoreList);
+            await PersistencyFacade.SaveStudentsAsJsonAsync(HighScoreList);
         }
 
-        public async void LoadHighScore()
+        public async Task LoadHighScoreAsync()
         {
-            try
+            var loadedHighScores = await PersistencyFacade.LoadHighScoresFromJsonAsync();
+            if (loadedHighScores != null)
             {
-                var loadedHighScores = await PersistencyFacade.LoadHighScoresFromJsonAsync();
                 HighScoreList.Clear();
-                if (loadedHighScores != null)
-                    foreach (var spiller in loadedHighScores)
-                    {
-                        HighScoreList.Add(spiller);
-                    }
+
+                foreach (var spiller in loadedHighScores)
+                {
+                    HighScoreList.Add(spiller);
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            
+ 
         }
     }
 }

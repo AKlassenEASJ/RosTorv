@@ -74,7 +74,7 @@ namespace RosTorv.Line.Model
             
         }
 
-        public void NyTur(int pointIndex)
+        public async void NyTur(int pointIndex)
         {
             if (SpillereCollection[SpillersTur].PointFelter[pointIndex].CanChange)
             {
@@ -96,24 +96,16 @@ namespace RosTorv.Line.Model
                 if (Tur < 1)
                 {
                     Highscore = new Highscore();
-                    try
-                    {
-                        Highscore.LoadHighScore();
-                    }
-                    catch (Exception e)
-                    {
-                        MessageDialogHelper.Show("", "Der var problemer med Highscore");
-                    }
-                    finally
-                    {
-                        foreach (Spiller spiller in SpillereCollection)
-                        {
-                            Highscore.TjekHighScore(spiller);
-                        }
+                    await Highscore.LoadHighScoreAsync();
 
-                        Highscore.SaveHighScore();
-                        NavigationService.Navigate(typeof(EndPage));
+                    foreach (Spiller spiller in SpillereCollection)
+                    {
+                        Highscore.TjekHighScore(spiller);
                     }
+
+                    await Highscore.SaveHighScore();
+
+                    NavigationService.Navigate(typeof(EndPage));
                 }
 
                 if (SpillersTur >= (SpillereCollection.Count - 1))
