@@ -57,13 +57,21 @@ namespace RosTorv.Line.Model
 
         public async void LoadHighScore()
         {
-            var loadedHighScores = await PersistencyFacade.LoadHighScoresFromJsonAsync();
-            HighScoreList.Clear();
-            if (loadedHighScores != null)
-                foreach (var spiller in loadedHighScores)
-                {
-                    HighScoreList.Add(spiller);
-                }
+            try
+            {
+                var loadedHighScores = await PersistencyFacade.LoadHighScoresFromJsonAsync();
+                HighScoreList.Clear();
+                if (loadedHighScores != null)
+                    foreach (var spiller in loadedHighScores)
+                    {
+                        HighScoreList.Add(spiller);
+                    }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
         }
     }
 }

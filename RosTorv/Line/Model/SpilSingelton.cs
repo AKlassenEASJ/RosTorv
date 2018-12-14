@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RosTorv.Annotations;
 using RosTorv.Common;
+using RosTorv.Line.Commen;
 using RosTorv.Line.Exceptions;
 using RosTorv.Line.View;
 using static RosTorv.Common.NavigationService;
@@ -95,13 +96,24 @@ namespace RosTorv.Line.Model
                 if (Tur < 1)
                 {
                     Highscore = new Highscore();
-                    Highscore.LoadHighScore();
-                    foreach (Spiller spiller in SpillereCollection)
+                    try
                     {
-                        Highscore.TjekHighScore(spiller);
+                        Highscore.LoadHighScore();
                     }
-                    Highscore.SaveHighScore();
-                    NavigationService.Navigate(typeof(EndPage));
+                    catch (Exception e)
+                    {
+                        MessageDialogHelper.Show("", "Der var problemer med Highscore");
+                    }
+                    finally
+                    {
+                        foreach (Spiller spiller in SpillereCollection)
+                        {
+                            Highscore.TjekHighScore(spiller);
+                        }
+
+                        Highscore.SaveHighScore();
+                        NavigationService.Navigate(typeof(EndPage));
+                    }
                 }
 
                 if (SpillersTur >= (SpillereCollection.Count - 1))

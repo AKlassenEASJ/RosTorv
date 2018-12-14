@@ -14,7 +14,7 @@ namespace RosTorv.Line.Handler
 {
     class StartPageHandler
     {
-        private int _antalTure = 15;
+        private int _antalTure = 1;
         public StartPageViewModel StartPageViewModel { get; set; }
 
         public StartPageHandler(StartPageViewModel startPageViewModel)

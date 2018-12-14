@@ -14,7 +14,7 @@ namespace RosTorv.Line.Persistencty
 {
     class PersistencyFacade
     {
-        private static string jsonFileName = "HighScoreAsJson1.bin";
+        private static string jsonFileName = "YatzyHighScoreAsJson.bin";
 
         public static async void SaveStudentsAsJsonAsync(List<Spiller> spillers)
         {
@@ -38,17 +38,17 @@ namespace RosTorv.Line.Persistencty
 
         public static async Task<string> DeSerializeHighScoresFileAsync(String fileName)
         {
-            try
-            {
+            //try
+            //{
                 StorageFile localFile = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
                 return await FileIO.ReadTextAsync(localFile);
         }
-            catch (FileNotFoundException e)
-            {
+            //catch (FileNotFoundException e)
+            //{
 
-                MessageDialogHelper.Show("Der var problemer med at loade HighscoreListen", "File not found!");
-                return null;
-            }
-}
+            //    MessageDialogHelper.Show("Der var problemer med at loade HighscoreListen", "File not found!");
+            //    return null;
+            //}
     }
 }
+
