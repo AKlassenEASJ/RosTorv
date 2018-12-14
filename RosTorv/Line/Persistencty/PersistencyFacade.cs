@@ -14,41 +14,43 @@ namespace RosTorv.Line.Persistencty
 {
     class PersistencyFacade
     {
-        private static string jsonFileName = "YatzyHighScoreAsJson.bin";
+        private static string jsonFileName = "YatzyHighScoreAsJson.Json";
 
-        public static async void SaveStudentsAsJsonAsync(List<Spiller> spillers)
+        public static async Task SaveHighScoreJsonAsync(List<Spiller> spillers)
         {
-            string studentsJsonString = JsonConvert.SerializeObject(spillers);
-            SerializeHighScoresFileAsync(studentsJsonString, jsonFileName);
+            string spillereJsonString = JsonConvert.SerializeObject(spillers);
+            await SerializeHighScoresFileAsync(spillereJsonString, jsonFileName);
         }
 
         public static async Task<List<Spiller>> LoadHighScoresFromJsonAsync()
         {
-            string studentsJsonString = await DeSerializeHighScoresFileAsync(jsonFileName);
-            if (studentsJsonString != null)
-                return (List<Spiller>)JsonConvert.DeserializeObject(studentsJsonString, typeof(List<Spiller>));
+            string spillereJsonString = await DeSerializeHighScoresFileAsync(jsonFileName);
+            if (spillereJsonString != null)
+                return JsonConvert.DeserializeObject<List<Spiller>>(spillereJsonString);
             return null;
         }
 
-        public static async void SerializeHighScoresFileAsync(string studentsString, string fileName)
+        public static async Task SerializeHighScoresFileAsync(string spillerString, string fileName)
         {
             StorageFile localFile = await ApplicationData.Current.LocalFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
-            await FileIO.WriteTextAsync(localFile, studentsString);
+            await FileIO.WriteTextAsync(localFile, spillerString);
         }
 
         public static async Task<string> DeSerializeHighScoresFileAsync(String fileName)
         {
-            //try
-            //{
-                StorageFile localFile = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
+           
+            StorageFile localFile = await ApplicationData.Current.LocalFolder.TryGetItemAsync(fileName) as StorageFile;
+            if (localFile != null)
+            {
                 return await FileIO.ReadTextAsync(localFile);
+            }
+            else
+            {
+                return null;
+            }
+                
         }
-            //catch (FileNotFoundException e)
-            //{
-
-            //    MessageDialogHelper.Show("Der var problemer med at loade HighscoreListen", "File not found!");
-            //    return null;
-            //}
+            
     }
 }
 

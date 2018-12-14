@@ -49,6 +49,7 @@ namespace UnitTestingProject.Line
             Assert.AreEqual(exptedResult, _spil.SpillereCollection[1].PointFelter[9].Point);
         }
         //I tilfælde af at der er mere end 3 ens skal den stadig kunne måle ud fra 3 ens
+        [TestMethod]
         public void TestOmMereEnd3Ens()
         {
             _spil = SpilSingelton.InstansSpil;

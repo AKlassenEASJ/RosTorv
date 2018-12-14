@@ -8,7 +8,7 @@ namespace RosTorv.Line.Exceptions
 {
     class NameMissing : Exception
     {
-        public NameMissing( string Message): base(Message)
+        public NameMissing(string message): base(message)
         {
             
         }
