@@ -49,6 +49,7 @@ namespace UnitTestingProject.Line
             Assert.AreEqual(exptedResult, _spil.SpillereCollection[1].PointFelter[8].Point);
         }
         //I tilfælde af at der er mere end 2 af den ene skal den stadig kunne måle ud fra 2 Par
+        [TestMethod]
         public void TestOmMereEnd2Par()
         {
             _spil = SpilSingelton.InstansSpil;

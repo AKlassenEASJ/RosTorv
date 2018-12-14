@@ -23,7 +23,6 @@ namespace RosTorv.Line.Model
         private int _slagTilbage = 3;
         public int Tur { get; set; }
         public int SpillersTur { get; set; }
-        //public Spiller Spiller1 { get; set; }
         public BægerSingelton Bæger { get; set; }
         public EvaluateTerninger EvaluateTerninger { get; set; }
         public Highscore Highscore { get; set; }
@@ -56,7 +55,6 @@ namespace RosTorv.Line.Model
 
         private SpilSingelton()
         {
-            //Spiller1 = new Spiller("Line");
             SpillereCollection = new List<Spiller>();
             Bæger = BægerSingelton.InstanBægerSingelton;
             EvaluateTerninger = new EvaluateTerninger(this);

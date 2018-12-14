@@ -52,7 +52,7 @@ namespace RosTorv.Line.Model
 
         public async Task SaveHighScore()
         {
-            await PersistencyFacade.SaveStudentsAsJsonAsync(HighScoreList);
+            await PersistencyFacade.SaveHighScoreJsonAsync(HighScoreList);
         }
 
         public async Task LoadHighScoreAsync()

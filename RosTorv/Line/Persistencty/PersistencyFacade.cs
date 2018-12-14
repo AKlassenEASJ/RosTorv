@@ -16,24 +16,24 @@ namespace RosTorv.Line.Persistencty
     {
         private static string jsonFileName = "YatzyHighScoreAsJson.Json";
 
-        public static async Task SaveStudentsAsJsonAsync(List<Spiller> spillers)
+        public static async Task SaveHighScoreJsonAsync(List<Spiller> spillers)
         {
-            string studentsJsonString = JsonConvert.SerializeObject(spillers);
-            await SerializeHighScoresFileAsync(studentsJsonString, jsonFileName);
+            string spillereJsonString = JsonConvert.SerializeObject(spillers);
+            await SerializeHighScoresFileAsync(spillereJsonString, jsonFileName);
         }
 
         public static async Task<List<Spiller>> LoadHighScoresFromJsonAsync()
         {
-            string studentsJsonString = await DeSerializeHighScoresFileAsync(jsonFileName);
-            if (studentsJsonString != null)
-                return JsonConvert.DeserializeObject<List<Spiller>>(studentsJsonString);
+            string spillereJsonString = await DeSerializeHighScoresFileAsync(jsonFileName);
+            if (spillereJsonString != null)
+                return JsonConvert.DeserializeObject<List<Spiller>>(spillereJsonString);
             return null;
         }
 
-        public static async Task SerializeHighScoresFileAsync(string studentsString, string fileName)
+        public static async Task SerializeHighScoresFileAsync(string spillerString, string fileName)
         {
             StorageFile localFile = await ApplicationData.Current.LocalFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
-            await FileIO.WriteTextAsync(localFile, studentsString);
+            await FileIO.WriteTextAsync(localFile, spillerString);
         }
 
         public static async Task<string> DeSerializeHighScoresFileAsync(String fileName)

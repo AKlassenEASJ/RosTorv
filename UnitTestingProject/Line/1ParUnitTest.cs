@@ -7,7 +7,6 @@ namespace UnitTestingProject.Line
     public class Test1Par
     {
         private SpilSingelton _spil;
-       
 
         //Tjekker om Point bliver ændret hvis der er 1 Par
         [TestMethod]
