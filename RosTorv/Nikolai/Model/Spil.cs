@@ -48,7 +48,18 @@ namespace RosTorv.Nikolai.Model
 
 
 
-        public Numbers NumberCatalog { get; set; }
+        private Numbers numberCatalog;
+
+        public Numbers NumberCatalog
+        {
+            get { return numberCatalog; }
+            set
+            {
+                numberCatalog = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public Spil()
         {
@@ -78,6 +89,7 @@ namespace RosTorv.Nikolai.Model
                     NumberCatalog.NumberList.Remove(i);
                     //NumberList.Remove(i);
                 }
+                SelectedNumbers.Clear();
             }
         }
 
@@ -127,8 +139,19 @@ namespace RosTorv.Nikolai.Model
         }
 
 
-        
-        public ObservableCollection<Number> RemovedNumbers { get; set; }
+
+        private ObservableCollection<Number> removedNumbers;
+
+        public ObservableCollection<Number> RemovedNumbers
+        {
+            get { return removedNumbers; }
+            set
+            {
+                removedNumbers = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public ObservableCollection<Number> SelectedNumbers { get; set; }
 
