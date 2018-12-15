@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using RosTorv.Annotations;
+using RosTorv.Common;
 using RosTorv.Nikolai.Common;
+using RosTorv.Nikolai.View;
 
 namespace RosTorv.Nikolai.Model
 {
@@ -90,7 +92,10 @@ namespace RosTorv.Nikolai.Model
                     //NumberList.Remove(i);
                 }
                 SelectedNumbers.Clear();
+                
             }
+            if (RemovedNumbers.Contains(new Number(1, true)) && RemovedNumbers.Contains(new Number(2, true)) && RemovedNumbers.Contains(new Number(3, true)) && RemovedNumbers.Contains(new Number(4, true)) && RemovedNumbers.Contains(new Number(5, true)) && RemovedNumbers.Contains(new Number(6, true)) && RemovedNumbers.Contains(new Number(7, true)) && RemovedNumbers.Contains(new Number(8, true)) && RemovedNumbers.Contains(new Number(9, true)))
+                NavigationService.Navigate(typeof(NamePage));
         }
 
         public void RulePage()
@@ -115,14 +120,15 @@ namespace RosTorv.Nikolai.Model
         
         public void RollAll()
         {
-            
-            if (DiceCounter == 0)
-            {
-                MessageDialogHelper.Show("Hej", "hej");
-            }
+
             DiceCounter = _diceCounter -1;
 
-            
+            if (DiceCounter == -1)
+            {
+                NavigationService.Navigate(typeof(NamePage));
+            }
+
+
 
             if (RemovedNumbers.Contains(new Number(7, true)) && RemovedNumbers.Contains(new Number(8, true)) && RemovedNumbers.Contains(new Number(9, true)))
             {
