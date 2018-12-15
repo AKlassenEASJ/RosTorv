@@ -1,18 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
 {
-    public class Spiller
+    public class Spiller : INotifyPropertyChanged
     {
         public string Name { get; set; }
         public int HighScorePlads { get; set; }
+        private string _backGroundColor = "white";
 
-
+        public string BackGroundColor
+        {
+            get { return _backGroundColor; }
+            set
+            {
+                _backGroundColor = value; 
+                OnPropertyChanged();
+            }
+        }
         public ObservableCollection<PointFelt> PointFelter { get; set; } = new ObservableCollection<PointFelt>();
 
         public int TotalPoint
@@ -44,5 +56,12 @@ namespace RosTorv.Line.Model
             PointFelter[16].Color = "Black";
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

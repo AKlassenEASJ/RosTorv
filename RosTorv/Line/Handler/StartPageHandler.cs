@@ -54,7 +54,10 @@ namespace RosTorv.Line.Handler
                     }
                 }
                 StartPageViewModel.Spil.SpillersTur = 0;
-                //NavigationService.Navigate(typeof(GamePage));
+                StartPageViewModel.Spil.SpillereCollection[0].BackGroundColor = "LimeGreen";
+                StartPageViewModel.Spil.ResetSlag();
+
+                NavigationService.Navigate(typeof(GamePage));
             }
             catch (NameMissing e)
             {

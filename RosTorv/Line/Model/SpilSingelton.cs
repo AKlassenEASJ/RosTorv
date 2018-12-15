@@ -79,7 +79,7 @@ namespace RosTorv.Line.Model
                 Tur--;
                 if (SpillereCollection[SpillersTur].PointFelter[pointIndex].Point == 0)
                 {
-                    SpillereCollection[SpillersTur].PointFelter[pointIndex].BackgroundColor = "Gray";
+                    SpillereCollection[SpillersTur].PointFelter[pointIndex].BackgroundColor = "SlateGray";
                 }
                 else
                 {
@@ -108,11 +108,15 @@ namespace RosTorv.Line.Model
 
                 if (SpillersTur >= (SpillereCollection.Count - 1))
                 {
+                    SpillereCollection[SpillersTur].BackGroundColor = "none";
                     SpillersTur = 0;
+                    SpillereCollection[0].BackGroundColor = "LimeGreen";
                 }
                 else
                 {
+                    SpillereCollection[SpillersTur].BackGroundColor = "none";
                     SpillersTur++;
+                    SpillereCollection[SpillersTur].BackGroundColor = "LimeGreen";
                 }
             }
         }
