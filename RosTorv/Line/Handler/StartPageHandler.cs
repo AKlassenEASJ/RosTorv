@@ -12,7 +12,7 @@ using RosTorv.Line.ViewModel;
 
 namespace RosTorv.Line.Handler
 {
-    class StartPageHandler
+    public class StartPageHandler
     {
         private int _antalTure = 15;
         public StartPageViewModel StartPageViewModel { get; set; }
@@ -54,7 +54,7 @@ namespace RosTorv.Line.Handler
                     }
                 }
                 StartPageViewModel.Spil.SpillersTur = 0;
-                NavigationService.Navigate(typeof(GamePage));
+                //NavigationService.Navigate(typeof(GamePage));
             }
             catch (NameMissing e)
             {

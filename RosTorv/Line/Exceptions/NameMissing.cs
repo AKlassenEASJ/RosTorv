@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RosTorv.Line.Exceptions
 {
-    class NameMissing : Exception
+    public class NameMissing : Exception
     {
         public NameMissing(string message): base(message)
         {

@@ -146,7 +146,7 @@ namespace RosTorv.Line.Model
 
         public void AddSpiller(Spiller newspiller)
         {
-            if (newspiller.Name == null)
+            if (String.IsNullOrEmpty(newspiller.Name))
             {
                 throw new NameMissing("Spiller skal have navn");
             }

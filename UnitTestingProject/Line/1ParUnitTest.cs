@@ -11,7 +11,7 @@ namespace UnitTestingProject.Line
         //Tjekker om Point bliver ændret hvis der er 1 Par
         [TestMethod]
         public void TestOm1Par()
-        {
+        {   //Arrange
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
             _spil.SpillereCollection[0].PointFelter[7].Point = 0;
@@ -25,10 +25,11 @@ namespace UnitTestingProject.Line
 
             int exptedResult = 2;
 
+            //Act
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
+            //Assert 
             Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[7].Point);
-
         }
         //Tjekker om Point bliver ændret hvis der ikke er 1 par
         [TestMethod]
@@ -56,6 +57,7 @@ namespace UnitTestingProject.Line
         public void TestOmMereEnd1Par()
         {
             _spil = SpilSingelton.InstansSpil;
+            _spil.SpillereCollection.Add(new Spiller("name"));
             _spil.SpillereCollection[0].PointFelter[7].Point = 0;
             _spil.SpillereCollection[0].PointFelter[7].CanChange = true;
 
@@ -87,7 +89,7 @@ namespace UnitTestingProject.Line
             _spil.Bæger.Terninger[4].Eyes = 2;
 
             int exptedResult = 4;
-
+             
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
             Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[7].Point);
@@ -98,7 +100,7 @@ namespace UnitTestingProject.Line
         {
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
-            _spil.SpillereCollection[0].PointFelter[7].Point = 0;
+            //_spil.SpillereCollection[0].PointFelter[7].Point = 0;
             _spil.SpillereCollection[0].PointFelter[7].CanChange = false;
 
             _spil.Bæger.Terninger[0].Eyes = 1;

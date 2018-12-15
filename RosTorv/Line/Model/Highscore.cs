@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using RosTorv.Annotations;
+using RosTorv.Line.Exceptions;
 using RosTorv.Line.Handler;
 using RosTorv.Line.Persistencty;
 
@@ -52,12 +53,12 @@ namespace RosTorv.Line.Model
 
         public async Task SaveHighScore()
         {
-            await PersistencyFacade.SaveHighScoreJsonAsync(HighScoreList);
+            await PersistencyFacade.SerializeHighScoreAsync(HighScoreList);
         }
 
         public async Task LoadHighScoreAsync()
         {
-            var loadedHighScores = await PersistencyFacade.LoadHighScoresFromJsonAsync();
+            var loadedHighScores = await PersistencyFacade.DeSerializeHighScoresAsync();
             if (loadedHighScores != null)
             {
                 HighScoreList.Clear();
