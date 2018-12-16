@@ -13,8 +13,8 @@ namespace UnitTestingProject.Line
         {
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
-            _spil.SpillereCollection[0].PointFelter[15].Point = 0;
-            _spil.SpillereCollection[0].PointFelter[15].CanChange = true;
+            _spil.SpillereCollection[0].PointFelter[16].Point = 0;
+            _spil.SpillereCollection[0].PointFelter[16].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 1;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -26,7 +26,7 @@ namespace UnitTestingProject.Line
 
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
-            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[15].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[16].Point);
         }
 
         [TestMethod]
@@ -34,8 +34,8 @@ namespace UnitTestingProject.Line
         {
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
-            _spil.SpillereCollection[0].PointFelter[15].Point = 0;
-            _spil.SpillereCollection[0].PointFelter[15].CanChange = true;
+            _spil.SpillereCollection[0].PointFelter[16].Point = 0;
+            _spil.SpillereCollection[0].PointFelter[16].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 2;
             _spil.Bæger.Terninger[1].Eyes = 2;
@@ -47,7 +47,7 @@ namespace UnitTestingProject.Line
 
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
-            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[15].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[16].Point);
         }
 
         [TestMethod]
@@ -55,8 +55,8 @@ namespace UnitTestingProject.Line
         {
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
-            _spil.SpillereCollection[0].PointFelter[15].Point = 0;
-            _spil.SpillereCollection[0].PointFelter[15].CanChange = true;
+            _spil.SpillereCollection[0].PointFelter[16].Point = 0;
+            _spil.SpillereCollection[0].PointFelter[16].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 3;
             _spil.Bæger.Terninger[1].Eyes = 3;
@@ -68,15 +68,15 @@ namespace UnitTestingProject.Line
 
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
-            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[15].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[16].Point);
         }
         [TestMethod]
         public void TestYatzyMed4()
         {
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
-            _spil.SpillereCollection[0].PointFelter[15].Point = 0;
-            _spil.SpillereCollection[0].PointFelter[15].CanChange = true;
+            _spil.SpillereCollection[0].PointFelter[16].Point = 0;
+            _spil.SpillereCollection[0].PointFelter[16].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 4;
             _spil.Bæger.Terninger[1].Eyes = 4;
@@ -88,7 +88,7 @@ namespace UnitTestingProject.Line
 
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
-            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[15].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[16].Point);
         }
 
         [TestMethod]
@@ -96,8 +96,8 @@ namespace UnitTestingProject.Line
         {
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
-            _spil.SpillereCollection[0].PointFelter[15].Point = 0;
-            _spil.SpillereCollection[0].PointFelter[15].CanChange = true;
+            _spil.SpillereCollection[0].PointFelter[16].Point = 0;
+            _spil.SpillereCollection[0].PointFelter[16].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 5;
             _spil.Bæger.Terninger[1].Eyes = 5;
@@ -109,15 +109,15 @@ namespace UnitTestingProject.Line
 
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
-            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[15].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[16].Point);
         }
         [TestMethod]
         public void TestYatzyMed6()
         {
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
-            _spil.SpillereCollection[0].PointFelter[15].Point = 0;
-            _spil.SpillereCollection[0].PointFelter[15].CanChange = true;
+            _spil.SpillereCollection[0].PointFelter[16].Point = 0;
+            _spil.SpillereCollection[0].PointFelter[16].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 6;
             _spil.Bæger.Terninger[1].Eyes = 6;
@@ -129,7 +129,7 @@ namespace UnitTestingProject.Line
 
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
-            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[15].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[16].Point);
         }
 
         [TestMethod]
@@ -137,8 +137,8 @@ namespace UnitTestingProject.Line
         {
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
-            _spil.SpillereCollection[0].PointFelter[15].Point = 0;
-            _spil.SpillereCollection[0].PointFelter[15].CanChange = true;
+            _spil.SpillereCollection[0].PointFelter[16].Point = 0;
+            _spil.SpillereCollection[0].PointFelter[16].CanChange = true;
 
             _spil.Bæger.Terninger[0].Eyes = 6;
             _spil.Bæger.Terninger[1].Eyes = 1;
@@ -150,7 +150,7 @@ namespace UnitTestingProject.Line
 
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
-            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[15].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[16].Point);
         }
 
         [TestMethod]
@@ -158,7 +158,7 @@ namespace UnitTestingProject.Line
         {
             _spil = SpilSingelton.InstansSpil;
             _spil.SpillereCollection.Add(new Spiller("name"));
-            _spil.SpillereCollection[0].PointFelter[15].Point = 0;
+            _spil.SpillereCollection[0].PointFelter[16].Point = 0;
             _spil.SpillereCollection[0].PointFelter[15].CanChange = false;
 
             _spil.Bæger.Terninger[0].Eyes = 6;
@@ -171,7 +171,7 @@ namespace UnitTestingProject.Line
 
             _spil.EvaluateTerninger.RunAllEvaluate(0);
 
-            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[15].Point);
+            Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[16].Point);
         }
 
     }

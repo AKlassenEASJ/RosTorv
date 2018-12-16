@@ -15,35 +15,33 @@ namespace RosTorv.Line.Model
 {
     public class Highscore
     {
-        public List<Spiller> HighScoreList { get; set; }
+        public List<HighScorePlads> HighScoreList { get; set; }
 
         public Highscore()
         {
-            HighScoreList = new List<Spiller>();
-            HighScoreList.Add(new Spiller("HighScore"));
-            HighScoreList[0].HighScorePlads = 1;
-            HighScoreList.Add(new Spiller("HighScore2"));
-            HighScoreList[1].HighScorePlads = 2;
+            HighScoreList = new List<HighScorePlads>();
+            HighScoreList.Add(new HighScorePlads("HighScore", 1, 0));
+
         }
 
         public void TjekHighScore( Spiller spiller)
         {
             if (HighScoreList.Count == 10)
             {
-                if (HighScoreList[9].TotalPoint < spiller.TotalPoint)
+                if (HighScoreList[9].Point < spiller.PointFelter[17].Point)
                 {
                     HighScoreList.RemoveAt(9);
                 }
             }
             for (int i = 0; i < HighScoreList.Count; i++)
             {
-                if (spiller.TotalPoint > HighScoreList[i].TotalPoint)
+                if (spiller.PointFelter[17].Point > HighScoreList[i].Point)
                 {
-                    HighScoreList.Insert(i, spiller);
+                    HighScoreList.Insert(i, new HighScorePlads(spiller.Name, i, spiller.PointFelter[17].Point));
 
                     for (int j = 0; j < HighScoreList.Count; j++)
                     {
-                        HighScoreList[j].HighScorePlads = j + 1;
+                        HighScoreList[j].Plads = j + 1;
                     }
                     break;
                 }

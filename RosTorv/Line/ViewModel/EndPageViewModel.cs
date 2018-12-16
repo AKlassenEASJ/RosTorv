@@ -15,7 +15,7 @@ namespace RosTorv.Line.ViewModel
 
         public string VinderNavn { get; set; }
         public int VinderPoint { get; set; }
-        public int Vindernr { get; set; }
+        public int VinderNr { get; set; }
 
         public EndPageViewModel()
         {

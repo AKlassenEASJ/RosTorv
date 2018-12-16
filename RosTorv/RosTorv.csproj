@@ -159,6 +159,7 @@
     <Compile Include="Line\Model\BægerSingelton.cs" />
     <Compile Include="Line\Model\EvaluateTerninger.cs" />
     <Compile Include="Line\Model\Highscore.cs" />
+    <Compile Include="Line\Model\HighScorePlads.cs" />
     <Compile Include="Line\Model\PointTekster.cs" />
     <Compile Include="Line\Model\PointFelt.cs" />
     <Compile Include="Line\Model\SpilSingelton.cs" />

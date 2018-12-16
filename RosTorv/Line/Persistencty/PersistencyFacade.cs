@@ -16,17 +16,17 @@ namespace RosTorv.Line.Persistencty
     {
         private static string jsonFileName = "YatzyHighScoreAsJson.Json";
 
-        public static async Task SerializeHighScoreAsync(List<Spiller> spillers)
+        public static async Task SerializeHighScoreAsync(List<HighScorePlads> spillers)
         {
             string spillereJsonString = JsonConvert.SerializeObject(spillers);
             await SaveHighScoreFileAsync(spillereJsonString, jsonFileName);
         }
 
-        public static async Task<List<Spiller>> DeSerializeHighScoresAsync()
+        public static async Task<List<HighScorePlads>> DeSerializeHighScoresAsync()
         {
             string spillereJsonString = await LoadHighScoresfilesFromJsonAsync(jsonFileName);
             if (spillereJsonString != null)
-                return JsonConvert.DeserializeObject<List<Spiller>>(spillereJsonString);
+                return JsonConvert.DeserializeObject<List<HighScorePlads>>(spillereJsonString);
             return null;
         }
 
