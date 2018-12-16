@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using RosTorv.Anders.Handlers;
+using RosTorv.Anders.Persistency;
 
 namespace RosTorv.Anders.Model
 {
+    [Serializable]
     class HighScore
     {
 
@@ -36,10 +40,15 @@ namespace RosTorv.Anders.Model
 
         public ObservableCollection<Player> HighScoreList
         {
-            get { return _highScoreList; }
+            get
+            {
+                
+                return _highScoreList;
+            }
             set { _highScoreList = value; }
         }
 
+        
 
         #endregion
 
@@ -47,10 +56,9 @@ namespace RosTorv.Anders.Model
 
         private HighScore()
         {
-            _highScoreList = new ObservableCollection<Player>();
-            //HighScoreList.Add(new Player("Folketinget", 1000000, 0));
-            HighScoreList.Add(new Player("Kommunen", 20000, 1));
-            HighScoreList.Add(new Player("Bente", 3000, 20));
+
+
+            
 
 
         }
@@ -58,6 +66,26 @@ namespace RosTorv.Anders.Model
         #endregion
 
         #region Methods
+
+        public async void GetHighScoreList()
+        {
+            var highscorelist = await PersistenceFacade.LoadPersonsFromJsonAsync();
+            
+            if (_highScoreList == null)
+            {
+                _highScoreList = new ObservableCollection<Player>();
+                
+            }
+            _highScoreList.Clear();
+
+            if (highscorelist != null)
+            {
+                foreach (Player player in highscorelist)
+                {
+                    _highScoreList.Add(player);
+                }
+            }
+        }
 
 
 

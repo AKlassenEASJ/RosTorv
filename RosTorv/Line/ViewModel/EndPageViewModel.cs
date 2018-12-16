@@ -13,11 +13,15 @@ namespace RosTorv.Line.ViewModel
         public SpilSingelton Spil { get; }
         public EndPageHandler EndPageHandler { get; set; }
 
+        public string VinderNavn { get; set; }
+        public int VinderPoint { get; set; }
+        public int VinderNr { get; set; }
 
         public EndPageViewModel()
         {
             Spil = SpilSingelton.InstansSpil;
             EndPageHandler = new EndPageHandler(this);
+            EndPageHandler.TjekVinder();
         }
 
     }

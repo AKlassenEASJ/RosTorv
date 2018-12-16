@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RosTorv.Line.Exceptions
+namespace RosTorv.Anders.Exceptions
 {
-    public class NameMissing : Exception
+    class NameIsBlankException : Exception
     {
-        public NameMissing(string message): base(message)
+
+        public NameIsBlankException(string message) : base(message)
         {
             
         }
+
     }
 }

@@ -22,13 +22,73 @@
         <Grid Column="1">
             <StackPanel>
                 <TextBlock Text="Antal spillere:" FontSize="40"/>
-                <Button  Content="1" Command="{Binding Command1Spiller}"  FontSize="40" Width="100" Margin="10"/>
-                <Button Content="2" Command="{Binding Command2Spiller}" FontSize="45" Width="100" Margin="10"/>
-                <Button Content="3" Command="{Binding Command3Spiller}" FontSize="45" Width="100" Margin="10"/>
-                <Button Content="4" Command="{Binding Command4Spiller}" FontSize="45" Width="100" Margin="10"/>
-                <Button Content="5" Command="{Binding Command5Spiller}" FontSize="45" Width="100" Margin="10"/>
+                <Button  Content="1" Command="{Binding Command1Spiller}" FontWeight="Bold"  FontSize="40" Width="100" Margin="10" >
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Default">
+                                    <SolidColorBrush x:Key="ButtonBackground" Color="LimeGreen"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="GreenYellow"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="green"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
+                <Button Content="2" FontWeight="Bold" Command="{Binding Command2Spiller}" FontSize="45" Width="100" Margin="10">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Default">
+                                    <SolidColorBrush x:Key="ButtonBackground" Color="LimeGreen"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="GreenYellow"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="green"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
+                <Button Content="3" FontWeight="Bold" Command="{Binding Command3Spiller}" FontSize="45" Width="100" Margin="10">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Default">
+                                    <SolidColorBrush x:Key="ButtonBackground" Color="LimeGreen"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="GreenYellow"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="green"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
+                <Button Content="4" FontWeight="Bold" Command="{Binding Command4Spiller}" FontSize="45" Width="100" Margin="10">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Default">
+                                    <SolidColorBrush x:Key="ButtonBackground" Color="LimeGreen"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="GreenYellow"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="green"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
+                <Button Content="5" FontWeight="Bold" Command="{Binding Command5Spiller}" FontSize="45" Width="100" Margin="10">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Default">
+                                    <SolidColorBrush x:Key="ButtonBackground" Color="LimeGreen"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="GreenYellow"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="green"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
 
-                
+
             </StackPanel>
 
         </Grid>
@@ -46,9 +106,24 @@
 
         <Grid Column="3">
 
-            <Button Content="Start Spil" FontSize="40" Command="{Binding StartGameCommand}"/>
-            
-            <!--<Button Content="EndPage" Command="{Binding EndCommand}"></Button>-->
+            <Button Content="Start Spil" FontSize="40" FontWeight="Bold" Command="{Binding StartGameCommand}" Margin="10">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.ThemeDictionaries>
+                            <ResourceDictionary x:Key="Default">
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" x:Key="ButtonBackground">
+                                    <GradientStop Color="GreenYellow" Offset="0.0"/>
+                                    <GradientStop Color="Green" Offset="1.0"/>
+                                </LinearGradientBrush>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" x:Key="ButtonBackgroundPointerOver">
+                                    <GradientStop Color="Green" Offset="0.0"/>
+                                    <GradientStop Color="GreenYellow" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </ResourceDictionary>
+                        </ResourceDictionary.ThemeDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+            </Button>
         </Grid>
 
     </Grid>

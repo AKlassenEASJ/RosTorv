@@ -30,7 +30,7 @@ namespace RosTorv.Line.Model
             First6(index);
             TjekEns(index);
             TjekHøjOgLav(index);
-            if (Spil.SpillereCollection[index].PointFelter[14].CanChange)
+            if (Spil.SpillereCollection[index].PointFelter[15].CanChange)
             {
                 GetChance(index);
             }
@@ -38,10 +38,10 @@ namespace RosTorv.Line.Model
 
         private void GetChance( int index)
         {
-            Spil.SpillereCollection[index].PointFelter[14].Point = 0;
+            Spil.SpillereCollection[index].PointFelter[15].Point = 0;
             for (int i = 1; i < 7; i++)
             {
-                Spil.SpillereCollection[index].PointFelter[14].Point = Spil.SpillereCollection[index].PointFelter[14].Point + (_terningsværdi[i]*i);
+                Spil.SpillereCollection[index].PointFelter[15].Point = Spil.SpillereCollection[index].PointFelter[15].Point + (_terningsværdi[i]*i);
             }
         }
 
@@ -93,11 +93,11 @@ namespace RosTorv.Line.Model
                         {
                             if (_terningsværdi[1] == 1)
                             {
-                                Spil.SpillereCollection[index].PointFelter[12].Point = 15;
+                                Spil.SpillereCollection[index].PointFelter[13].Point = 15;
                             }
                             else if (_terningsværdi[6] == 1)
                             {
-                                Spil.SpillereCollection[index].PointFelter[11].Point = 20;
+                                Spil.SpillereCollection[index].PointFelter[12].Point = 20;
                             }
                         }
                     }
@@ -112,32 +112,32 @@ namespace RosTorv.Line.Model
                 //hvis der et par
                 if (_terningsværdi[i] > 1)
                 {
-                    if (Spil.SpillereCollection[index].PointFelter[7].CanChange)
+                    if (Spil.SpillereCollection[index].PointFelter[8].CanChange)
                     {
-                        Spil.SpillereCollection[index].PointFelter[7].Point = i * 2;
+                        Spil.SpillereCollection[index].PointFelter[8].Point = i * 2;
                     }
 
                     //Tjek om 2 par Og FuldtHus
-                    if (Spil.SpillereCollection[index].PointFelter[8].CanChange || Spil.SpillereCollection[index].PointFelter[13].CanChange)
+                    if (Spil.SpillereCollection[index].PointFelter[9].CanChange || Spil.SpillereCollection[index].PointFelter[14].CanChange)
                     {
                         for (int j = 1; j < 7; j++)
                         {
                             if (j != i)
                             {
-                                if (Spil.SpillereCollection[index].PointFelter[8].CanChange)
+                                if (Spil.SpillereCollection[index].PointFelter[9].CanChange)
                                 {
                                     if (_terningsværdi[j] > 1)
                                     {
-                                        Spil.SpillereCollection[index].PointFelter[8].Point = (i * 2) + (j * 2);
+                                        Spil.SpillereCollection[index].PointFelter[9].Point = (i * 2) + (j * 2);
 
                                     }
                                 }
                                 //FuldtHus
-                                if (Spil.SpillereCollection[index].PointFelter[13].CanChange)
+                                if (Spil.SpillereCollection[index].PointFelter[14].CanChange)
                                 {
                                         if (_terningsværdi[j] == 3)
                                         {
-                                            Spil.SpillereCollection[index].PointFelter[13].Point = (i * 2) + (j * 3);
+                                            Spil.SpillereCollection[index].PointFelter[14].Point = (i * 2) + (j * 3);
                                         }
                                 }
                                 
@@ -148,12 +148,12 @@ namespace RosTorv.Line.Model
                     //hvis der er 3 ens
                     if (_terningsværdi[i] > 2)
                     {
-                        if (Spil.SpillereCollection[index].PointFelter[9].CanChange)
+                        if (Spil.SpillereCollection[index].PointFelter[10].CanChange)
                         {
-                            Spil.SpillereCollection[index].PointFelter[9].Point = i * 3;
+                            Spil.SpillereCollection[index].PointFelter[10].Point = i * 3;
                         }
                         //fuldthus
-                        if (Spil.SpillereCollection[index].PointFelter[13].CanChange)
+                        if (Spil.SpillereCollection[index].PointFelter[14].CanChange)
                         {
                             for (int j = 1; j < 7; j++)
                             {
@@ -161,7 +161,7 @@ namespace RosTorv.Line.Model
                                 {
                                     if (_terningsværdi[j] == 2)
                                     {
-                                        Spil.SpillereCollection[index].PointFelter[13].Point = (j * 2) + (i * 3);
+                                        Spil.SpillereCollection[index].PointFelter[14].Point = (j * 2) + (i * 3);
                                     }
                                 }
                             }
@@ -170,18 +170,18 @@ namespace RosTorv.Line.Model
                         //4 ens
                         if (_terningsværdi[i] > 3)
                         {
-                            if (Spil.SpillereCollection[index].PointFelter[10].CanChange)
+                            if (Spil.SpillereCollection[index].PointFelter[11].CanChange)
                             {
-                                Spil.SpillereCollection[index].PointFelter[10].Point = i * 4;
+                                Spil.SpillereCollection[index].PointFelter[11].Point = i * 4;
                             }
 
 
                          //yatzy
                             if (_terningsværdi[i] > 4)
                             {
-                                    if (Spil.SpillereCollection[index].PointFelter[15].CanChange)
+                                    if (Spil.SpillereCollection[index].PointFelter[16].CanChange)
                                     {
-                                        Spil.SpillereCollection[index].PointFelter[15].Point = 50;
+                                        Spil.SpillereCollection[index].PointFelter[16].Point = 50;
                                     }
                             }
                             

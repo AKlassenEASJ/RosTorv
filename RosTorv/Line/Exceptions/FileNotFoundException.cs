@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RosTorv.Line.Exceptions
 {
-    public class NameMissing : Exception
+    class FileNotFoundException : Exception
     {
-        public NameMissing(string message): base(message)
+        public FileNotFoundException(string Message) : base(Message)
         {
             
         }
