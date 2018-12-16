@@ -11,7 +11,7 @@
     <Page.DataContext>
         <viewModel:YatziDuelViewModel/>
     </Page.DataContext>
-    <Grid>
+    <Grid Background="SpringGreen">
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
                 <TextBlock  Text="Friend Computer" FontSize="90" TextWrapping="Wrap"/>
@@ -55,10 +55,10 @@
                 <Button Content="Pass Turn" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding PcRollCommand}" IsEnabled="{Binding Game.CanPassTurn, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel>
-                <TextBlock HorizontalAlignment="Left" Text="{Binding ScoreText}"/>
-                <TextBox Text=" " FontSize="12" Height="25"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding Game.Player.Score, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Game.Bet, Mode=TwoWay}" IsReadOnly="{Binding CanBet, Mode=TwoWay}" FontSize="12" Height="25" />
                 <TextBlock HorizontalAlignment="Left" Text="{Binding Game.RollsLeft}"/>
-                <TextBlock HorizontalAlignment="Left"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding Game.GameMessage, Mode=TwoWay}" Foreground="Red"/>
             </StackPanel>
         </StackPanel>
     </Grid>

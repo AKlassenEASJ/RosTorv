@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Windows.Services.Store;
 using Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols;
 using RosTorv.Annotations;
+using RosTorv.Thomas.View;
 
 namespace RosTorv.Thomas.Model
 {
@@ -35,6 +36,28 @@ namespace RosTorv.Thomas.Model
         private int _playerHandRank;
         private int _computerHandRank;
         private bool _playerWon;
+        private int _bet;
+        private string _gameMessage;
+
+        public string GameMessage
+        {
+            get { return _gameMessage; }
+            set
+            {
+                _gameMessage=value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int Bet
+        {
+            get { return _bet; }
+            set
+            {
+                _bet = value; 
+                OnPropertyChanged();
+            }
+        }
 
         public bool PlayerWon
         {
@@ -159,7 +182,7 @@ namespace RosTorv.Thomas.Model
 
         public Game()
         {
-            _player=new Player(10);
+            _player=new Player(10000);
 
             _playerDie1 = new Dice();
             _playerDie2 = new Dice();
@@ -179,6 +202,8 @@ namespace RosTorv.Thomas.Model
             _canClickRoll = false;
             _canPassTurn = false;
             _rollsLeft = 0;
+            _gameMessage = "";
+
 
         }
 
@@ -188,14 +213,22 @@ namespace RosTorv.Thomas.Model
                 PlayerDie5.FaceValue);
             ComputerHandRank=DetermineRolls(ComputerDie1.FaceValue, ComputerDie2.FaceValue, ComputerDie3.FaceValue,
                 ComputerDie4.FaceValue, ComputerDie5.FaceValue);
-            if (PlayerHandRank > ComputerHandRank)
+            if (PlayerHandRank < ComputerHandRank)
             {
                 PlayerWon = true;
             }
             else if (PlayerHandRank == ComputerHandRank)
             {
-                if ((PlayerDie1.FaceValue+PlayerDie2.FaceValue+PlayerDie3.FaceValue+PlayerDie4.FaceValue+PlayerDie5.FaceValue)>(ComputerDie1.FaceValue+ComputerDie2.FaceValue+ComputerDie3.FaceValue+ComputerDie4.FaceValue+ComputerDie5.FaceValue))
-                PlayerWon = true;
+                if ((PlayerDie1.FaceValue + PlayerDie2.FaceValue + PlayerDie3.FaceValue + PlayerDie4.FaceValue +
+                     PlayerDie5.FaceValue) > (ComputerDie1.FaceValue + ComputerDie2.FaceValue + ComputerDie3.FaceValue +
+                                              ComputerDie4.FaceValue + ComputerDie5.FaceValue))
+                {
+                    PlayerWon = true;
+                }
+                else
+                {
+                    PlayerWon = false;
+                }
             }
             else
             {
@@ -204,6 +237,15 @@ namespace RosTorv.Thomas.Model
 
             CanClickRoll = false;
             CanStartGame = true;
+            if (PlayerWon)
+            {
+                Player.Score = Player.Score + Bet * 2;
+                GameMessage = $" You Rolled {StateHandRank(PlayerHandRank)}. The Computer Rolled {StateHandRank(ComputerHandRank)}. You Won! You gain 2x your bet of {Bet} points!";
+            }
+            else
+            {
+                GameMessage = $" You Rolled {StateHandRank(PlayerHandRank)}. The Computer Rolled {StateHandRank(ComputerHandRank)}. You Lost! You r bet of {Bet} points is forfeit!";
+            }
         }
 
         
@@ -540,6 +582,33 @@ namespace RosTorv.Thomas.Model
                 HandRank = 0;
             }
             return HandRank;
+        }
+
+        private string StateHandRank(int Handrank)
+        {
+            switch (Handrank)
+            {
+                case 0:
+                    return "Yatzi";
+                case 1:
+                    return "Big Straight";
+                case 2:
+                    return "Small Straight";
+                case 3:
+                    return "Four of a Kind";
+                case 4:
+                    return "Full House";
+                case 5:
+                    return "Three of a Kind";
+                case 6:
+                    return "Two Pairs";
+                case 7:
+                    return "One Pair";
+                case 8:
+                    return "Chance";
+            }
+
+            return "";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
