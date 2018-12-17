@@ -216,6 +216,7 @@
     <Compile Include="Sofus\View\ButikInformationPage.xaml.cs">
       <DependentUpon>ButikInformationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Thomas\Exceptions\IllegalBetException.cs" />
     <Compile Include="Thomas\Model\AI.cs" />
     <Compile Include="Thomas\Model\Dice.cs" />
     <Compile Include="Thomas\Model\Game.cs" />

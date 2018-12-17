@@ -6,12 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:RosTorv.Thomas.ViewModel"
-    mc:Ignorable="d"
-    Background="SpringGreen">
+    mc:Ignorable="d">
     <Page.DataContext>
         <viewModel:YatziDuelViewModel/>
     </Page.DataContext>
-    <Grid>
+    <Grid Background="SpringGreen">
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
                 <TextBlock  Text="Friend Computer" FontSize="90" TextWrapping="Wrap"/>
@@ -55,10 +54,10 @@
                 <Button Content="Pass Turn" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding PcRollCommand}" IsEnabled="{Binding Game.CanPassTurn, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel>
-                <TextBlock HorizontalAlignment="Left" Text="{Binding ScoreText}"/>
-                <TextBox Text=" " FontSize="12" Height="25"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding Game.Player.Score, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Game.Bet, Mode=TwoWay}" IsEnabled="{Binding CanBet, Mode=TwoWay}" FontSize="12" Height="25" />
                 <TextBlock HorizontalAlignment="Left" Text="{Binding Game.RollsLeft}"/>
-                <TextBlock HorizontalAlignment="Left"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding Game.GameMessage, Mode=TwoWay}" Foreground="Red"/>
             </StackPanel>
         </StackPanel>
     </Grid>
