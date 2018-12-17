@@ -12,6 +12,10 @@ namespace RosTorv.Line.Model
 {
     public class BægerSingelton :INotifyPropertyChanged
     {
+        /// <summary>
+        /// Bægeret er til at initialisere terningerne, holde funktioner der vedrører alle terningerne.
+        /// funktioner: RollAll(), ChangeCanRoll(), NulstillTerninger()
+        /// </summary>
         public ObservableCollection<Terning> Terninger { get; set; }
 
         private static BægerSingelton instansBægerSingelton = new BægerSingelton();
@@ -40,7 +44,6 @@ namespace RosTorv.Line.Model
                     terning.Roll();
                 }
             }
-            //GetPoint();
         }
 
         public void ChangeCanRoll(Terning terning)
@@ -68,11 +71,6 @@ namespace RosTorv.Line.Model
                 terning.ShadowOpacity = 0;
             }
         }
-
-        //public void GetPoint()
-        //{
-        //    Score = Terninger[0].Eyes + Terninger[1].Eyes + Terninger[2].Eyes + Terninger[3].Eyes + Terninger[4].Eyes;
-        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
 

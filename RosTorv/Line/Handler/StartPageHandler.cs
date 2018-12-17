@@ -7,6 +7,7 @@ using RosTorv.Common;
 using RosTorv.Line.Commen;
 using RosTorv.Line.Exceptions;
 using RosTorv.Line.Model;
+using RosTorv.Line.Persistencty;
 using RosTorv.Line.View;
 using RosTorv.Line.ViewModel;
 
@@ -22,7 +23,7 @@ namespace RosTorv.Line.Handler
             this.StartPageViewModel = startPageViewModel;
         }
 
-        public void StartGame()
+        public async void StartGame()
         {
             try
             {
@@ -56,7 +57,7 @@ namespace RosTorv.Line.Handler
                 StartPageViewModel.Spil.SpillersTur = 0;
                 StartPageViewModel.Spil.SpillereCollection[0].BackGroundColor = "LimeGreen";
                 StartPageViewModel.Spil.ResetSlag();
-
+                await SaveName1();
                 NavigationService.Navigate(typeof(GamePage));
             }
             catch (NameMissing e)
@@ -113,6 +114,22 @@ namespace RosTorv.Line.Handler
             StartPageViewModel.NameButton5 = "Visible";
 
             StartPageViewModel.AntalSpillere = 5;
+        }
+
+        public async Task SaveName1()
+        {
+            await PersistencyFacadeName.SerializeNameAsync(StartPageViewModel.Name1);
+
+        }
+
+        public async Task LoadName1Async()
+        {
+            string loadedName = await PersistencyFacadeName.DeSerializeNameAsync();
+            if (loadedName != null)
+            {
+                StartPageViewModel.Name1 = loadedName;
+            }
+
         }
     }
 }

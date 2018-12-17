@@ -11,6 +11,7 @@ using RosTorv.Annotations;
 using RosTorv.Common;
 using RosTorv.Line.Handler;
 using RosTorv.Line.Model;
+using RosTorv.Line.Persistencty;
 using RosTorv.Line.View;
 
 namespace RosTorv.Line.ViewModel
@@ -103,18 +104,21 @@ namespace RosTorv.Line.ViewModel
             Command3Spiller = new RelayCommand(StartPageHandler.Button3);
             Command4Spiller = new RelayCommand(StartPageHandler.Button4);
             Command5Spiller = new RelayCommand(StartPageHandler.Button5);
-            EndCommand = new RelayCommand(end);
+            
             NameButton1 = "Visible";
             NameButton2 = "Collapsed";
             NameButton3 = "Collapsed";
             NameButton4 = "Collapsed";
             NameButton5 = "Collapsed";
+
+            LoadName1();
         }
 
-        public void end()
+        private async void LoadName1()
         {
-            NavigationService.Navigate(typeof(EndPage));
+            await StartPageHandler.LoadName1Async();
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -11,6 +11,9 @@ namespace RosTorv.Line.Handler
 {
     public class TerningButtonHandler
     {
+        /// <summary>
+        /// handler til gamepagen, kan holde terninger
+        /// </summary>
         public GamePageViewModel GamePageViewModel { get; set; }
 
         public TerningButtonHandler(GamePageViewModel gamePageViewModel)
