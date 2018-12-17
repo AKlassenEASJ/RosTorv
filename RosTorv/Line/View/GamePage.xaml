@@ -8,6 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:RosTorv.Line.ViewModel"
     xmlns:model="using:RosTorv.Line.Model"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     Background="White"
     FontSize="25">
@@ -31,6 +33,11 @@
                     <StackPanel>
                         <StackPanel Name="TerningPanel" Orientation="Horizontal">
                             <GridView ItemsSource="{Binding Spil.Bæger.Terninger, Mode=TwoWay}" SelectedIndex="{Binding SelectedTerningIndex, Mode=TwoWay}" SelectedItem="{Binding SelectedTerning, Mode=TwoWay}" HorizontalAlignment="Stretch">
+                                <interactivity:Interaction.Behaviors>
+                                    <core:EventTriggerBehavior EventName="SelectionChanged">
+                                        <core:InvokeCommandAction Command="{Binding HoldCommand}"/>
+                                    </core:EventTriggerBehavior>
+                                </interactivity:Interaction.Behaviors>
                                 <GridView.ItemTemplate>
                                     <DataTemplate x:DataType="model:Terning">
                                         <controls:DropShadowPanel BlurRadius="6.0" ShadowOpacity="{Binding ShadowOpacity}"

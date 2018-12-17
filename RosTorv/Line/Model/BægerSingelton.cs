@@ -43,8 +43,9 @@ namespace RosTorv.Line.Model
             //GetPoint();
         }
 
-        public void ChangeCanRoll(int index)
+        public void ChangeCanRoll(Terning terning)
         {
+            int index = Terninger.IndexOf(terning);
             if (Terninger[index].CanRoll)
             {
                 Terninger[index].CanRoll = false;
