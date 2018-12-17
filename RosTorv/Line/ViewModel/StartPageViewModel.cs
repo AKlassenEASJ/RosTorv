@@ -15,7 +15,7 @@ using RosTorv.Line.View;
 
 namespace RosTorv.Line.ViewModel
 {
-    class StartPageViewModel : INotifyPropertyChanged
+    public class StartPageViewModel : INotifyPropertyChanged
     {
         public ICommand Command1Spiller { get; set; }
         public ICommand Command2Spiller { get; set; }

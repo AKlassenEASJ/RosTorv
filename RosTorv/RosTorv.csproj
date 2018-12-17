@@ -152,7 +152,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Line\Commen\MessageDialogHelper.cs" />
-    <Compile Include="Line\Exceptions\FileNotFoundException.cs" />
     <Compile Include="Line\Exceptions\NameMissing.cs" />
     <Compile Include="Line\Handler\EndPageHandler.cs" />
     <Compile Include="Line\Handler\StartPageHandler.cs" />
@@ -160,6 +159,7 @@
     <Compile Include="Line\Model\BægerSingelton.cs" />
     <Compile Include="Line\Model\EvaluateTerninger.cs" />
     <Compile Include="Line\Model\Highscore.cs" />
+    <Compile Include="Line\Model\HighScorePlads.cs" />
     <Compile Include="Line\Model\PointTekster.cs" />
     <Compile Include="Line\Model\PointFelt.cs" />
     <Compile Include="Line\Model\SpilSingelton.cs" />
@@ -187,12 +187,22 @@
     </Compile>
     <Compile Include="Nikolai\Common\MessageDialogHelper.cs" />
     <Compile Include="Nikolai\Model\Dice.cs" />
+    <Compile Include="Nikolai\Model\HighScore.cs" />
     <Compile Include="Nikolai\Model\Number.cs" />
     <Compile Include="Nikolai\Model\Numbers.cs" />
+    <Compile Include="Nikolai\Model\Player.cs" />
     <Compile Include="Nikolai\Model\Spil.cs" />
+    <Compile Include="Nikolai\ViewModel\HighScoreVM.cs" />
+    <Compile Include="Nikolai\ViewModel\PlayerVM.cs" />
     <Compile Include="Nikolai\ViewModel\STBVM.cs" />
     <Compile Include="Nikolai\View\BlankPage1.xaml.cs">
       <DependentUpon>BlankPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nikolai\View\HighScorePage.xaml.cs">
+      <DependentUpon>HighScorePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nikolai\View\NamePage.xaml.cs">
+      <DependentUpon>NamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -308,6 +318,14 @@
     <Page Include="Nikolai\View\BlankPage1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nikolai\View\HighScorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nikolai\View\NamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sofus\View\ButikInformationPage.xaml">
       <SubType>Designer</SubType>

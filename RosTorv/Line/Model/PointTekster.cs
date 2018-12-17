@@ -19,6 +19,7 @@ namespace RosTorv.Line.Model
             PointTeksterlist.Add(new PointTekst("Firere"));
             PointTeksterlist.Add(new PointTekst("Femmere"));
             PointTeksterlist.Add(new PointTekst("Seksere"));
+            PointTeksterlist.Add(new PointTekst("Sum"));
             PointTeksterlist.Add(new PointTekst("Bonus"));
             PointTeksterlist.Add(new PointTekst("1 Par"));
             PointTeksterlist.Add(new PointTekst("2 Par"));

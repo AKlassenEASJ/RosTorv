@@ -12,9 +12,9 @@ using RosTorv.Line.ViewModel;
 
 namespace RosTorv.Line.Handler
 {
-    class StartPageHandler
+    public class StartPageHandler
     {
-        private int _antalTure = 15;
+        private int _antalTure = 1;
         public StartPageViewModel StartPageViewModel { get; set; }
 
         public StartPageHandler(StartPageViewModel startPageViewModel)
@@ -54,6 +54,9 @@ namespace RosTorv.Line.Handler
                     }
                 }
                 StartPageViewModel.Spil.SpillersTur = 0;
+                StartPageViewModel.Spil.SpillereCollection[0].BackGroundColor = "LimeGreen";
+                StartPageViewModel.Spil.ResetSlag();
+
                 NavigationService.Navigate(typeof(GamePage));
             }
             catch (NameMissing e)

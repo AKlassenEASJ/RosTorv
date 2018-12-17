@@ -14,7 +14,7 @@ namespace RosTorv.Line.Model
     {
         private bool _canChange = true;
         private int _point;
-        private string _color = "Gray";
+        private string _color = "SlateGray";
         private string _backGroundColor = "None";
 
         public bool CanChange
