@@ -47,7 +47,7 @@ namespace RosTorv.Thomas.ViewModel
             get { return _canBet;}
             set
             {
-                value = _canBet;
+                _canBet = value;
                 OnPropertyChanged();
             }
 
