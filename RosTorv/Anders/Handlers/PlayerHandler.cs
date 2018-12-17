@@ -86,9 +86,6 @@ namespace RosTorv.Anders.Handlers
                         HighScore.HighScoreList.Insert(index, tempPlayer);
                         break;
                     }
-
-
-
                 }
 
                 if (HighScore.HighScoreList.Count == removeIndicator)

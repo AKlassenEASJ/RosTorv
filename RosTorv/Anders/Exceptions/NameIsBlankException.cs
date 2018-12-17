@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RosTorv.Anders.Exceptions
 {
-    class NameIsBlankException : Exception
+    public class NameIsBlankException : Exception
     {
 
         public NameIsBlankException(string message) : base(message)
