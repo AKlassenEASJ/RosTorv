@@ -160,7 +160,7 @@ namespace RosTorv.Line.Model
         {
             if (String.IsNullOrEmpty(newspiller.Name))
             {
-                throw new NameMissing("Spiller skal have navn");
+                throw new NameMissing($"Spiller {SpillereCollection.Count + 1} mangler et navn.");
             }
             else
             {
