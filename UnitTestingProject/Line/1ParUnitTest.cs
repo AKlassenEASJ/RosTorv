@@ -31,6 +31,7 @@ namespace UnitTestingProject.Line
             //Assert 
             Assert.AreEqual(exptedResult, _spil.SpillereCollection[0].PointFelter[8].Point);
         }
+
         //Tjekker om Point bliver ændret hvis der ikke er 1 par
         [TestMethod]
         public void TestOmIkke1Par()

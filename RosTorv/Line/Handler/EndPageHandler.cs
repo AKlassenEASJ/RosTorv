@@ -25,22 +25,36 @@ namespace RosTorv.Line.Handler
 
             if (EndPageViewModel.Spil.SpillereCollection.Count > 1)
             {
-                for (int i = 0; i < EndPageViewModel.Spil.SpillereCollection.Count; i++)
+                for (int i = 1; i < EndPageViewModel.Spil.SpillereCollection.Count; i++)
                 {
                     if (EndPageViewModel.Spil.SpillereCollection[i].PointFelter[17].Point > EndPageViewModel.VinderPoint)
                     {
                         EndPageViewModel.VinderNavn = EndPageViewModel.Spil.SpillereCollection[i].Name;
                         EndPageViewModel.VinderPoint = EndPageViewModel.Spil.SpillereCollection[i].PointFelter[17].Point;
                         EndPageViewModel.VinderNr = i + 1;
-                        EndPageViewModel.Spil.SpillereCollection.RemoveAt(i);
                     }
                 }
             }
 
-            if (EndPageViewModel.VinderNr == 1)
+            switch (EndPageViewModel.VinderNr)
             {
-                EndPageViewModel.Spil.SpillereCollection.RemoveAt(0);
+                case 2:
+                    EndPageViewModel.Spil.SpillereCollection.RemoveAt(1);
+                    break;
+                case 3:
+                    EndPageViewModel.Spil.SpillereCollection.RemoveAt(2);
+                    break;
+                case 4:
+                    EndPageViewModel.Spil.SpillereCollection.RemoveAt(3);
+                    break;
+                case 5:
+                    EndPageViewModel.Spil.SpillereCollection.RemoveAt(4);
+                    break;
+                default:
+                    EndPageViewModel.Spil.SpillereCollection.RemoveAt(0);
+                    break;
             }
+
             
         }
 

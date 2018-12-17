@@ -31,7 +31,7 @@
         </Grid>
 
         <Grid Column="1" Row="1">
-            <StackPanel>
+            <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="500">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Spiller" Margin="8"/>
                     <TextBlock Text="{Binding VinderNr}" Margin="8"/>
@@ -43,9 +43,9 @@
                 <GridView ItemsSource="{Binding Spil.SpillereCollection}" SelectionMode="None">
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="10">
+                            <StackPanel Margin="10" Width="100">
                                 <TextBlock Text="{Binding Name}" FontSize="35"/>
-                                <TextBlock Text="{Binding PointFelter[17].Point}" FontSize="35"/>
+                                <TextBlock Text="{Binding PointFelter[17].Point}" FontSize="30"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridView.ItemTemplate>

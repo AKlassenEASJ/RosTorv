@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RosTorv.Anders.Exceptions
 {
-    class NameIsInappropriateException : Exception
+    public class NameIsInappropriateException : Exception
     {
         public NameIsInappropriateException(string message) : base(message)
         {
