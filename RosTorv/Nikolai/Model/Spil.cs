@@ -20,6 +20,7 @@ namespace RosTorv.Nikolai.Model
         private Dice _dice2;
         private int _diceCounter;
 
+
         public Dice Dice1
         {
             get { return _dice1; }
@@ -47,6 +48,8 @@ namespace RosTorv.Nikolai.Model
             }
         }
 
+        
+
 
 
 
@@ -72,8 +75,20 @@ namespace RosTorv.Nikolai.Model
            //ResetNumbers();
             _diceCounter = 21;
             RollAll();
+            
 
         }
+
+
+        public void CheckPoints()
+        {
+            int ThrowesUsed = 21 - DiceCounter;
+            int PointsRemoved = 50;
+            Points.Instance.point = 1050;
+            Points.Instance.point = Points.Instance.point - ThrowesUsed * PointsRemoved;
+
+        }
+
 
         public void CheckNumbers()
         {
@@ -94,14 +109,30 @@ namespace RosTorv.Nikolai.Model
                 SelectedNumbers.Clear();
                 
             }
-            if (RemovedNumbers.Contains(new Number(1, true)) && RemovedNumbers.Contains(new Number(2, true)) && RemovedNumbers.Contains(new Number(3, true)) && RemovedNumbers.Contains(new Number(4, true)) && RemovedNumbers.Contains(new Number(5, true)) && RemovedNumbers.Contains(new Number(6, true)) && RemovedNumbers.Contains(new Number(7, true)) && RemovedNumbers.Contains(new Number(8, true)) && RemovedNumbers.Contains(new Number(9, true)))
+
+            if (RemovedNumbers.Contains(new Number(1, true)) && RemovedNumbers.Contains(new Number(2, true)) &&
+                RemovedNumbers.Contains(new Number(3, true)) && RemovedNumbers.Contains(new Number(4, true)) &&
+                RemovedNumbers.Contains(new Number(5, true)) && RemovedNumbers.Contains(new Number(6, true)) &&
+                RemovedNumbers.Contains(new Number(7, true)) && RemovedNumbers.Contains(new Number(8, true)) &&
+                RemovedNumbers.Contains(new Number(9, true)))
+            {
+                CheckPoints();
                 NavigationService.Navigate(typeof(NamePage));
+            }
         }
 
         public void RulePage()
         {
             MessageDialogHelper.Show("At the start of the game all levers or tiles are open (cleared, up), showing the numerals 1 to 9. During the game, each player plays in turn. A player begins his or her turn by throwing or rolling the die or dice into the box. If the sum of the remaining tile(s) is 6 or lower, the player may roll only one die.", "Rules");
         }
+
+        public void Confirm()
+        {
+            NavigationService.Navigate(typeof(HighScorePage));    
+        }
+
+
+
 
         public void Reset()
         {
@@ -125,6 +156,7 @@ namespace RosTorv.Nikolai.Model
 
             if (DiceCounter == -1)
             {
+                CheckPoints();
                 NavigationService.Navigate(typeof(NamePage));
             }
 

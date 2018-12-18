@@ -25,6 +25,21 @@ namespace RosTorv.Thomas.Model
                 return smallest;
             }
         }
+        public int FindBiggestNumber(List<int> numbers)
+        {
+            {
+                int biggest = numbers[0];
+                for (int index = 1; index < numbers.Count; index++)
+                {
+                    if (numbers[index] > biggest)
+                    {
+                        biggest = numbers[index];
+                    }
+                }
+                return biggest;
+            }
+        }
+
         public int Case
         { get {return _case; }
             set { _case = value; }
@@ -165,43 +180,108 @@ namespace RosTorv.Thomas.Model
             int D4 = Die4Value;
             int D5 = Die5Value;
 
+            int Sum1 = 0;
+            int Sum2 = 0;
+            int Sum3 = 0;
+            int Sum4 = 0;
+            int Sum5 = 0;
+            int Sum6 = 0;
+            int Sum7 = 0;
+            int Sum8 = 0;
+            int Sum9 = 0;
+            int Sum10 = 0;
+
             if (D1 == D2)
             {
-                Case = 4;
+                Sum1 = D1 + D2;
             }
             if (D1 == D3)
             {
-                Case = 3;
+                Sum2 = D1 + D3;
             }
             if (D1 == D4)
             {
-                Case = 2;
+                Sum3 = D1 + D4;
             }
             if (D1 == D5)
             {
-                Case = 1;
+                Sum4 = D1 + D5;
             }
             if (D2 == D3)
             {
-                Case = 5;
+                Sum5 = D3 + D2;
             }
             if (D2 == D4)
             {
-                Case = 6;
+                Sum6 = D4 + D2;
             }
             if (D2 == D5)
             {
-                Case = 7;
+                Sum7 = D5 + D2;
             }
             if (D3 == D4)
             {
-                Case = 8;
+                Sum8 = D3 + D4;
             }
             if (D3 == D5)
             {
-                Case = 9;
+                Sum9 = D3 + D5;
             }
             if (D4 == D5)
+            {
+                Sum10 = D4 + D5;
+            }
+
+            List<int> SumList=new List<int>();
+            SumList.Add(Sum1);
+            SumList.Add(Sum2);
+            SumList.Add(Sum3);
+            SumList.Add(Sum4);
+            SumList.Add(Sum5);
+            SumList.Add(Sum6);
+            SumList.Add(Sum7);
+            SumList.Add(Sum8);
+            SumList.Add(Sum9);
+            SumList.Add(Sum10);
+            
+
+            if (FindBiggestNumber(SumList)==Sum1)
+            {
+                Case = 4;
+            }
+            if (FindBiggestNumber(SumList) == Sum2)
+            {
+                Case = 3;
+            }
+            if (FindBiggestNumber(SumList) == Sum3)
+            {
+                Case = 2;
+            }
+            if (FindBiggestNumber(SumList) == Sum4)
+            {
+                Case = 1;
+            }
+            if (FindBiggestNumber(SumList) == Sum5)
+            {
+                Case = 5;
+            }
+            if (FindBiggestNumber(SumList) == Sum6)
+            {
+                Case = 6;
+            }
+            if (FindBiggestNumber(SumList) == Sum7)
+            {
+                Case = 7;
+            }
+            if (FindBiggestNumber(SumList) == Sum8)
+            {
+                Case = 8;
+            }
+            if (FindBiggestNumber(SumList) == Sum9)
+            {
+                Case = 9;
+            }
+            if (FindBiggestNumber(SumList) == Sum10)
             {
                 Case = 10;
             }

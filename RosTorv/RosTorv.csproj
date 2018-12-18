@@ -166,6 +166,7 @@
     <Compile Include="Line\Model\Spiller.cs" />
     <Compile Include="Line\Model\Terning.cs" />
     <Compile Include="Line\Persistencty\PersistencyFacade.cs" />
+    <Compile Include="Line\Persistencty\PersistencyFacadeName.cs" />
     <Compile Include="Line\ViewModel\EndPageViewModel.cs" />
     <Compile Include="Line\ViewModel\GamePageViewModel.cs" />
     <Compile Include="Line\ViewModel\StartPageViewModel.cs" />
@@ -191,6 +192,8 @@
     <Compile Include="Nikolai\Model\Number.cs" />
     <Compile Include="Nikolai\Model\Numbers.cs" />
     <Compile Include="Nikolai\Model\Player.cs" />
+    <Compile Include="Nikolai\Handlers\PlayerHandler.cs" />
+    <Compile Include="Nikolai\Model\Points.cs" />
     <Compile Include="Nikolai\Model\Spil.cs" />
     <Compile Include="Nikolai\ViewModel\HighScoreVM.cs" />
     <Compile Include="Nikolai\ViewModel\PlayerVM.cs" />
@@ -215,6 +218,7 @@
     <Compile Include="Sofus\View\ButikInformationPage.xaml.cs">
       <DependentUpon>ButikInformationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Thomas\Exceptions\IllegalBetException.cs" />
     <Compile Include="Thomas\Model\AI.cs" />
     <Compile Include="Thomas\Model\Dice.cs" />
     <Compile Include="Thomas\Model\Game.cs" />

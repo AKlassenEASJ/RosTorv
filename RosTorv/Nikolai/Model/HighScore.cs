@@ -47,7 +47,7 @@ namespace RosTorv.Nikolai.Model
 
         private HighScore()
         {
-            
+            PlayerHighScore = new ObservableCollection<Player>();
         }
 
 

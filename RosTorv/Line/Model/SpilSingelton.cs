@@ -84,6 +84,7 @@ namespace RosTorv.Line.Model
                 else
                 {
                     SpillereCollection[SpillersTur].PointFelter[pointIndex].Color = "Black";
+                    SpillereCollection[SpillersTur].PointFelter[pointIndex].Thickness = "Bold";
                 }
                 SpillereCollection[SpillersTur].PointFelter[pointIndex].CanChange = false;
                 NustilPoint();

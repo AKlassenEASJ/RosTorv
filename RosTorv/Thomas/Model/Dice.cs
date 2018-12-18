@@ -43,7 +43,7 @@ namespace RosTorv.Thomas.Model
 
         public void Roll()
         {
-            if (CanRoll==true)
+            if (CanRoll)
             { FaceValue = _random.Next(1, 7);}
 
         }

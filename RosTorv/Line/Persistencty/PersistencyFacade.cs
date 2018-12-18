@@ -12,6 +12,9 @@ using RosTorv.Line.Model;
 
 namespace RosTorv.Line.Persistencty
 {
+    /// <summary>
+    /// Formålet er at kunne gennem highscore listen til en json fil
+    /// </summary>
     class PersistencyFacade
     {
         private static string jsonFileName = "YatzyHighScoreAsJson.Json";

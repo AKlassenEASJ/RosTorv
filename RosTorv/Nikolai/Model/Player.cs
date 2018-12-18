@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using RosTorv.Annotations;
+using RosTorv.Common;
+using RosTorv.Nikolai.View;
 
 namespace RosTorv.Nikolai.Model
 {
-    class Player
+    class Player : IComparable<Player>
     {
         #region Instance Fields
 
@@ -43,11 +48,26 @@ namespace RosTorv.Nikolai.Model
 
 
         #endregion
- 
+
         #region Methods
 
-
-
+        
         #endregion
+
+
+        public int CompareTo(Player other)
+        {
+            //if (ReferenceEquals(this, other)) return 0;
+            //if (ReferenceEquals(null, other)) return 1;
+            //return _points.CompareTo(other._points);
+            if (Points == other.Points)
+                return 0;
+            if (Points < other.Points)
+                return -1;
+            else
+            {
+                return 1;
+            }
+        }
     }
 }
