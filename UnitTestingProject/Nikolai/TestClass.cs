@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.ObjectModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RosTorv.Nikolai.Model;
 
 namespace UnitTestingProject.Nikolai
@@ -20,6 +21,12 @@ namespace UnitTestingProject.Nikolai
             game.RollAll();
             int endCount = game.DiceCounter;
             Assert.AreEqual(startCount - 1,endCount);
+        }
+
+        [TestMethod]
+        public void TestDice()
+        {
+
         }
     }
 }

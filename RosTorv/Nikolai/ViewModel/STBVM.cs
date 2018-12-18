@@ -28,6 +28,8 @@ namespace RosTorv.Nikolai.ViewModel
             RulePage = new RelayCommand(Game.RulePage);
             ResetCommand = new RelayCommand(Game.Reset);
 
+
+
         }
 
         public Number SelectedNumber
@@ -43,17 +45,6 @@ namespace RosTorv.Nikolai.ViewModel
             }
         }
 
-        //public int DiceCounter
-        //{
-        //    get { return; }
-        //    set
-        //    {
-        //        Game.DiceCounter = value;
-        //        OnPropertyChanged();
-        //    }
-
-        //}
-        
         public ICommand RulePage { get; set; }
         public ICommand ResetCommand { get; set; }
 

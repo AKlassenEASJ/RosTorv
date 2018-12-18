@@ -190,6 +190,8 @@
     <Compile Include="Nikolai\Model\Number.cs" />
     <Compile Include="Nikolai\Model\Numbers.cs" />
     <Compile Include="Nikolai\Model\Player.cs" />
+    <Compile Include="Nikolai\Handlers\PlayerHandler.cs" />
+    <Compile Include="Nikolai\Model\Points.cs" />
     <Compile Include="Nikolai\Model\Spil.cs" />
     <Compile Include="Nikolai\ViewModel\HighScoreVM.cs" />
     <Compile Include="Nikolai\ViewModel\PlayerVM.cs" />
