@@ -33,7 +33,7 @@ namespace RosTorv.Line.ViewModel
 
         public string Name1
         {
-            get { return _name1;}
+            get => _name1;
             set
             {
                 _name1 = value;
