@@ -244,7 +244,7 @@ namespace RosTorv.Thomas.Model
             }
             else
             {
-                GameMessage = $" You Rolled {StateHandRank(PlayerHandRank)}. The Computer Rolled {StateHandRank(ComputerHandRank)}. You Lost! You r bet of {Bet} points is forfeit!";
+                GameMessage = $" You Rolled {StateHandRank(PlayerHandRank)}. The Computer Rolled {StateHandRank(ComputerHandRank)}. You Lost! Your bet of {Bet} points is forfeit!";
             }
         }
 

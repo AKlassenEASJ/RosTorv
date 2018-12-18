@@ -195,8 +195,15 @@ namespace RosTorv.Thomas.ViewModel
             UpdatePcImages();
             PlCanChooseDice = true;
             Game.CanPassTurn = false;
-            if (Game.RollsLeft!=3)
-            {Game.CanClickRoll = true; }
+            if (Game.RollsLeft != 3)
+            {
+                Game.CanClickRoll = true;
+                Game.PlayerDie1.CanRoll = false;
+                Game.PlayerDie2.CanRoll = false;
+                Game.PlayerDie3.CanRoll = false;
+                Game.PlayerDie4.CanRoll = false;
+                Game.PlayerDie5.CanRoll = false;
+            }
 
             if (Game.RollsLeft == 0)
             {
