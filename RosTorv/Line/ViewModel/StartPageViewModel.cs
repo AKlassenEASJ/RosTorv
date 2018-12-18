@@ -18,6 +18,7 @@ namespace RosTorv.Line.ViewModel
 {
     public class StartPageViewModel : INotifyPropertyChanged
     {
+        private string _name1;
         public ICommand Command1Spiller { get; set; }
         public ICommand Command2Spiller { get; set; }
         public ICommand Command3Spiller { get; set; }
@@ -30,7 +31,14 @@ namespace RosTorv.Line.ViewModel
         public StartPageHandler StartPageHandler { get; set; }
         public int AntalSpillere { get; set; }
 
-        public string Name1 { get; set; }
+        public string Name1
+        {
+            get { return _name1;}
+            set
+            {
+                _name1 = value;
+                OnPropertyChanged();
+            } }
         public string Name2 { get; set; }
         public string Name3 { get; set; }
         public string Name4 { get; set; }
@@ -112,9 +120,10 @@ namespace RosTorv.Line.ViewModel
             NameButton5 = "Collapsed";
 
             LoadName1();
+
         }
 
-        private async void LoadName1()
+        public async void LoadName1()
         {
             await StartPageHandler.LoadName1Async();
         }

@@ -66,7 +66,7 @@ namespace RosTorv.Line.Handler
             }
         }
 
-        public void Button1()
+        public async void Button1()
         {
             StartPageViewModel.NameButton2 = "Collapsed";
             StartPageViewModel.NameButton3 = "Collapsed";
@@ -74,6 +74,7 @@ namespace RosTorv.Line.Handler
             StartPageViewModel.NameButton5 = "Collapsed";
 
             StartPageViewModel.AntalSpillere = 1;
+
         }
 
         public void Button2()
@@ -124,7 +125,7 @@ namespace RosTorv.Line.Handler
 
         public async Task LoadName1Async()
         {
-            string loadedName = await PersistencyFacadeName.DeSerializeNameAsync();
+            var loadedName = await PersistencyFacadeName.DeSerializeNameAsync();
             if (loadedName != null)
             {
                 StartPageViewModel.Name1 = loadedName;
