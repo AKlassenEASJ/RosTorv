@@ -25,6 +25,21 @@ namespace RosTorv.Thomas.Model
                 return smallest;
             }
         }
+        public int FindBiggestNumber(List<int> numbers)
+        {
+            {
+                int biggest = numbers[0];
+                for (int index = 1; index < numbers.Count; index++)
+                {
+                    if (numbers[index] > biggest)
+                    {
+                        biggest = numbers[index];
+                    }
+                }
+                return biggest;
+            }
+        }
+
         public int Case
         { get {return _case; }
             set { _case = value; }
@@ -228,46 +243,45 @@ namespace RosTorv.Thomas.Model
             SumList.Add(Sum8);
             SumList.Add(Sum9);
             SumList.Add(Sum10);
+            
 
-            FindSmallestNumber(SumList);
-
-            if (FindSmallestNumber(SumList)==Sum1)
+            if (FindBiggestNumber(SumList)==Sum1)
             {
                 Case = 4;
             }
-            if (FindSmallestNumber(SumList) == Sum2)
+            if (FindBiggestNumber(SumList) == Sum2)
             {
                 Case = 3;
             }
-            if (FindSmallestNumber(SumList) == Sum3)
+            if (FindBiggestNumber(SumList) == Sum3)
             {
                 Case = 2;
             }
-            if (FindSmallestNumber(SumList) == Sum4)
+            if (FindBiggestNumber(SumList) == Sum4)
             {
                 Case = 1;
             }
-            if (FindSmallestNumber(SumList) == Sum5)
+            if (FindBiggestNumber(SumList) == Sum5)
             {
                 Case = 5;
             }
-            if (FindSmallestNumber(SumList) == Sum6)
+            if (FindBiggestNumber(SumList) == Sum6)
             {
                 Case = 6;
             }
-            if (FindSmallestNumber(SumList) == Sum7)
+            if (FindBiggestNumber(SumList) == Sum7)
             {
                 Case = 7;
             }
-            if (FindSmallestNumber(SumList) == Sum8)
+            if (FindBiggestNumber(SumList) == Sum8)
             {
                 Case = 8;
             }
-            if (FindSmallestNumber(SumList) == Sum9)
+            if (FindBiggestNumber(SumList) == Sum9)
             {
                 Case = 9;
             }
-            if (FindSmallestNumber(SumList) == Sum10)
+            if (FindBiggestNumber(SumList) == Sum10)
             {
                 Case = 10;
             }
