@@ -8,11 +8,9 @@ namespace RosTorv.Anders.Exceptions
 {
     public class NameIsBlankException : Exception
     {
-
         public NameIsBlankException(string message) : base(message)
         {
             
         }
-
     }
 }
