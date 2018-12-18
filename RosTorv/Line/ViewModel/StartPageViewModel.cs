@@ -11,12 +11,14 @@ using RosTorv.Annotations;
 using RosTorv.Common;
 using RosTorv.Line.Handler;
 using RosTorv.Line.Model;
+using RosTorv.Line.Persistencty;
 using RosTorv.Line.View;
 
 namespace RosTorv.Line.ViewModel
 {
-    class StartPageViewModel : INotifyPropertyChanged
+    public class StartPageViewModel : INotifyPropertyChanged
     {
+        private string _name1;
         public ICommand Command1Spiller { get; set; }
         public ICommand Command2Spiller { get; set; }
         public ICommand Command3Spiller { get; set; }
@@ -29,7 +31,14 @@ namespace RosTorv.Line.ViewModel
         public StartPageHandler StartPageHandler { get; set; }
         public int AntalSpillere { get; set; }
 
-        public string Name1 { get; set; }
+        public string Name1
+        {
+            get => _name1;
+            set
+            {
+                _name1 = value;
+                OnPropertyChanged();
+            } }
         public string Name2 { get; set; }
         public string Name3 { get; set; }
         public string Name4 { get; set; }
@@ -103,18 +112,22 @@ namespace RosTorv.Line.ViewModel
             Command3Spiller = new RelayCommand(StartPageHandler.Button3);
             Command4Spiller = new RelayCommand(StartPageHandler.Button4);
             Command5Spiller = new RelayCommand(StartPageHandler.Button5);
-            EndCommand = new RelayCommand(end);
+            
             NameButton1 = "Visible";
             NameButton2 = "Collapsed";
             NameButton3 = "Collapsed";
             NameButton4 = "Collapsed";
             NameButton5 = "Collapsed";
+
+            LoadName1();
+
         }
 
-        public void end()
+        public async void LoadName1()
         {
-            NavigationService.Navigate(typeof(EndPage));
+            await StartPageHandler.LoadName1Async();
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

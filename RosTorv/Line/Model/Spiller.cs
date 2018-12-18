@@ -1,23 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using RosTorv.Annotations;
 
 namespace RosTorv.Line.Model
 {
-    public class Spiller
+    public class Spiller : INotifyPropertyChanged
     {
         public string Name { get; set; }
-        public int HighScorePlads { get; set; }
+        private string _backGroundColor = "none";
 
-
-        public ObservableCollection<PointFelt> PointFelter { get; set; } = new ObservableCollection<PointFelt>();
-
-        public int TotalPoint
+        public string BackGroundColor
         {
-            get { return PointFelter[16].Point;} }
+            get { return _backGroundColor; }
+            set
+            {
+                _backGroundColor = value; 
+                OnPropertyChanged();
+            }
+        }
+        public ObservableCollection<PointFelt> PointFelter { get; set; } = new ObservableCollection<PointFelt>();
 
         public Spiller(string navn)
         {
@@ -28,21 +35,31 @@ namespace RosTorv.Line.Model
             PointFelter.Add(new PointFelt());//Fire 3
             PointFelter.Add(new PointFelt());//Fem 4 
             PointFelter.Add(new PointFelt());//seks 5
-            PointFelter.Add(new PointFelt());//bonus 6
+            PointFelter.Add(new PointFelt());//sum 6
             PointFelter[6].CanChange = false;
-            PointFelter.Add(new PointFelt());//1 Par 7
-            PointFelter.Add(new PointFelt());//2 Par 8 
-            PointFelter.Add(new PointFelt());//3 ens 9
-            PointFelter.Add(new PointFelt());//4 ens 10
-            PointFelter.Add(new PointFelt());//høj 11
-            PointFelter.Add(new PointFelt());//lav 12
-            PointFelter.Add(new PointFelt());//fuldHus 13
-            PointFelter.Add(new PointFelt());//chance 14
-            PointFelter.Add(new PointFelt());//Yatzy 15
-            PointFelter.Add(new PointFelt());//sum 16
-            PointFelter[16].CanChange = false;
-            PointFelter[16].Color = "Black";
+            PointFelter[6].Color = "Black";
+            PointFelter.Add(new PointFelt());//bonus 7
+            PointFelter[7].CanChange = false;
+            PointFelter.Add(new PointFelt());//1 Par 8
+            PointFelter.Add(new PointFelt());//2 Par 9 
+            PointFelter.Add(new PointFelt());//3 ens 10
+            PointFelter.Add(new PointFelt());//4 ens 11
+            PointFelter.Add(new PointFelt());//høj 12
+            PointFelter.Add(new PointFelt());//lav 13
+            PointFelter.Add(new PointFelt());//fuldHus 14
+            PointFelter.Add(new PointFelt());//chance 15
+            PointFelter.Add(new PointFelt());//Yatzy 16
+            PointFelter.Add(new PointFelt());//sum 17
+            PointFelter[17].CanChange = false;
+            PointFelter[17].Color = "Black";
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

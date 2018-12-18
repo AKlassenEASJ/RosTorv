@@ -6,21 +6,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:RosTorv.Thomas.ViewModel"
-    mc:Ignorable="d"
-    Background="SpringGreen">
+    mc:Ignorable="d">
     <Page.DataContext>
         <viewModel:YatziDuelViewModel/>
     </Page.DataContext>
-    <Grid>
+    <Grid Background="SpringGreen">
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
                 <TextBlock  Text="Friend Computer" FontSize="90" TextWrapping="Wrap"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie1.CanRoll, Mode=TwoWay}"/>
-                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie2.CanRoll, Mode=TwoWay}"/>
-                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie3.CanRoll, Mode=TwoWay}"/>
-                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie4.CanRoll, Mode=TwoWay}"/>
-                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie5.CanRoll, Mode=TwoWay}"/>
+                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie1.CanRoll}"/>
+                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie2.CanRoll}"/>
+                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie3.CanRoll}"/>
+                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie4.CanRoll}"/>
+                    <CheckBox HorizontalAlignment="Left" Width="15" VerticalAlignment="Bottom" IsEnabled="False" IsChecked="{Binding Game.ComputerDie5.CanRoll}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Spacing="70">
                     <Image Source="{Binding PcDice1ImgSource}" Height="50"/>
@@ -50,15 +49,15 @@
                 <TextBlock HorizontalAlignment="Right" Text="Your Score:" Height="24" Margin="0,0,-0.2,0" VerticalAlignment="Stretch"/>
                 <TextBlock HorizontalAlignment="Right" Text="Your bet:" Height="27" Margin="0,0,-0.2,0"/>
                 <TextBlock HorizontalAlignment="Right" Text="Rolls Left:" Height="22" Margin="0,0,-0.2,0"/>
-                <Button Content="Play Yatzi Duel!" HorizontalAlignment="Right"  VerticalAlignment="Top" Command="{Binding StartGameCommand}" IsEnabled="{Binding Game.CanStartGame, Mode=TwoWay}"/>
-                <Button Content="Roll Dice!" HorizontalAlignment="Right"  VerticalAlignment="Top" Command="{Binding PlayerRollCommand}" IsEnabled="{Binding Game.CanClickRoll, Mode=TwoWay}"/>
-                <Button Content="Pass Turn" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding PcRollCommand}" IsEnabled="{Binding Game.CanPassTurn, Mode=TwoWay}"/>
+                <Button Content="Play Yatzi Duel!" HorizontalAlignment="Right"  VerticalAlignment="Top" Command="{Binding StartGameCommand}" IsEnabled="{Binding Game.CanStartGame}"/>
+                <Button Content="Roll Dice!" HorizontalAlignment="Right"  VerticalAlignment="Top" Command="{Binding PlayerRollCommand}" IsEnabled="{Binding Game.CanClickRoll}"/>
+                <Button Content="Pass Turn" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding PcRollCommand}" IsEnabled="{Binding Game.CanPassTurn}"/>
             </StackPanel>
             <StackPanel>
-                <TextBlock HorizontalAlignment="Left" Text="{Binding ScoreText}"/>
-                <TextBox Text=" " FontSize="12" Height="25"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding Game.Player.Score}"/>
+                <TextBox Text="{Binding Game.Bet, Mode=TwoWay}" IsEnabled="{Binding CanBet}" FontSize="12" Height="25" />
                 <TextBlock HorizontalAlignment="Left" Text="{Binding Game.RollsLeft}"/>
-                <TextBlock HorizontalAlignment="Left"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding Game.GameMessage}" Foreground="Red"/>
             </StackPanel>
         </StackPanel>
     </Grid>

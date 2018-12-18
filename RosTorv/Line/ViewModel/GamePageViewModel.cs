@@ -21,18 +21,13 @@ namespace RosTorv.Line.ViewModel
         //private ICommand _holdTerning;
         private Terning _selectedTerning;
         private PointFelt _selectedPointFelt;
-        private int _selectedTerningIndex;
         public TerningButtonHandler TerningButtonHandler { get; set; }
         public SpilSingelton Spil { get; }
         public PointTekster Pointtekst { get; set; }
 
         public ICommand RollCommand { get; }
+        public ICommand HoldCommand { get; }
 
-        public int SelectedTerningIndex
-        {
-            get => _selectedTerningIndex;
-            set => _selectedTerningIndex = value;
-        }
 
         public int  SelectedPointIndex { get; set; }
 
@@ -43,7 +38,6 @@ namespace RosTorv.Line.ViewModel
             {
                 _selectedTerning = value;
                 OnPropertyChanged();
-                TerningButtonHandler.HoldTerning();
             }
         }
 
@@ -65,6 +59,7 @@ namespace RosTorv.Line.ViewModel
             Pointtekst = new PointTekster();
             TerningButtonHandler = new TerningButtonHandler(this);
             RollCommand = new RelayCommand(Spil.RollInTurn);
+            HoldCommand = new RelayCommand(TerningButtonHandler.HoldTerning);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

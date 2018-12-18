@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RosTorv.Line.Exceptions
+namespace RosTorv.Thomas.Exceptions
 {
-    public class NameMissing : Exception
+    class IllegalBetException:Exception
+
     {
-        public NameMissing(string message): base(message)
+        public IllegalBetException(string message)
+            : base(message)
         {
-            
         }
     }
 }

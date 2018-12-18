@@ -14,8 +14,9 @@ namespace RosTorv.Line.Model
     {
         private bool _canChange = true;
         private int _point;
-        private string _color = "Gray";
+        private string _color = "SlateGray";
         private string _backGroundColor = "None";
+        private string _thickness = "Normal";
 
         public bool CanChange
         {
@@ -54,7 +55,18 @@ namespace RosTorv.Line.Model
             {
                 _backGroundColor = value;
                 OnPropertyChanged();
-            } }
+            }
+        }
+
+        public string Thickness
+        {
+            get { return _thickness; }
+            set
+            {
+                _thickness = value;
+                OnPropertyChanged();
+            }
+        }
         public PointFelt()
         {
             

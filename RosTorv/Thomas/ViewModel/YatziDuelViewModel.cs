@@ -10,6 +10,7 @@ using Windows.UI.Xaml.Controls;
 using RosTorv.Thomas.Model;
 using RosTorv.Annotations;
 using RosTorv.Common;
+using RosTorv.Thomas.Exceptions;
 using RosTorv.Thomas.View;
 
 namespace RosTorv.Thomas.ViewModel
@@ -28,8 +29,8 @@ namespace RosTorv.Thomas.ViewModel
         private string _pcDice4ImgSource;
         private string _pcDice5ImgSource;
         private bool _plCanChooseDice;
-
-        private string _scoreText;
+        private bool _canBet;
+        
 
         public bool PlCanChooseDice
         {
@@ -41,10 +42,17 @@ namespace RosTorv.Thomas.ViewModel
             }
         }
 
-        public string ScoreText
+        public bool CanBet
         {
-            get { return _scoreText; }
+            get { return _canBet;}
+            set
+            {
+                _canBet = value;
+                OnPropertyChanged();
+            }
+
         }
+        
 
         public string PlDice1ImgSource
         {
@@ -167,7 +175,7 @@ namespace RosTorv.Thomas.ViewModel
             PcDice4ImgSource = Faces[0];
             PcDice5ImgSource = Faces[0];
             PlCanChooseDice = false;
-            _scoreText = $"{Game.Player.Score}000";
+            CanBet = true;
 
         }
 
@@ -187,29 +195,50 @@ namespace RosTorv.Thomas.ViewModel
             UpdatePcImages();
             PlCanChooseDice = true;
             Game.CanPassTurn = false;
-            if (Game.RollsLeft!=3)
-            {Game.CanClickRoll = true; }
-            if (Game.RollsLeft==0)
-            { Game.EndGame();}
+            if (Game.RollsLeft != 3)
+            {
+                Game.CanClickRoll = true;
+                Game.PlayerDie1.CanRoll = false;
+                Game.PlayerDie2.CanRoll = false;
+                Game.PlayerDie3.CanRoll = false;
+                Game.PlayerDie4.CanRoll = false;
+                Game.PlayerDie5.CanRoll = false;
+            }
+
+            if (Game.RollsLeft == 0)
+            {
+                Game.EndGame();
+                CanBet = true;
+            }
         }
 
         public void StartGame()
         {
-            Game.PlayerDie1.CanRoll = true;
-            Game.PlayerDie2.CanRoll = true;
-            Game.PlayerDie3.CanRoll = true;
-            Game.PlayerDie4.CanRoll = true;
-            Game.PlayerDie5.CanRoll = true;
-            Game.ComputerDie1.CanRoll = true;
-            Game.ComputerDie2.CanRoll = true;
-            Game.ComputerDie3.CanRoll = true;
-            Game.ComputerDie4.CanRoll = true;
-            Game.ComputerDie5.CanRoll = true;
-            PlCanChooseDice = false;
-            Game.CanClickRoll = true;
-            Game.CanStartGame = false;
-            Game.CanPassTurn = false;
-            Game.RollsLeft = 3;
+            try
+            {
+                Game.Player.PlaceBet(Game.Bet);
+                CanBet = false;
+                Game.PlayerDie1.CanRoll = true;
+                Game.PlayerDie2.CanRoll = true;
+                Game.PlayerDie3.CanRoll = true;
+                Game.PlayerDie4.CanRoll = true;
+                Game.PlayerDie5.CanRoll = true;
+                Game.ComputerDie1.CanRoll = true;
+                Game.ComputerDie2.CanRoll = true;
+                Game.ComputerDie3.CanRoll = true;
+                Game.ComputerDie4.CanRoll = true;
+                Game.ComputerDie5.CanRoll = true;
+                PlCanChooseDice = false;
+                Game.CanClickRoll = true;
+                Game.CanStartGame = false;
+                Game.CanPassTurn = false;
+                Game.RollsLeft = 3;
+                Game.GameMessage = "";
+            }
+            catch (IllegalBetException e)
+            {
+                Game.GameMessage = e.Message;
+            }
         }
 
         public void UpdatePlImages()

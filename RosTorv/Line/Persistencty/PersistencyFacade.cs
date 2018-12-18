@@ -12,31 +12,34 @@ using RosTorv.Line.Model;
 
 namespace RosTorv.Line.Persistencty
 {
+    /// <summary>
+    /// Formålet er at kunne gennem highscore listen til en json fil
+    /// </summary>
     class PersistencyFacade
     {
         private static string jsonFileName = "YatzyHighScoreAsJson.Json";
 
-        public static async Task SaveHighScoreJsonAsync(List<Spiller> spillers)
+        public static async Task SerializeHighScoreAsync(List<HighScorePlads> spillers)
         {
             string spillereJsonString = JsonConvert.SerializeObject(spillers);
-            await SerializeHighScoresFileAsync(spillereJsonString, jsonFileName);
+            await SaveHighScoreFileAsync(spillereJsonString, jsonFileName);
         }
 
-        public static async Task<List<Spiller>> LoadHighScoresFromJsonAsync()
+        public static async Task<List<HighScorePlads>> DeSerializeHighScoresAsync()
         {
-            string spillereJsonString = await DeSerializeHighScoresFileAsync(jsonFileName);
+            string spillereJsonString = await LoadHighScoresfilesFromJsonAsync(jsonFileName);
             if (spillereJsonString != null)
-                return JsonConvert.DeserializeObject<List<Spiller>>(spillereJsonString);
+                return JsonConvert.DeserializeObject<List<HighScorePlads>>(spillereJsonString);
             return null;
         }
 
-        public static async Task SerializeHighScoresFileAsync(string spillerString, string fileName)
+        public static async Task SaveHighScoreFileAsync(string spillerString, string fileName)
         {
             StorageFile localFile = await ApplicationData.Current.LocalFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
             await FileIO.WriteTextAsync(localFile, spillerString);
         }
 
-        public static async Task<string> DeSerializeHighScoresFileAsync(String fileName)
+        public static async Task<string> LoadHighScoresfilesFromJsonAsync(String fileName)
         {
            
             StorageFile localFile = await ApplicationData.Current.LocalFolder.TryGetItemAsync(fileName) as StorageFile;
@@ -50,7 +53,9 @@ namespace RosTorv.Line.Persistencty
             }
                 
         }
-            
+        
+
+
     }
 }
 

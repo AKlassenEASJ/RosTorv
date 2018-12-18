@@ -79,16 +79,18 @@ namespace RosTorv.Line.Model
                 Tur--;
                 if (SpillereCollection[SpillersTur].PointFelter[pointIndex].Point == 0)
                 {
-                    SpillereCollection[SpillersTur].PointFelter[pointIndex].BackgroundColor = "Gray";
+                    SpillereCollection[SpillersTur].PointFelter[pointIndex].BackgroundColor = "SlateGray";
                 }
                 else
                 {
                     SpillereCollection[SpillersTur].PointFelter[pointIndex].Color = "Black";
+                    SpillereCollection[SpillersTur].PointFelter[pointIndex].Thickness = "Bold";
                 }
                 SpillereCollection[SpillersTur].PointFelter[pointIndex].CanChange = false;
                 NustilPoint();
+                GetFirstSum(SpillersTur);
                 TjekBonusPoint(SpillersTur);
-                SpillereCollection[SpillersTur].PointFelter[16].Point = SpillereCollection[SpillersTur].PointFelter[16].Point + SpillereCollection[SpillersTur].PointFelter[pointIndex].Point;
+                SpillereCollection[SpillersTur].PointFelter[17].Point = SpillereCollection[SpillersTur].PointFelter[17].Point + SpillereCollection[SpillersTur].PointFelter[pointIndex].Point;
                 ResetSlag();
                 Bæger.NulstilTerninger();
                 if (Tur < 1)
@@ -105,15 +107,22 @@ namespace RosTorv.Line.Model
 
                     NavigationService.Navigate(typeof(EndPage));
                 }
-
-                if (SpillersTur >= (SpillereCollection.Count - 1))
-                {
-                    SpillersTur = 0;
-                }
                 else
                 {
-                    SpillersTur++;
+                    if (SpillersTur >= (SpillereCollection.Count - 1))
+                    {
+                        SpillereCollection[SpillersTur].BackGroundColor = "none";
+                        SpillersTur = 0;
+                        SpillereCollection[0].BackGroundColor = "LimeGreen";
+                    }
+                    else
+                    {
+                        SpillereCollection[SpillersTur].BackGroundColor = "none";
+                        SpillersTur++;
+                        SpillereCollection[SpillersTur].BackGroundColor = "LimeGreen";
+                    }
                 }
+
             }
         }
 
@@ -130,13 +139,17 @@ namespace RosTorv.Line.Model
 
         public void TjekBonusPoint(int spiller)
         {
-            int forløbigPoint = SpillereCollection[spiller].PointFelter[0].Point + SpillereCollection[spiller].PointFelter[1].Point + SpillereCollection[spiller].PointFelter[2].Point +
-                                SpillereCollection[spiller].PointFelter[3].Point + SpillereCollection[spiller].PointFelter[4].Point + SpillereCollection[spiller].PointFelter[5].Point;
-            if (forløbigPoint >= 63)
+            if (SpillereCollection[spiller].PointFelter[6].Point >= 63)
             {
-                SpillereCollection[spiller].PointFelter[6].Point = 50;
-                SpillereCollection[spiller].PointFelter[6].Color = "Black";
+                SpillereCollection[spiller].PointFelter[7].Point = 50;
+                SpillereCollection[spiller].PointFelter[7].Color = "Black";
             }
+        }
+
+        private void GetFirstSum(int spiller)
+        {
+            SpillereCollection[spiller].PointFelter[6].Point = SpillereCollection[spiller].PointFelter[0].Point + SpillereCollection[spiller].PointFelter[1].Point + SpillereCollection[spiller].PointFelter[2].Point +
+                                                         SpillereCollection[spiller].PointFelter[3].Point + SpillereCollection[spiller].PointFelter[4].Point + SpillereCollection[spiller].PointFelter[5].Point;
         }
 
         public void ResetSlag()
@@ -146,9 +159,9 @@ namespace RosTorv.Line.Model
 
         public void AddSpiller(Spiller newspiller)
         {
-            if (newspiller.Name == null)
+            if (String.IsNullOrEmpty(newspiller.Name))
             {
-                throw new NameMissing("Spiller skal have navn");
+                throw new NameMissing($"Spiller {SpillereCollection.Count + 1} mangler et navn.");
             }
             else
             {

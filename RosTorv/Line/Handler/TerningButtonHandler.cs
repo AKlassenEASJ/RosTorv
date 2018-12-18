@@ -11,6 +11,9 @@ namespace RosTorv.Line.Handler
 {
     public class TerningButtonHandler
     {
+        /// <summary>
+        /// handler til gamepagen, kan holde terninger
+        /// </summary>
         public GamePageViewModel GamePageViewModel { get; set; }
 
         public TerningButtonHandler(GamePageViewModel gamePageViewModel)
@@ -20,7 +23,12 @@ namespace RosTorv.Line.Handler
 
         public void HoldTerning()
         {
-            GamePageViewModel.Spil.Bæger.ChangeCanRoll(GamePageViewModel.SelectedTerningIndex);
+            if (GamePageViewModel.SelectedTerning != null)
+            {
+                GamePageViewModel.Spil.Bæger.ChangeCanRoll(GamePageViewModel.SelectedTerning);
+                GamePageViewModel.SelectedTerning = null;
+            }
+
         }
 
         
