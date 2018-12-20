@@ -19,7 +19,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Text="Points Earned" HorizontalAlignment="Center" Margin="0,0,0,0"></TextBlock>
-            <TextBox Text="{Binding NewPlayer.Points, Mode=TwoWay}"></TextBox>
+            <TextBox Text="{Binding Points.point}"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Command="{Binding ConfirmCommand}" Content="Confirm"></Button>

@@ -15,6 +15,7 @@ namespace RosTorv.Line.Handler
 {
     public class StartPageHandler
     {
+        //Der er 15 runder
         private int _antalTure = 15;
         public StartPageViewModel StartPageViewModel { get; set; }
 
@@ -66,7 +67,7 @@ namespace RosTorv.Line.Handler
             }
         }
 
-        public async void Button1()
+        public void Button1()
         {
             StartPageViewModel.NameButton2 = "Collapsed";
             StartPageViewModel.NameButton3 = "Collapsed";

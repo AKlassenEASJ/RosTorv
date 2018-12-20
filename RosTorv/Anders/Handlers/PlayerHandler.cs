@@ -98,7 +98,7 @@ namespace RosTorv.Anders.Handlers
             }
             catch (NameIsBlankException blankException)
             {
-                MessageDialogHelper.Show(blankException.Message, "Error");
+                MessageDialogHelper.Show(blankException.Message, "Please write a name");
 
             }
             catch (NameIsInappropriateException inappropriateException)

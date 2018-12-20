@@ -14,7 +14,7 @@ namespace RosTorv.Anders.Persistency
     class PersistenceFacade
     {
         private static string jsonFileName = "PlayersAsJson1.dat";
-        private static string xmlFileName = "PlayersAsXml1.dat";
+        
 
         public static async void SavePlayersAsJsonAsync(ObservableCollection<Player> players)
         {
@@ -30,24 +30,7 @@ namespace RosTorv.Anders.Persistency
             return null;
         }
 
-        public static async void SavePlayersAsXmlAsync(ObservableCollection<Player> players)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(players.GetType());
-            StringWriter textWriter = new StringWriter();
-            xmlSerializer.Serialize(textWriter, players);
-            SerializePlayersFileAsync(textWriter.ToString(), xmlFileName);
-        }
-
-        public static async Task<ObservableCollection<Player>> LoadPlayersFromXmlAsync()
-        {
-            string playersXmlString = await DeSerializePlayersFileAsync(xmlFileName);
-            if (playersXmlString != null)
-            {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(ObservableCollection<Player>));
-                return (ObservableCollection<Player>)xmlSerializer.Deserialize(new StringReader(playersXmlString));
-            }
-            return null;
-        }
+        
 
 
         public static async void SerializePlayersFileAsync(string PlayersString, string fileName)

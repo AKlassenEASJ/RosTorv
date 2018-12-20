@@ -31,7 +31,7 @@
                 </Grid.RowDefinitions>
                 <Grid Row="1">
                     <StackPanel>
-                        <!--<StackPanel Name="TerningPanel" Orientation="Horizontal">-->
+
                             <GridView ItemsSource="{Binding Spil.Bæger.Terninger, Mode=TwoWay}" SelectedItem="{Binding SelectedTerning, Mode=TwoWay}" HorizontalAlignment="Stretch">
                                 <interactivity:Interaction.Behaviors>
                                     <core:EventTriggerBehavior EventName="SelectionChanged">
@@ -47,7 +47,7 @@
                                     </DataTemplate>
                                 </GridView.ItemTemplate>
                             </GridView>
-                        <!--</StackPanel>-->
+
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Antal slag tilbage"/>
                             <TextBlock Text="{Binding Spil.SlagTilbage, Mode=TwoWay}"/>
@@ -120,7 +120,7 @@
                                         <DataTemplate>
                                             <StackPanel HorizontalAlignment="Stretch">
                                                 <Border Background="{Binding BackgroundColor}">
-                                                    <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
+                                                    <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontWeight="{Binding Thickness}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
                                                 </Border>
                                                 <Line Stroke="Black" X2="500"/>
                                             </StackPanel>
@@ -141,7 +141,7 @@
                                         <DataTemplate>
                                             <StackPanel>
                                                 <Border Background="{Binding BackgroundColor}">
-                                                <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
+                                                    <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontWeight="{Binding Thickness}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
                                             </Border>
                                             <Line Stroke="Black" X2="500"/>
                                             </StackPanel>
@@ -162,7 +162,7 @@
                                         <DataTemplate>
                                             <StackPanel>
                                                 <Border Background="{Binding BackgroundColor}">
-                                                    <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
+                                                    <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontWeight="{Binding Thickness}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
                                                 </Border>
                                                 <Line Stroke="Black" X2="500"/>
                                             </StackPanel>
@@ -181,7 +181,7 @@
                                         <DataTemplate>
                                             <StackPanel>
                                                 <Border Background="{Binding BackgroundColor}">
-                                                    <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
+                                                    <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontWeight="{Binding Thickness}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
                                                 </Border>
                                                 <Line Stroke="Black" X2="500"/>
                                             </StackPanel>
@@ -200,7 +200,7 @@
                                         <DataTemplate>
                                             <StackPanel>
                                                 <Border Background="{Binding BackgroundColor}">
-                                                    <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
+                                                    <TextBlock IsTextSelectionEnabled="{Binding CanChange, Mode=TwoWay}" FontWeight="{Binding Thickness}" FontSize="25" Foreground="{Binding Color, Mode=TwoWay}"  Text="{Binding Point, Mode=TwoWay}" Width="30"/>
                                                 </Border>
                                                 <Line Stroke="Black" X2="500"/>
                                             </StackPanel>

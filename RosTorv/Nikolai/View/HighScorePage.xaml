@@ -15,10 +15,22 @@
 
 
     <Grid>
-        <GridView HorizontalAlignment="Center">
-            <TextBlock FontSize="50" Text="Highscore"/>
-        </GridView>
-        <ListView ItemsSource="{Binding HighScoreList}" HorizontalAlignment="Center" Height="805" Margin="0,0,0,0" VerticalAlignment="Center" Width="428"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalTextAlignment="Center" FontSize="50" Text="Highscore"/>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding HighScoreList, Mode=TwoWay}" HorizontalAlignment="Center" Height="805" VerticalAlignment="Center" Width="428">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                        <TextBlock Text="{Binding Points}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 </Page>

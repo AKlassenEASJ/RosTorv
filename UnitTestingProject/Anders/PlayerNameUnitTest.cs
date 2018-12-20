@@ -11,8 +11,6 @@ namespace UnitTestingProject.Anders
         [TestMethod]
         public void TestPlayer_Constructor_NameIsBlankException()
         {
-
-
             //Assert
             Assert.ThrowsException<NameIsBlankException>(() => { new Player("", 5000, 10); });
         }
@@ -20,12 +18,8 @@ namespace UnitTestingProject.Anders
         [TestMethod]
         public void TestPlayer2_Constructor_NameIsBlankException()
         {
-
-
             //Assert
             Assert.ThrowsException<NameIsBlankException>(() => { new Player(null, 2000, 4); });
-
-
         }
 
         [TestMethod]

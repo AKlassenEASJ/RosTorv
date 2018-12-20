@@ -19,7 +19,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="HighScores" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Text="HighScores" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontWeight="Bold" Margin="0,0,200,0"/>
 
 
             <Grid Grid.Row="1">
@@ -33,10 +33,20 @@
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}"/>
-                                <TextBlock Text="{Binding Turns}" Margin="5,0,0,0"/>
-                            <TextBlock Text="{Binding PlayerScore}" Margin="5,0,0,0"/>
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                <StackPanel Width="150" HorizontalAlignment="Left" Orientation="Horizontal">
+                                    <TextBlock Text="Player:"/>
+                                    <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
+                            </StackPanel>
+                                <StackPanel Width="100" HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock Text="Turns:"/>
+                                    <TextBlock Text="{Binding Turns}" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Width="150" HorizontalAlignment="Right" Orientation="Horizontal">
+                                <TextBlock Text="Score:" />
+                                <TextBlock Text="{Binding PlayerScore}" Margin="5,0,0,0"/>
+                            </StackPanel>
+                                
                         </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
