@@ -151,6 +151,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\SharedScore.cs" />
     <Compile Include="Line\Commen\MessageDialogHelper.cs" />
     <Compile Include="Line\Exceptions\NameMissing.cs" />
     <Compile Include="Line\Handler\EndPageHandler.cs" />
